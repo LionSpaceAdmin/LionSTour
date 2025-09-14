@@ -22,12 +22,14 @@ export function ModerationTools({
   useEffect(() => {
     (async () => {
       try {
-        const [exps, gids] = await Promise.all([
+        const [rawExps, rawGids] = await Promise.all([
           fetch("/api/experiences").then((r) => r.json()).catch(() => []),
           fetch("/api/guides").then((r) => r.json()).catch(() => []),
         ]);
-        setExperiences(Array.isArray(exps) ? exps : []);
-        setGuides(Array.isArray(gids) ? gids : []);
+        const exps = (Array.isArray(rawExps) ? rawExps : []).map((e: any) => ({ id: e.id, title: e.title, isActive: e.is_active ?? e.isActive ?? true }));
+        const gids = (Array.isArray(rawGids) ? rawGids : []).map((g: any) => ({ id: g.id, name: g.name, isActive: g.is_active ?? g.isActive ?? true }));
+        setExperiences(exps);
+        setGuides(gids);
       } finally {
         setLoading(false);
       }

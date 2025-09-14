@@ -48,6 +48,33 @@ export default function AcademyPage() {
     });
   }, [articles, category, query]);
 
+  // Optional semantic search via API if available
+  useEffect(() => {
+    const controller = new AbortController();
+    const run = async () => {
+      const q = query.trim();
+      if (q.length < 2) return; // avoid noisy calls
+      try {
+        const res = await fetch(`/api/academy/search?q=${encodeURIComponent(q)}`, { signal: controller.signal });
+        const data = await res.json();
+        if (Array.isArray(data.results) && data.results.length) {
+          // Map results to overlay articles list if they look like articles
+          const mapped = data.results.map((r: any) => ({
+            id: r.id || r.slug,
+            slug: r.slug?.replace(/^article-/, '') || r.slug,
+            title: r.title,
+            category: r.category || 'article',
+            excerpt: r.excerpt || (r.content ? String(r.content).slice(0, 200) : ''),
+            cover_image: r.cover_image || undefined,
+          })) as Article[];
+          setArticles(mapped);
+        }
+      } catch (_) {}
+    };
+    run();
+    return () => controller.abort();
+  }, [query]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
       {/* Language Switcher */}
