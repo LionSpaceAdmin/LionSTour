@@ -41,3 +41,4 @@ yarn-error.log*
 next-env.d.ts
 *.mp4
 public/site_clip_original.mp4
+public/site_clip.mp4
