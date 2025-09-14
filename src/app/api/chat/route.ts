@@ -3,6 +3,8 @@ import { streamText, convertToModelMessages, type UIMessage, tool, embed } from 
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGateway } from '@ai-sdk/gateway';
 import { prisma } from '@/lib/prisma';
+import { createClient } from '@supabase/supabase-js';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { z } from 'zod/v4';
 import type { Prisma } from '@prisma/client';
 
@@ -137,9 +139,20 @@ export async function POST(req: Request) {
           const model = openai.embedding('openai:text-embedding-3-small');
           const q = await embed({ model, value: query });
           const qVec = q.embedding;
-          // Load knowledge
+
+          // Try Supabase pgvector
+          const supaUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+          const supaAnon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+          if (supaUrl && supaAnon) {
+            const supabase = createClient(supaUrl, supaAnon);
+            const { data, error } = await supabase.rpc('match_knowledge', { query_embedding: qVec, match_count: 3 });
+            if (!error && Array.isArray(data)) {
+              return { results: data };
+            }
+          }
+
+          // Fallback to Prisma knowledge
           const docs = await prisma.knowledge.findMany({ take: 200, orderBy: { updatedAt: 'desc' } });
-          // Rank by cosine similarity
           const qNorm = Math.sqrt(qVec.reduce((s: number, v: number) => s + v * v, 0));
           const ranked = docs
             .map((d) => {

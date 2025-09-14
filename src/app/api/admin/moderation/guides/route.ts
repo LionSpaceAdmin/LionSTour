@@ -6,7 +6,13 @@ export async function PATCH(req: Request) {
   if (!id || typeof isActive !== 'boolean') {
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
   }
+  // Optional admin token enforcement
+  const token = process.env.ADMIN_API_TOKEN;
+  if (token) {
+    const auth = req.headers.get('authorization') || '';
+    const ok = auth.toLowerCase().startsWith('bearer ') && auth.slice(7) === token;
+    if (!ok) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const updated = await prisma.guide.update({ where: { id }, data: { isActive } });
   return NextResponse.json({ id: updated.id, isActive: updated.isActive });
 }
-

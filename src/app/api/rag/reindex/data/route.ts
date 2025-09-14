@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { embedMany } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -47,15 +48,22 @@ export async function POST() {
   const model = openai.embedding('openai:text-embedding-3-small');
   const result = await embedMany({ model, values: docs.map((d) => d.content) });
 
-  for (let i = 0; i < docs.length; i++) {
-    const d = docs[i];
-    const emb = result.embeddings[i] ?? [];
-    await prisma.knowledge.upsert({
-      where: { slug: d.slug },
-      update: { title: d.title, content: d.content, embedding: emb as any },
-      create: { slug: d.slug, title: d.title, content: d.content, embedding: emb as any },
-    });
+  const admin = getSupabaseAdmin();
+  if (admin) {
+    const payload = docs.map((d, i) => ({ slug: d.slug, title: d.title, content: d.content, embedding: result.embeddings[i] ?? [] }))
+    const { error: upsertErr } = await admin.from('knowledge').upsert(payload, { onConflict: 'slug' })
+    if (upsertErr) return NextResponse.json({ error: upsertErr.message }, { status: 500 })
+    return NextResponse.json({ ok: true, count: payload.length, target: 'supabase' })
+  } else {
+    for (let i = 0; i < docs.length; i++) {
+      const d = docs[i];
+      const emb = result.embeddings[i] ?? [];
+      await prisma.knowledge.upsert({
+        where: { slug: d.slug },
+        update: { title: d.title, content: d.content, embedding: emb as any },
+        create: { slug: d.slug, title: d.title, content: d.content, embedding: emb as any },
+      });
+    }
+    return NextResponse.json({ ok: true, count: docs.length, target: 'prisma' })
   }
-
-  return NextResponse.json({ ok: true, count: docs.length });
 }

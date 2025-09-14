@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { embed } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import { createGateway } from "@ai-sdk/gateway";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
+import { createClient } from "@supabase/supabase-js";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const gateway = process.env.AI_GATEWAY_API_KEY
@@ -17,8 +19,21 @@ export async function GET(req: Request) {
   const model = openai.embedding('openai:text-embedding-3-small');
   const q = await embed({ model, value: query });
   const qVec = q.embedding;
-  const qNorm = Math.sqrt(qVec.reduce((s: number, v: number) => s + v * v, 0)) || 1;
 
+  // Prefer Supabase pgvector if available
+  const admin = getSupabaseAdmin();
+  const supaUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supaAnon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (supaUrl && supaAnon) {
+    const supabase = createClient(supaUrl, supaAnon);
+    const { data, error } = await supabase.rpc('match_knowledge', { query_embedding: qVec, match_count: 5 });
+    if (!error && Array.isArray(data)) {
+      return NextResponse.json({ results: data });
+    }
+  }
+
+  // Fallback to Prisma knowledge
+  const qNorm = Math.sqrt(qVec.reduce((s: number, v: number) => s + v * v, 0)) || 1;
   const docs = await prisma.knowledge.findMany({});
   const ranked = docs
     .map((d) => {
@@ -30,6 +45,5 @@ export async function GET(req: Request) {
     })
     .sort((a, b) => b.similarity - a.similarity)
     .slice(0, 5);
-
-  return NextResponse.json({ results: ranked });
+  return NextResponse.json({ results: ranked, target: 'prisma' });
 }

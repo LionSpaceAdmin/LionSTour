@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { embedMany } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import { createGateway } from "@ai-sdk/gateway";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { readFile } from "fs/promises";
 import path from "path";
 
@@ -31,15 +32,29 @@ export async function POST() {
   const model = openai.embedding('openai:text-embedding-3-small');
   const embedResult = await embedMany({ model, values: chunks.map((c) => c.content) });
 
-  for (let i = 0; i < chunks.length; i++) {
-    const c = chunks[i];
-    const emb = embedResult.embeddings[i] ?? [];
-    await prisma.knowledge.upsert({
-      where: { slug: c.slug },
-      update: { title: c.title, content: c.content, embedding: emb as any },
-      create: { slug: c.slug, title: c.title, content: c.content, embedding: emb as any },
-    });
+  const admin = getSupabaseAdmin();
+  if (admin) {
+    const payload = chunks.map((c, i) => ({
+      slug: c.slug,
+      title: c.title,
+      content: c.content,
+      embedding: embedResult.embeddings[i] ?? [],
+    }))
+    // Upsert into Supabase knowledge using service role
+    const { error: upsertErr } = await admin.from('knowledge').upsert(payload, { onConflict: 'slug' })
+    if (upsertErr) return NextResponse.json({ error: upsertErr.message }, { status: 500 })
+    return NextResponse.json({ ok: true, count: payload.length, target: 'supabase' })
+  } else {
+    // Fallback to Prisma knowledge table
+    for (let i = 0; i < chunks.length; i++) {
+      const c = chunks[i];
+      const emb = embedResult.embeddings[i] ?? [];
+      await prisma.knowledge.upsert({
+        where: { slug: c.slug },
+        update: { title: c.title, content: c.content, embedding: emb as any },
+        create: { slug: c.slug, title: c.title, content: c.content, embedding: emb as any },
+      });
+    }
+    return NextResponse.json({ ok: true, count: chunks.length, target: 'prisma' })
   }
-
-  return NextResponse.json({ ok: true, count: chunks.length });
 }
