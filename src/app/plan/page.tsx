@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useI18n } from "@/hooks/useI18n";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -25,9 +25,62 @@ interface Itinerary {
   }[];
 }
 
-export default function PlanPage() {
-  const { t } = useI18n();
+// Define the type for the generated itinerary
+interface Itinerary {
+  title: string;
+  days: {
+    day: number;
+    title: string;
+    description: string;
+    experienceId: string;
+    guideName: string;
+    emoji: string;
+  }[];
+}
+
+// Component that handles search params
+function SearchParamsHandler({ onUpdateJourneyData }: { onUpdateJourneyData: (data: Partial<JourneyData>) => void }) {
   const search = useSearchParams();
+
+  // Prefill from ?prompt= using simple keyword mapping (HE/EN)
+  useEffect(() => {
+    const prompt = (search.get("prompt") || "").toLowerCase();
+    if (!prompt) return;
+    const interests: string[] = [];
+    const emotions: string[] = [];
+    const includes = (s: string) => prompt.includes(s);
+    if (["nature", "טבע"].some(includes)) interests.push("nature");
+    if (["history", "היסטור"].some(includes)) interests.push("history");
+    if (["culture", "תרבות"].some(includes)) interests.push("culture");
+    if (["food", "אוכל"].some(includes)) interests.push("food");
+    if (["adventure", "הרפתק"].some(includes)) interests.push("adventure");
+    if (["spiritual", "רוח"].some(includes)) interests.push("spirituality");
+
+    if (["healing", "ריפוי"].some(includes)) emotions.push("healing");
+    if (["peace", "שקט", "שלווה"].some(includes)) emotions.push("peace");
+    if (["connection", "חיבור"].some(includes)) emotions.push("connection");
+    if (["inspiration", "השראה"].some(includes)) emotions.push("inspiration");
+    if (["excitement", "התרגשות"].some(includes)) emotions.push("adventure");
+
+    let duration = "";
+    if (/(1|2|3)\s*days?|סופ/.test(prompt)) duration = "1-3";
+    else if (/week|שבוע/.test(prompt)) duration = "4-7";
+    else if (/two\s*weeks|שבועיים/.test(prompt)) duration = "8-14";
+    else if (/month|חודש/.test(prompt)) duration = "15+";
+
+    onUpdateJourneyData({
+      interests: interests.length ? Array.from(new Set(interests)) : undefined,
+      emotions: emotions.length ? Array.from(new Set(emotions)) : undefined,
+      duration: duration || undefined,
+      prompt: search.get("prompt") || "",
+    });
+  }, [search, onUpdateJourneyData]);
+
+  return null; // This component doesn't render anything
+}
+
+function PlanPageContent() {
+  const { t } = useI18n();
   const [currentStep, setCurrentStep] = useState(1);
   const [isJourneyCreated, setIsJourneyCreated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +95,16 @@ export default function PlanPage() {
     prompt: "",
   });
 
+  const handleUpdateJourneyData = (data: Partial<JourneyData>) => {
+    setJourneyData((prev) => ({
+      ...prev,
+      interests: data.interests !== undefined ? data.interests : prev.interests,
+      emotions: data.emotions !== undefined ? data.emotions : prev.emotions,
+      duration: data.duration !== undefined ? data.duration : prev.duration,
+      prompt: data.prompt !== undefined ? data.prompt : prev.prompt,
+    }));
+  };
+
   const journeyQuestions: JourneyQuestion[] = [
     {
       id: "interests",
@@ -49,12 +112,32 @@ export default function PlanPage() {
       description: t("Plan.interests.description"),
       type: "multiple",
       options: [
-        { value: "history", label: t("Plan.interests.options.history"), emoji: "🏛️" },
-        { value: "nature", label: t("Plan.interests.options.nature"), emoji: "🌿" },
-        { value: "culture", label: t("Plan.interests.options.culture"), emoji: "🎭" },
+        {
+          value: "history",
+          label: t("Plan.interests.options.history"),
+          emoji: "🏛️",
+        },
+        {
+          value: "nature",
+          label: t("Plan.interests.options.nature"),
+          emoji: "🌿",
+        },
+        {
+          value: "culture",
+          label: t("Plan.interests.options.culture"),
+          emoji: "🎭",
+        },
         { value: "food", label: t("Plan.interests.options.food"), emoji: "🍽️" },
-        { value: "adventure", label: t("Plan.interests.options.adventure"), emoji: "🏔️" },
-        { value: "spirituality", label: t("Plan.interests.options.spirituality"), emoji: "🕊️" },
+        {
+          value: "adventure",
+          label: t("Plan.interests.options.adventure"),
+          emoji: "🏔️",
+        },
+        {
+          value: "spirituality",
+          label: t("Plan.interests.options.spirituality"),
+          emoji: "🕊️",
+        },
       ],
     },
     {
@@ -66,7 +149,11 @@ export default function PlanPage() {
         { value: "1-3", label: t("Plan.duration.options.short"), emoji: "⚡" },
         { value: "4-7", label: t("Plan.duration.options.medium"), emoji: "📅" },
         { value: "8-14", label: t("Plan.duration.options.long"), emoji: "🗓️" },
-        { value: "15+", label: t("Plan.duration.options.extended"), emoji: "🌍" },
+        {
+          value: "15+",
+          label: t("Plan.duration.options.extended"),
+          emoji: "🌍",
+        },
       ],
     },
     {
@@ -76,10 +163,26 @@ export default function PlanPage() {
       type: "single",
       options: [
         { value: "solo", label: t("Plan.groupSize.options.solo"), emoji: "🧍" },
-        { value: "couple", label: t("Plan.groupSize.options.couple"), emoji: "👫" },
-        { value: "family", label: t("Plan.groupSize.options.family"), emoji: "👨‍👩‍👧‍👦" },
-        { value: "friends", label: t("Plan.groupSize.options.friends"), emoji: "👥" },
-        { value: "group", label: t("Plan.groupSize.options.group"), emoji: "👨‍👩‍👧‍👦👥" },
+        {
+          value: "couple",
+          label: t("Plan.groupSize.options.couple"),
+          emoji: "👫",
+        },
+        {
+          value: "family",
+          label: t("Plan.groupSize.options.family"),
+          emoji: "👨‍👩‍👧‍👦",
+        },
+        {
+          value: "friends",
+          label: t("Plan.groupSize.options.friends"),
+          emoji: "👥",
+        },
+        {
+          value: "group",
+          label: t("Plan.groupSize.options.group"),
+          emoji: "👨‍👩‍👧‍👦👥",
+        },
       ],
     },
     {
@@ -88,17 +191,44 @@ export default function PlanPage() {
       description: t("Plan.emotions.description"),
       type: "multiple",
       options: [
-        { value: "healing", label: t("Plan.emotions.options.healing"), emoji: "💚" },
-        { value: "discovery", label: t("Plan.emotions.options.discovery"), emoji: "🔍" },
-        { value: "connection", label: t("Plan.emotions.options.connection"), emoji: "🤝" },
-        { value: "adventure", label: t("Plan.emotions.options.adventure"), emoji: "⚡" },
-        { value: "peace", label: t("Plan.emotions.options.peace"), emoji: "🕊️" },
-        { value: "inspiration", label: t("Plan.emotions.options.inspiration"), emoji: "✨" },
+        {
+          value: "healing",
+          label: t("Plan.emotions.options.healing"),
+          emoji: "💚",
+        },
+        {
+          value: "discovery",
+          label: t("Plan.emotions.options.discovery"),
+          emoji: "🔍",
+        },
+        {
+          value: "connection",
+          label: t("Plan.emotions.options.connection"),
+          emoji: "🤝",
+        },
+        {
+          value: "adventure",
+          label: t("Plan.emotions.options.adventure"),
+          emoji: "⚡",
+        },
+        {
+          value: "peace",
+          label: t("Plan.emotions.options.peace"),
+          emoji: "🕊️",
+        },
+        {
+          value: "inspiration",
+          label: t("Plan.emotions.options.inspiration"),
+          emoji: "✨",
+        },
       ],
     },
   ];
 
-  const handleAnswer = (questionId: JourneyQuestionId, answer: string | string[]) => {
+  const handleAnswer = (
+    questionId: JourneyQuestionId,
+    answer: string | string[]
+  ) => {
     setJourneyData((prev: JourneyData) => ({ ...prev, [questionId]: answer }));
   };
 
@@ -140,43 +270,11 @@ export default function PlanPage() {
 
   const currentQuestion = journeyQuestions[currentStep - 1];
 
-  // Prefill from ?prompt= using simple keyword mapping (HE/EN)
-  useEffect(() => {
-    const prompt = (search.get("prompt") || "").toLowerCase();
-    if (!prompt) return;
-    const interests: string[] = [];
-    const emotions: string[] = [];
-    const includes = (s: string) => prompt.includes(s);
-    if (["nature", "טבע"].some(includes)) interests.push("nature");
-    if (["history", "היסטור"].some(includes)) interests.push("history");
-    if (["culture", "תרבות"].some(includes)) interests.push("culture");
-    if (["food", "אוכל"].some(includes)) interests.push("food");
-    if (["adventure", "הרפתק"].some(includes)) interests.push("adventure");
-    if (["spiritual", "רוח"].some(includes)) interests.push("spirituality");
-
-    if (["healing", "ריפוי"].some(includes)) emotions.push("healing");
-    if (["peace", "שקט", "שלווה"].some(includes)) emotions.push("peace");
-    if (["connection", "חיבור"].some(includes)) emotions.push("connection");
-    if (["inspiration", "השראה"].some(includes)) emotions.push("inspiration");
-    if (["excitement", "התרגשות"].some(includes)) emotions.push("adventure");
-
-    let duration = "";
-    if (/(1|2|3)\s*days?|סופ/.test(prompt)) duration = "1-3";
-    else if (/week|שבוע/.test(prompt)) duration = "4-7";
-    else if (/two\s*weeks|שבועיים/.test(prompt)) duration = "8-14";
-    else if (/month|חודש/.test(prompt)) duration = "15+";
-
-    setJourneyData((prev) => ({
-      ...prev,
-      interests: interests.length ? Array.from(new Set(interests)) : prev.interests,
-      emotions: emotions.length ? Array.from(new Set(emotions)) : prev.emotions,
-      duration: duration || prev.duration,
-      prompt: search.get("prompt") || prev.prompt || "",
-    }));
-  }, [search]);
-
   return (
     <div className="min-h-screen bg-neutral-950 text-white">
+      <Suspense fallback={null}>
+        <SearchParamsHandler onUpdateJourneyData={handleUpdateJourneyData} />
+      </Suspense>
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
@@ -187,7 +285,9 @@ export default function PlanPage() {
             {isJourneyCreated ? t("Itinerary.title") : t("Plan.title")}
           </h1>
           <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
-            {isJourneyCreated ? t("Itinerary.createdSubtitle") : t("Plan.subtitle")}
+            {isJourneyCreated
+              ? t("Itinerary.createdSubtitle")
+              : t("Plan.subtitle")}
           </p>
         </div>
       </div>
@@ -212,7 +312,9 @@ export default function PlanPage() {
                     {index < journeyQuestions.length - 1 && (
                       <div
                         className={`w-16 h-1 mx-2 ${
-                          index + 1 < currentStep ? "bg-amber-500" : "bg-white/20"
+                          index + 1 < currentStep
+                            ? "bg-amber-500"
+                            : "bg-white/20"
                         }`}
                       ></div>
                     )}
@@ -260,8 +362,15 @@ export default function PlanPage() {
         <div className="py-16">
           <div className="container mx-auto px-4 max-w-4xl">
             {isLoading ? (
-              <div className="text-center text-lg text-white/80" role="status" aria-busy="true">
-                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" aria-hidden="true" />
+              <div
+                className="text-center text-lg text-white/80"
+                role="status"
+                aria-busy="true"
+              >
+                <div
+                  className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent"
+                  aria-hidden="true"
+                />
                 {t("AIStatus.crafting")}
               </div>
             ) : itinerary ? (
@@ -287,5 +396,20 @@ export default function PlanPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function PlanPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-neutral-950 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" />
+          <p className="text-white/80">Loading...</p>
+        </div>
+      </div>
+    }>
+      <PlanPageContent />
+    </Suspense>
   );
 }
