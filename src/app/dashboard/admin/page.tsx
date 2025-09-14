@@ -1,20 +1,42 @@
-export default function AdminDashboard() {
+"use client";
+
+import { useI18n } from "@/hooks/useI18n";
+
+import { GuidesManagement } from "@/components/admin/guide-table";
+
+import { ExperiencesManagement } from "@/components/admin/experience-table";
+
+import { BookingsManagement } from "@/components/admin/booking-table";
+
+import { ModerationTools } from "@/components/admin/moderation-tools";
+
+export default function AdminDashboardPage() {
+  const { t } = useI18n();
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Admin Dashboard</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Users</h3>
-            <p className="text-3xl font-bold text-blue-600">0</p>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">
+        {t("Dashboard.title")}
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="col-span-1 lg:col-span-2">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <GuidesManagement />
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Experiences</h3>
-            <p className="text-3xl font-bold text-green-600">0</p>
+        </div>
+        <div className="col-span-1">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <ExperiencesManagement />
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Guides</h3>
-            <p className="text-3xl font-bold text-purple-600">0</p>
+        </div>
+        <div className="col-span-1 lg:col-span-3">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <BookingsManagement />
+          </div>
+        </div>
+        <div className="col-span-1 lg:col-span-3">
+          <div className="bg-white p-8 rounded-2xl shadow-lg">
+            <ModerationTools />
           </div>
         </div>
       </div>

@@ -1,12 +1,243 @@
+"use client";
+
+import { useState } from "react";
+import { useI18n } from "@/hooks/useI18n";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { JourneyQuestions } from "@/components/journey-questions";
+import { StoryItinerary } from "@/components/story-itinerary";
+import { GuideMatching } from "@/components/guide-matching";
+import { EmotionalPreview } from "@/components/emotional-preview";
+import { ShareJourney } from "@/components/share-journey";
+import { JourneyReflection } from "@/components/journey-reflection";
+import { JourneyData, JourneyQuestion, JourneyQuestionId } from "@/lib/types";
+
+// Define the type for the generated itinerary
+interface Itinerary {
+  title: string;
+  days: {
+    day: number;
+    title: string;
+    description: string;
+    experienceId: string;
+    guideName: string;
+    emoji: string;
+  }[];
+}
+
 export default function PlanPage() {
+  const { t } = useI18n();
+  const [currentStep, setCurrentStep] = useState(1);
+  const [isJourneyCreated, setIsJourneyCreated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [itinerary, setItinerary] = useState<Itinerary | null>(null);
+  const [journeyData, setJourneyData] = useState<JourneyData>({
+    interests: [],
+    duration: "",
+    groupSize: "",
+    budget: "",
+    experience: "",
+    emotions: [],
+  });
+
+  const journeyQuestions: JourneyQuestion[] = [
+    {
+      id: "interests",
+      question: t("Plan.interests.question"),
+      description: t("Plan.interests.description"),
+      type: "multiple",
+      options: [
+        { value: "history", label: t("Plan.interests.options.history"), emoji: "🏛️" },
+        { value: "nature", label: t("Plan.interests.options.nature"), emoji: "🌿" },
+        { value: "culture", label: t("Plan.interests.options.culture"), emoji: "🎭" },
+        { value: "food", label: t("Plan.interests.options.food"), emoji: "🍽️" },
+        { value: "adventure", label: t("Plan.interests.options.adventure"), emoji: "🏔️" },
+        { value: "spirituality", label: t("Plan.interests.options.spirituality"), emoji: "🕊️" },
+      ],
+    },
+    {
+      id: "duration",
+      question: t("Plan.duration.question"),
+      description: t("Plan.duration.description"),
+      type: "single",
+      options: [
+        { value: "1-3", label: t("Plan.duration.options.short"), emoji: "⚡" },
+        { value: "4-7", label: t("Plan.duration.options.medium"), emoji: "📅" },
+        { value: "8-14", label: t("Plan.duration.options.long"), emoji: "🗓️" },
+        { value: "15+", label: t("Plan.duration.options.extended"), emoji: "🌍" },
+      ],
+    },
+    {
+      id: "groupSize",
+      question: t("Plan.groupSize.question"),
+      description: t("Plan.groupSize.description"),
+      type: "single",
+      options: [
+        { value: "solo", label: t("Plan.groupSize.options.solo"), emoji: "🧍" },
+        { value: "couple", label: t("Plan.groupSize.options.couple"), emoji: "👫" },
+        { value: "family", label: t("Plan.groupSize.options.family"), emoji: "👨‍👩‍👧‍👦" },
+        { value: "friends", label: t("Plan.groupSize.options.friends"), emoji: "👥" },
+        { value: "group", label: t("Plan.groupSize.options.group"), emoji: "👨‍👩‍👧‍👦👥" },
+      ],
+    },
+    {
+      id: "emotions",
+      question: t("Plan.emotions.question"),
+      description: t("Plan.emotions.description"),
+      type: "multiple",
+      options: [
+        { value: "healing", label: t("Plan.emotions.options.healing"), emoji: "💚" },
+        { value: "discovery", label: t("Plan.emotions.options.discovery"), emoji: "🔍" },
+        { value: "connection", label: t("Plan.emotions.options.connection"), emoji: "🤝" },
+        { value: "adventure", label: t("Plan.emotions.options.adventure"), emoji: "⚡" },
+        { value: "peace", label: t("Plan.emotions.options.peace"), emoji: "🕊️" },
+        { value: "inspiration", label: t("Plan.emotions.options.inspiration"), emoji: "✨" },
+      ],
+    },
+  ];
+
+  const handleAnswer = (questionId: JourneyQuestionId, answer: string | string[]) => {
+    setJourneyData((prev: JourneyData) => ({ ...prev, [questionId]: answer }));
+  };
+
+  const handleCreateJourney = async () => {
+    setIsLoading(true);
+    setIsJourneyCreated(true);
+    try {
+      const response = await fetch("/api/itineraries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(journeyData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setItinerary(data);
+      } else {
+        console.error(data.error);
+        // Optionally, set an error state to show in the UI
+      }
+    } catch (error) {
+      console.error("Failed to fetch itinerary", error);
+    }
+    setIsLoading(false);
+  };
+
+  const handleNext = () => {
+    if (currentStep < journeyQuestions.length) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      handleCreateJourney();
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const currentQuestion = journeyQuestions[currentStep - 1];
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Plan Your Journey</h1>
-        <p className="text-lg text-gray-600">
-          Create your personalized Israeli experience with our planning tools.
-        </p>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+      <div className="absolute top-4 right-4 z-10">
+        <LanguageSwitcher />
       </div>
+
+      <div className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/10 to-red-400/10"></div>
+        <div className="relative container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+            {isJourneyCreated ? t("Itinerary.title") : t("Plan.title")}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+            {isJourneyCreated ? t("Itinerary.createdSubtitle") : t("Plan.subtitle")}
+          </p>
+        </div>
+      </div>
+
+      {!isJourneyCreated ? (
+        <>
+          {/* Progress Indicator */}
+          <div className="py-8 bg-white/80 backdrop-blur-sm">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-center space-x-4">
+                {journeyQuestions.map((_, index) => (
+                  <div key={index} className="flex items-center">
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                        index + 1 <= currentStep
+                          ? "bg-amber-500 text-white"
+                          : "bg-gray-300 text-gray-600"
+                      }`}
+                    >
+                      {index + 1}
+                    </div>
+                    {index < journeyQuestions.length - 1 && (
+                      <div
+                        className={`w-16 h-1 mx-2 ${
+                          index + 1 < currentStep ? "bg-amber-500" : "bg-gray-300"
+                        }`}
+                      ></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Journey Questionnaire */}
+          <div className="py-16">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <JourneyQuestions
+                question={currentQuestion}
+                journeyData={journeyData}
+                onAnswer={handleAnswer}
+              />
+              {/* Navigation Buttons */}
+              <div className="flex justify-between mt-8">
+                <button
+                  onClick={prevStep}
+                  disabled={currentStep === 1}
+                  className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+                    currentStep === 1
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  {t("Plan.previous")}
+                </button>
+
+                <button
+                  onClick={handleNext}
+                  className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-amber-500 text-white hover:bg-amber-600`}
+                >
+                  {currentStep === journeyQuestions.length
+                    ? t("Plan.createJourney")
+                    : t("Plan.next")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="py-16">
+          <div className="container mx-auto px-4 max-w-4xl">
+            {isLoading ? (
+              <p className="text-center text-lg">{t("Common.loading")}</p>
+            ) : itinerary ? (
+              <>
+                <StoryItinerary itinerary={itinerary} />
+                <GuideMatching journeyData={journeyData} />
+                <EmotionalPreview journeyData={journeyData} />
+                <ShareJourney journeyData={journeyData} />
+                <JourneyReflection />
+              </>
+            ) : (
+              <p className="text-center text-lg">{t("Itinerary.error")}</p> // Error state
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

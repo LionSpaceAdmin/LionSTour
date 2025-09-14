@@ -1,31 +1,73 @@
-export default function TrustSafetyPage() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Trust & Safety</h1>
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <div className="prose max-w-none">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Commitment to Your Safety</h2>
-            <p className="text-lg text-gray-600 mb-6">
-              At LionSTour, your safety and security are our top priorities. We maintain the highest standards 
-              of trust and safety throughout your Israeli experience.
-            </p>
-            
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Safety Measures</h3>
-            <ul className="list-disc pl-6 text-gray-600 mb-6">
-              <li>All guides are thoroughly vetted and background-checked</li>
-              <li>Real-time safety monitoring and emergency support</li>
-              <li>Comprehensive insurance coverage</li>
-              <li>24/7 customer support</li>
-            </ul>
+"use client";
 
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Trust Standards</h3>
-            <ul className="list-disc pl-6 text-gray-600">
-              <li>Verified veteran and community guide credentials</li>
-              <li>Transparent pricing and booking policies</li>
-              <li>Secure payment processing</li>
-              <li>Privacy protection and data security</li>
-            </ul>
+import { useI18n } from "@/hooks/useI18n";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { SafetyContent } from "@/components/trust/safety-content";
+import { EmergencyContacts } from "@/components/trust/emergency-contacts";
+import { TrustIndicators } from "@/components/trust/trust-indicators";
+
+export default function TrustSafetyPage() {
+  const { t } = useI18n();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+      {/* Language Switcher */}
+      <div className="absolute top-4 right-4 z-10">
+        <LanguageSwitcher />
+      </div>
+
+      {/* Hero Section */}
+      <div className="relative py-20 bg-gradient-to-r from-amber-500 to-orange-600">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            {t("TrustSafety.title")}
+          </h1>
+          <p className="text-xl md:text-2xl text-amber-100 max-w-4xl mx-auto leading-relaxed">
+            {t("TrustSafety.subtitle")}
+          </p>
+        </div>
+      </div>
+
+      <div className="py-20">
+        <div className="container mx-auto px-4">
+          <SafetyContent />
+        </div>
+      </div>
+
+      <div className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <EmergencyContacts />
+        </div>
+      </div>
+
+      <div className="py-20 bg-gradient-to-br from-gray-50 to-amber-50">
+        <div className="container mx-auto px-4">
+          <TrustIndicators />
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="py-20 bg-gradient-to-r from-amber-500 to-orange-600">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {t("TrustSafety.readyToExplore")}
+          </h2>
+          <p className="text-xl text-amber-100 mb-8 max-w-3xl mx-auto">
+            {t("TrustSafety.readyToExploreDesc")}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <a
+              href="/experiences"
+              className="bg-white text-amber-600 px-12 py-4 rounded-full font-bold text-xl hover:bg-amber-50 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+            >
+              {t("TrustSafety.exploreExperiences")}
+            </a>
+            <a
+              href="/plan"
+              className="border-2 border-white text-white px-12 py-4 rounded-full font-bold text-xl hover:bg-white/10 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              {t("TrustSafety.planJourney")}
+            </a>
           </div>
         </div>
       </div>

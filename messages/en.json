@@ -8,20 +8,544 @@
     "dashboard": "Dashboard"
   },
   "HomePage": {
-    "title": "LionSTour",
-    "subtitle": "Postwar Israel Tourism Experience Platform – \"Wolt for Tourism\": authentic, story-driven, safe travel with local veterans & diverse communities.",
+    "title": "גלה את ישראל",
+    "subtitle": "Discover Israel through the people who live it – authentic, story-driven, safe travel with local veterans & diverse communities",
     "exploreExperiences": "Explore Experiences",
     "planJourney": "Plan Your Journey",
-    "veteranGuides": "Veteran Guides",
-    "veteranGuidesDesc": "Connect with local veterans who share their authentic stories and experiences",
-    "safeTravel": "Safe Travel",
-    "safeTravelDesc": "Comprehensive safety measures and support for worry-free exploration",
+    "personalStories": "Personal Stories",
+    "personalStoriesDesc": "Every journey begins with a story. Meet the people who will guide you through Israel's hidden treasures.",
+    "veteranStories": "Veteran Stories",
+    "veteranStoriesDesc": "Connect with local veterans who share their authentic stories and experiences of resilience and hope",
+    "safeJourneys": "Safe Journeys",
+    "safeJourneysDesc": "Comprehensive safety measures and support for worry-free exploration in postwar Israel",
     "diverseCommunities": "Diverse Communities",
-    "diverseCommunitiesDesc": "Experience the rich tapestry of Israeli culture and communities",
-    "startJourney": "Start Your Journey"
+    "diverseCommunitiesDesc": "Experience the rich tapestry of Israeli culture through authentic community connections",
+    "communityShowcase": "Meet Our Community",
+    "communityShowcaseDesc": "Real people, real stories, real connections that will transform your understanding of Israel",
+    "guide1": "Sarah from Jerusalem",
+    "guide1Desc": "Archaeologist and veteran, shares ancient secrets",
+    "guide2": "Ahmed from Haifa",
+    "guide2Desc": "Cultural bridge-builder and community leader",
+    "guide3": "Rachel from Tel Aviv",
+    "guide3Desc": "Artist and peace advocate, shows hidden gems",
+    "guide4": "David from Galilee",
+    "guide4Desc": "Nature guide and environmental storyteller",
+    "experienceWindows": "Experience Windows",
+    "experienceWindowsDesc": "Each experience is a gateway to a different world – choose your adventure",
+    "jerusalemExperience": "Jerusalem: Ancient & Sacred",
+    "jerusalemDesc": "Walk through 3000 years of history with guides who know every stone and story",
+    "telAvivExperience": "Tel Aviv: Modern & Vibrant",
+    "telAvivDesc": "Discover the pulse of modern Israel through its most dynamic city",
+    "galileeExperience": "Galilee: Nature & Spirit",
+    "galileeDesc": "Connect with nature and spirituality in Israel's most beautiful region",
+    "discoverMore": "Discover More",
+    "startJourney": "Start Your Journey",
+    "startJourneyDesc": "Ready to discover Israel through the people who live it? Your authentic adventure awaits."
+  },
+  "SignUp": {
+    "title": "Create an Account",
+    "subtitle": "Join our community and start your journey",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "successMessage": "Thank you for signing up! Please check your email to verify your account."
+  },
+  "Login": {
+    "title": "Login",
+    "successMessage": "Login successful! Redirecting..."
   },
   "Common": {
     "trustSafety": "Trust & Safety",
-    "enterprise": "Enterprise"
+    "enterprise": "Enterprise",
+    "loading": "Loading...",
+    "name": "Name",
+    "email": "Email",
+    "comingSoon": "Coming Soon...",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "yes": "Yes",
+    "no": "No",
+    "title": "Title",
+    "price": "Price",
+    "user": "User",
+    "experience": "Experience",
+    "approve": "Approve",
+    "cancel": "Cancel",
+    "minutes": "minutes"
+  },
+  "Experiences": {
+    "title": "Experience Windows",
+    "subtitle": "Each experience is a gateway to a different world – choose your adventure",
+    "chooseYourJourney": "Choose Your Journey",
+    "chooseYourJourneyDesc": "Filter experiences by the type of story you want to discover",
+    "discoverMore": "Discover More",
+    "guideSpotlight": "Meet Our Guides",
+    "guideSpotlightDesc": "Real people with real stories who will transform your understanding of Israel",
+    "exploreIsrael": "Explore Israel",
+    "exploreIsraelDesc": "Discover the diverse landscapes and communities that make Israel unique",
+    "categories": {
+      "all": "All Experiences",
+      "cultural": "Cultural Discoveries",
+      "nature": "Nature Adventures",
+      "urban": "Urban Explorations",
+      "adventure": "Adventure Journeys"
+    },
+    "noResults": "No experiences found for this filter.",
+    "jerusalem": {
+      "title": "Jerusalem: Ancient & Sacred",
+      "description": "Walk through 3000 years of history with guides who know every stone and story",
+      "guide": "Sarah, Archaeologist & Veteran",
+      "duration": "4 hours",
+      "price": "₪450"
+    },
+    "telAviv": {
+      "title": "Tel Aviv: Modern & Vibrant",
+      "description": "Discover the pulse of modern Israel through its most dynamic city",
+      "guide": "Rachel, Artist & Peace Advocate",
+      "duration": "3 hours",
+      "price": "₪380"
+    },
+    "galilee": {
+      "title": "Galilee: Nature & Spirit",
+      "description": "Connect with nature and spirituality in Israel's most beautiful region",
+      "guide": "David, Nature Guide & Environmentalist",
+      "duration": "6 hours",
+      "price": "₪520"
+    },
+    "negev": {
+      "title": "Negev: Desert & Stars",
+      "description": "Experience the vast beauty of the desert and its ancient secrets",
+      "guide": "Moshe, Desert Guide & Astronomer",
+      "duration": "8 hours",
+      "price": "₪680"
+    },
+    "haifa": {
+      "title": "Haifa: Cultural Bridge",
+      "description": "Explore the diverse communities and stunning views of Israel's northern gem",
+      "guide": "Ahmed, Cultural Bridge-Builder",
+      "duration": "4 hours",
+      "price": "₪420"
+    },
+    "eilat": {
+      "title": "Eilat: Red Sea Paradise",
+      "description": "Dive into the underwater world and desert adventures of Israel's southern tip",
+      "guide": "Yael, Marine Biologist & Diver",
+      "duration": "5 hours",
+      "price": "₪580"
+    },
+    "guides": {
+      "sarah": {
+        "name": "Sarah from Jerusalem",
+        "role": "Archaeologist & Veteran",
+        "story": "After serving in the IDF, Sarah dedicated her life to uncovering Israel's ancient stories. She brings history to life with personal experiences and archaeological discoveries."
+      },
+      "ahmed": {
+        "name": "Ahmed from Haifa",
+        "role": "Cultural Bridge-Builder",
+        "story": "Ahmed works to connect different communities in Haifa. His tours showcase the beautiful diversity of Israeli society and the power of coexistence."
+      },
+      "rachel": {
+        "name": "Rachel from Tel Aviv",
+        "role": "Artist & Peace Advocate",
+        "story": "Rachel uses art and storytelling to show the hidden gems of Tel Aviv. Her tours reveal the creative spirit that defines modern Israel."
+      }
+    }
+  },
+  "Plan": {
+    "title": "Design Your Journey",
+    "subtitle": "Create a personal discovery adventure, not just book activities",
+    "previous": "Previous",
+    "next": "Next",
+    "createJourney": "Create My Journey",
+    "journeyPreview": "Your Journey Preview",
+    "journeyPreviewDesc": "Based on your answers, we'll create a personalized itinerary that tells your story",
+    "interests": {
+      "question": "What draws you to Israel?",
+      "description": "Choose the aspects that most inspire your curiosity and passion",
+      "options": {
+        "history": "Ancient History",
+        "nature": "Natural Beauty",
+        "culture": "Cultural Diversity",
+        "food": "Culinary Experiences",
+        "adventure": "Adventure & Exploration",
+        "spirituality": "Spiritual Connection"
+      }
+    },
+    "duration": {
+      "question": "How long is your journey?",
+      "description": "The length of your stay will help us design the perfect pace",
+      "options": {
+        "short": "1-3 Days",
+        "medium": "4-7 Days",
+        "long": "8-14 Days",
+        "extended": "15+ Days"
+      }
+    },
+    "groupSize": {
+      "question": "Who's joining you?",
+      "description": "Understanding your group helps us create the right experience",
+      "options": {
+        "solo": "Solo Traveler",
+        "couple": "Couple",
+        "family": "Family",
+        "friends": "Friends",
+        "group": "Large Group"
+      }
+    },
+    "emotions": {
+      "question": "What emotions do you want to feel?",
+      "description": "Every journey should touch your heart in meaningful ways",
+      "options": {
+        "healing": "Healing & Renewal",
+        "discovery": "Wonder & Discovery",
+        "connection": "Human Connection",
+        "adventure": "Excitement & Adventure",
+        "peace": "Peace & Serenity",
+        "inspiration": "Inspiration & Growth"
+      }
+    },
+    "preview": {
+      "guideMatching": "Personal Guide Matching",
+      "guideMatchingDesc": "We'll connect you with guides whose stories and expertise align with your interests",
+      "itinerary": "Story-Based Itinerary",
+      "itineraryDesc": "Your journey will unfold as a narrative, with each experience building on the last",
+      "personalization": "Emotional Personalization",
+      "personalizationDesc": "Every detail will be crafted to create the emotional experience you're seeking"
+    }
+  },
+  "Itinerary": {
+    "title": "Your Custom Journey",
+    "createdSubtitle": "We've crafted a unique itinerary based on your desires.",
+    "subtitle": "A story-driven itinerary designed just for you.",
+    "day": "Day",
+    "placeholder": {
+      "title": "Your Journey to the Heart of Israel",
+      "day1": {
+        "title": "Arrival and Connection",
+        "description": "Settle in and begin your journey with a personal story of connection from a local guide."
+      },
+      "day2": {
+        "title": "Exploring Ancient Paths",
+        "description": "Walk through history as you discover ancient sites and hear the stories they hold."
+      },
+      "day3": {
+        "title": "A Taste of Modern Culture",
+        "description": "Experience the vibrant culture of today, from local markets to contemporary art."
+      }
+    },
+    "error": "Sorry, we couldn't create your journey. Please try again."
+  },
+  "GuideMatching": {
+    "title": "We've Found Your Guides",
+    "subtitle": "Based on your journey, here are the guides we think you'll connect with.",
+    "selectGuide": "Select This Guide"
+  },
+  "EmotionalPreview": {
+    "title": "Feel the Journey",
+    "subtitle": "This is more than a trip. It's a story waiting for you.",
+    "bookNow": "Book Your Journey"
+  },
+  "ShareJourney": {
+    "title": "Share Your Journey",
+    "subtitle": "Inspire others by sharing your unique story-driven itinerary.",
+    "copyLink": "Copy Link"
+  },
+  "JourneyReflection": {
+    "title": "My Journey Reflection",
+    "subtitle": "A space for your thoughts, feelings, and hopes for this journey.",
+    "placeholder": "Write down what this journey means to you...",
+    "saveButton": "Save Reflection"
+  },
+  "Academy": {
+    "title": "LionSTour Academy",
+    "subtitle": "Learn about Israeli history, culture, and the stories of our veteran guides through our educational platform",
+    "exploreTopics": "Explore Topics",
+    "exploreTopicsDesc": "Discover educational content that deepens your understanding of Israel",
+    "readMore": "Read More",
+    "featuredStory": "Featured Story",
+    "featuredStoryDesc": "A personal story that captures the essence of Israeli resilience and hope",
+    "joinLearning": "Join Our Learning Community",
+    "joinLearningDesc": "Connect with others who share your passion for understanding Israel",
+    "startLearning": "Start Learning",
+    "categories": {
+      "all": "All Topics",
+      "resilience": "Resilience & Hope",
+      "culture": "Cultural Diversity",
+      "history": "Historical Context",
+      "community": "Community Stories",
+      "nature": "Natural Heritage",
+      "peace": "Peace & Coexistence"
+    },
+    "articles": {
+      "resilience": {
+        "title": "The Strength of Israeli Resilience",
+        "description": "Discover how Israeli communities have overcome challenges and built hope for the future"
+      },
+      "culture": {
+        "title": "Cultural Mosaic of Israel",
+        "description": "Explore the rich diversity of communities that make Israel unique"
+      },
+      "history": {
+        "title": "Modern Israel: A Historical Journey",
+        "description": "Understand the complex history that shaped contemporary Israel"
+      },
+      "community": {
+        "title": "Stories from the Heart",
+        "description": "Personal narratives from veterans and community leaders across Israel"
+      },
+      "nature": {
+        "title": "Israel's Natural Wonders",
+        "description": "From the Negev desert to the Galilee mountains, discover Israel's natural beauty"
+      },
+      "peace": {
+        "title": "Building Bridges of Understanding",
+        "description": "Learn about initiatives that promote peace and coexistence in Israel"
+      }
+    },
+    "story": {
+      "title": "From Soldier to Storyteller",
+      "content": "Meet David, a former IDF soldier who now shares his experiences through guided tours. His journey from military service to becoming a bridge between cultures exemplifies the resilience and hope that defines modern Israel.",
+      "author": "David Cohen, Veteran Guide",
+      "keyPoints": "Key Insights",
+      "point1": "Personal transformation through service",
+      "point2": "Building connections across communities",
+      "point3": "Sharing authentic stories of hope"
+    }
+  },
+  "Enterprise": {
+    "title": "Enterprise Solutions",
+    "subtitle": "Tailored Israeli experiences for organizations seeking meaningful connections with Israel",
+    "ourSolutions": "Our Solutions",
+    "ourSolutionsDesc": "Comprehensive partnership options designed for your organization's needs",
+    "whyChooseUs": "Why Choose LionSTour Enterprise",
+    "whyChooseUsDesc": "We provide authentic, safe, and scalable experiences that create lasting impact",
+    "startPartnership": "Start Your Partnership",
+    "startPartnershipDesc": "Get in touch with our team to discuss your organization's needs",
+    "readyToPartner": "Ready to Partner with Us?",
+    "readyToPartnerDesc": "Join organizations worldwide who trust LionSTour for their Israeli experiences",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn More",
+    "solutions": {
+      "corporate": {
+        "title": "Corporate Groups",
+        "description": "Team building experiences with veteran guides and local communities",
+        "feature1": "Customized team building programs",
+        "feature2": "Veteran guides with leadership experience",
+        "feature3": "Cultural immersion activities"
+      },
+      "educational": {
+        "title": "Educational Tours",
+        "description": "Academic programs with historical context and cultural immersion",
+        "feature1": "Curriculum-aligned experiences",
+        "feature2": "Expert academic guides",
+        "feature3": "Interactive learning activities"
+      },
+      "custom": {
+        "title": "Custom Itineraries",
+        "description": "Personalized experiences designed for your organization's goals",
+        "feature1": "Fully customized programs",
+        "feature2": "Flexible scheduling options",
+        "feature3": "Dedicated support team"
+      }
+    },
+    "benefits": {
+      "authentic": {
+        "title": "Authentic Experiences",
+        "description": "Real connections with local communities and veteran guides"
+      },
+      "safe": {
+        "title": "Safe & Secure",
+        "description": "Comprehensive safety measures and 24/7 support"
+      },
+      "scalable": {
+        "title": "Scalable Solutions",
+        "description": "From small groups to large organizations"
+      },
+      "support": {
+        "title": "Dedicated Support",
+        "description": "Personal account managers and ongoing assistance"
+      }
+    },
+    "form": {
+      "organizationName": "Organization Name",
+      "organizationNamePlaceholder": "Enter your organization name",
+      "contactPerson": "Contact Person",
+      "contactPersonPlaceholder": "Enter contact person name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "groupSize": "Group Size",
+      "groupSizeOptions": {
+        "small": "10-25 people",
+        "medium": "26-50 people",
+        "large": "51-100 people",
+        "custom": "100+ people"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your organization's needs and goals",
+      "submit": "Start Partnership"
+    }
+  },
+  "TrustSafety": {
+    "title": "Trust & Safety",
+    "subtitle": "Your safety and security are our top priorities. Explore Israel with confidence through our comprehensive safety measures and veteran-guided experiences.",
+    "ourCommitment": "Our Commitment to Your Safety",
+    "commitmentDesc": "We maintain the highest standards of trust and safety throughout your Israeli experience, with veteran guides and comprehensive support systems.",
+    "veteranGuides": "Veteran Guides",
+    "veteranGuidesDesc": "All guides are thoroughly vetted veterans with extensive local knowledge and security training",
+    "realTimeMonitoring": "Real-Time Monitoring",
+    "realTimeMonitoringDesc": "24/7 safety monitoring and instant emergency response support throughout your journey",
+    "emergencySupport": "Emergency Support",
+    "emergencySupportDesc": "Comprehensive emergency support with direct access to local authorities and medical services",
+    "securePayments": "Secure Payments",
+    "securePaymentsDesc": "Bank-level security with encrypted payment processing and comprehensive insurance coverage",
+    "israeliSafety": "Israeli Safety Information",
+    "israeliSafetyDesc": "Understanding Israel's unique security landscape and our specialized safety protocols",
+    "israeliSecurity": "Israeli Security Excellence",
+    "israeliSecurityDesc": "Israel is renowned for its world-class security infrastructure and safety measures",
+    "securityFeatures": {
+      "airport": "Advanced airport security with state-of-the-art screening technology",
+      "transportation": "Secure public transportation with regular security patrols",
+      "emergency": "Rapid emergency response systems with multilingual support",
+      "medical": "World-class medical facilities with 24/7 emergency services"
+    },
+    "postWarSafety": "Post-War Safety Protocols",
+    "postWarSafetyDesc": "Specialized safety measures and protocols for the current post-war environment",
+    "postWarFeatures": {
+      "areas": "Carefully selected safe areas with real-time security assessments",
+      "guides": "Veteran guides with current security clearance and local knowledge",
+      "communication": "Direct communication with security authorities and emergency services",
+      "support": "Comprehensive support for families and individuals affected by recent events"
+    },
+    "emergencyContacts": "Emergency Contacts",
+    "emergencyContactsDesc": "Important emergency numbers to keep handy during your stay in Israel",
+    "police": "Police",
+    "medical": "Medical Emergency",
+    "fire": "Fire Department",
+    "trustStandards": "Our Trust Standards",
+    "trustStandardsDesc": "Transparent, reliable, and secure - the foundation of every LionSTour experience",
+    "verifiedGuides": "Verified Guides",
+    "verifiedGuidesDesc": "All guides undergo comprehensive background checks and security clearance",
+    "transparentPricing": "Transparent Pricing",
+    "transparentPricingDesc": "No hidden fees, clear pricing, and flexible cancellation policies",
+    "dataProtection": "Data Protection",
+    "dataProtectionDesc": "Your privacy is protected with industry-leading data security measures",
+    "qualityAssurance": "Quality Assurance",
+    "qualityAssuranceDesc": "Continuous monitoring and feedback to ensure the highest quality experiences",
+    "readyToExplore": "Ready to Explore Safely?",
+    "readyToExploreDesc": "Join thousands of travelers who have discovered Israel safely with LionSTour",
+    "exploreExperiences": "Explore Experiences",
+    "planJourney": "Plan Your Journey"
+  },
+  "Guide": {
+    "loading": "Loading guide profile...",
+    "notFound": "Guide Not Found",
+    "notFoundDesc": "Sorry, we couldn't find the guide you're looking for.",
+    "name": "Guide Name",
+    "title": "Guide Title",
+    "location": "Location",
+    "experience": "Experience",
+    "reviews": "reviews",
+    "story": "My Story",
+    "background": "Background",
+    "specialties": "Specialties",
+    "specialtiesDesc": "Areas of expertise and unique experiences I offer",
+    "achievements": "Achievements",
+    "achievementsDesc": "Recognition and accomplishments in tourism and community service",
+    "languages": "Languages",
+    "languagesDesc": "Languages I speak to ensure clear communication",
+    "readyToExplore": "Ready to Explore Together?",
+    "readyToExploreDesc": "Let's create an unforgettable journey through Israel's most beautiful and meaningful places",
+    "bookExperience": "Book Experience",
+    "planJourney": "Plan Your Journey",
+    "storyContent": "As a former IDF officer and nature enthusiast, David brings a unique perspective to Israeli tourism. Having served in the Galilee region for over a decade, he knows every hidden trail, ancient ruin, and local story. His passion for connecting people with Israel's natural beauty and rich history makes every tour an unforgettable journey.",
+    "journey": "My Journey",
+    "timeline": {
+      "2010": {
+        "title": "Military Service",
+        "description": "Served as an officer in the IDF, gaining leadership skills and a deep understanding of the land."
+      },
+      "2015": {
+        "title": "Certified Guide",
+        "description": "Completed the rigorous Israeli tour guide certification program."
+      },
+      "2020": {
+        "title": "Founded LionSTour",
+        "description": "Started LionSTour to share authentic, story-driven experiences of Israel."
+      },
+      "2024": {
+        "title": "Post-War Tourism",
+        "description": "Adapting to the new reality, focusing on resilience, hope, and community."
+      }
+    },
+    "availability": "Availability",
+    "testimonials": {
+      "title": "What Travelers Say",
+      "1": {
+        "quote": "David's tour was the highlight of our trip. His stories and knowledge are unparalleled.",
+        "author": "Sarah & Tom, USA"
+      },
+      "2": {
+        "quote": "An unforgettable experience. David showed us a side of Israel we never would have seen otherwise.",
+        "author": "Maria, Spain"
+      },
+      "3": {
+        "quote": "Highly recommended. David is a true professional and a wonderful storyteller.",
+        "author": "John, UK"
+      }
+    },
+    "communityConnection": "Community Connection",
+    "communityConnectionContent": "David is deeply involved in his local community, working with other veterans and community leaders to build a better future. A portion of every tour fee goes to support local initiatives."
+  },
+  "Auth": {
+    "welcomeBack": "Welcome Back",
+    "welcomeBackDesc": "Sign in to continue your journey of discovering Israel through authentic experiences",
+    "signIn": "Sign In",
+    "signInDesc": "Enter your credentials to access your account",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create one here",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "readyToExplore": "Ready to Explore?",
+    "readyToExploreDesc": "Join our community of travelers discovering Israel's hidden treasures",
+    "exploreExperiences": "Explore Experiences",
+    "planJourney": "Plan Your Journey"
+  },
+  "Dashboard": {
+    "title": "Admin Dashboard",
+    "welcome": "Welcome,",
+    "logout": "Logout",
+    "bookingManagement": "Booking Management",
+    "noBookings": "You have no bookings yet.",
+    "bookingDate": "Date",
+    "bookingStatus": "Status",
+    "profileSettings": "Profile Settings",
+    "updateProfile": "Update Profile",
+    "profileUpdated": "Profile updated successfully!",
+    "preferencesManagement": "Preferences Management",
+    "updatePreferences": "Update Preferences",
+    "preferencesUpdated": "Preferences updated successfully!",
+    "journeyHistory": "Journey History",
+    "noJourneys": "You have no completed journeys yet.",
+    "journeyDate": "Date",
+    "favoriteGuides": "Favorite Guides",
+    "noFavoriteGuides": "You have no favorite guides yet.",
+    "upcomingExperiences": "Upcoming Experiences",
+    "noUpcomingExperiences": "You have no upcoming experiences yet.",
+    "guidesManagement": "Guides Management",
+    "experiencesManagement": "Experiences Management",
+    "bookingsManagement": "Bookings Management",
+    "addGuide": "Add Guide",
+    "isVeteran": "Veteran",
+    "addExperience": "Add Experience",
+    "moderationTools": "Moderation Tools"
   }
 }

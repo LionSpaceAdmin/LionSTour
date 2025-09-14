@@ -21,8 +21,50 @@ model User {
   // Relations
   bookings  Booking[]
   reviews   Review[]
+  chats     Chat[]
 
   @@map("users")
+}
+
+model Chat {
+  id        String        @id @default(cuid())
+  title     String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  // Relations
+  userId    String?
+  user      User?         @relation(fields: [userId], references: [id])
+  messages  ChatMessage[]
+
+  @@map("chats")
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  uiId      String   @unique // UI message id from client (AI SDK)
+  role      String
+  parts     Json
+  createdAt DateTime @default(now())
+
+  // Relations
+  chatId    String
+  chat      Chat     @relation(fields: [chatId], references: [id])
+
+  @@index([chatId, createdAt])
+  @@map("chat_messages")
+}
+
+model Knowledge {
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  content   String
+  embedding Json     // number[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("knowledge")
 }
 
 model Guide {
@@ -34,6 +76,7 @@ model Guide {
   isVeteran   Boolean  @default(false)
   languages   String[] // e.g., ["en", "he", "ar"]
   specialties String[] // e.g., ["history", "culture", "military"]
+  timeline    Json?    // To store timeline data
   rating      Float?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())

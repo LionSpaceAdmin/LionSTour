@@ -1,10 +1,79 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/hooks/useI18n";
+import dynamic from "next/dynamic";
+
+const ChatWidgetLazy = dynamic(() => import("@/components/chat-widget"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
-  title: "LionSTour - Authentic Israeli Tourism Experiences",
-  description: "Postwar Israel Tourism Experience Platform – authentic, story-driven, safe travel with local veterans & diverse communities.",
+  title: "גלה את ישראל - חוויות תיירות אותנטיות | LionSTour",
+  description:
+    "גלה את ישראל דרך האנשים שחיים אותה – פלטפורמת חוויות תיירות אותנטיות, מונעות סיפור ובטוחות עם חיילים משוחררים מקומיים וקהילות מגוונות",
+  keywords: [
+    "ישראל",
+    "תיירות",
+    "חוויות אותנטיות",
+    "משוחררים",
+    "קהילות מגוונות",
+    "נסיעות בטוחות",
+    "Israel tourism",
+    "authentic experiences",
+    "veterans",
+    "diverse communities",
+  ],
+  authors: [{ name: "LionSTour Team" }],
+  creator: "LionSTour",
+  publisher: "LionSTour",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://lionstour.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      he: "/he",
+      en: "/en",
+    },
+  },
+  openGraph: {
+    title: "גלה את ישראל - חוויות תיירות אותנטיות",
+    description:
+      "גלה את ישראל דרך האנשים שחיים אותה – נסיעות אותנטיות, מונעות סיפור ובטוחות",
+    url: "https://lionstour.com",
+    siteName: "LionSTour",
+    locale: "he_IL",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "גלה את ישראל - LionSTour",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "גלה את ישראל - חוויות תיירות אותנטיות",
+    description:
+      "גלה את ישראל דרך האנשים שחיים אותה – נסיעות אותנטיות, מונעות סיפור ובטוחות",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -13,10 +82,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="he" dir="rtl">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased font-heebo">
         <I18nProvider>
           {children}
+          {/* Floating AI chat assistant */}
+          <ChatWidgetLazy />
         </I18nProvider>
       </body>
     </html>
