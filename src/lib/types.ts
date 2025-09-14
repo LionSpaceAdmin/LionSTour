@@ -8,7 +8,7 @@ export interface JourneyData {
   experience: string;
   emotions: string[];
   prompt?: string;
-  [key: string]: string | string[];
+  [key: string]: string | string[] | undefined;
 }
 
 export type JourneyQuestionId = "interests" | "duration" | "groupSize" | "emotions";

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@/lib/envFallback";
 import "./globals.css";
 import { I18nProvider } from "@/hooks/useI18n";
 import { ClientChatWidget } from "@/components/ClientChatWidget";

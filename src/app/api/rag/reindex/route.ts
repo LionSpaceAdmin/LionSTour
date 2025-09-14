@@ -22,15 +22,23 @@ export async function POST() {
   }
 
   // naive chunking by paragraphs
-  const paras = content.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
-  const chunks: { title: string; slug: string; content: string }[] = paras.map((p, i) => ({
-    title: `Spec Paragraph ${i + 1}`,
-    slug: `tourism-spec-${String(i + 1).padStart(3, "0")}`,
-    content: p.slice(0, 2000),
-  }));
+  const paras = content
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const chunks: { title: string; slug: string; content: string }[] = paras.map(
+    (p, i) => ({
+      title: `Spec Paragraph ${i + 1}`,
+      slug: `tourism-spec-${String(i + 1).padStart(3, "0")}`,
+      content: p.slice(0, 2000),
+    })
+  );
 
-  const model = openai.embedding('openai:text-embedding-3-small');
-  const embedResult = await embedMany({ model, values: chunks.map((c) => c.content) });
+  const model = openai.embedding("openai:text-embedding-3-small");
+  const embedResult = await embedMany({
+    model,
+    values: chunks.map((c) => c.content),
+  });
 
   const admin = getSupabaseAdmin();
   if (admin) {
@@ -39,11 +47,13 @@ export async function POST() {
       title: c.title,
       content: c.content,
       embedding: embedResult.embeddings[i] ?? [],
-    }))
+    }));
     // Upsert into Supabase knowledge using service role
-    const { error: upsertErr } = await admin.from('knowledge').upsert(payload, { onConflict: 'slug' })
-    if (upsertErr) return errorJson(upsertErr.message, 500)
-    return okJson({ ok: true, count: payload.length, target: 'supabase' })
+    const { error: upsertErr } = await admin
+      .from("knowledge")
+      .upsert(payload, { onConflict: "slug" });
+    if (upsertErr) return errorJson(upsertErr.message, 500);
+    return okJson({ ok: true, count: payload.length, target: "supabase" });
   } else {
     // Fallback to Prisma knowledge table
     for (let i = 0; i < chunks.length; i++) {
@@ -51,10 +61,19 @@ export async function POST() {
       const emb = embedResult.embeddings[i] ?? [];
       await prisma.knowledge.upsert({
         where: { slug: c.slug },
-        update: { title: c.title, content: c.content, embedding: JSON.stringify(emb) },
-        create: { slug: c.slug, title: c.title, content: c.content, embedding: JSON.stringify(emb) },
+        update: {
+          title: c.title,
+          content: c.content,
+          embedding: JSON.stringify(emb),
+        },
+        create: {
+          slug: c.slug,
+          title: c.title,
+          content: c.content,
+          embedding: JSON.stringify(emb),
+        },
       });
     }
-    return okJson({ ok: true, count: chunks.length, target: 'prisma' })
+    return okJson({ ok: true, count: chunks.length, target: "prisma" });
   }
 }

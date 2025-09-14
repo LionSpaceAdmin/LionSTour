@@ -189,38 +189,45 @@ export default function EnterprisePage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white text-gray-900">
-              <form className="space-y-6" onSubmit={async (e) => {
-                e.preventDefault();
-                const form = e.currentTarget as HTMLFormElement;
-                const fd = new FormData(form);
-                const payload = {
-                  organizationName: String(fd.get('organizationName') || ''),
-                  contactPerson: String(fd.get('contactPerson') || ''),
-                  email: String(fd.get('email') || ''),
-                  phone: String(fd.get('phone') || ''),
-                  groupSize: String(fd.get('groupSize') || ''),
-                  message: String(fd.get('message') || ''),
-                };
-                try {
-                  if (!payload.organizationName || !payload.email) {
-                    alert('יש למלא שם ארגון ואימייל');
-                    return;
+              <form
+                className="space-y-6"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget as HTMLFormElement;
+                  const fd = new FormData(form);
+                  const payload = {
+                    organizationName: String(fd.get("organizationName") || ""),
+                    contactPerson: String(fd.get("contactPerson") || ""),
+                    email: String(fd.get("email") || ""),
+                    phone: String(fd.get("phone") || ""),
+                    groupSize: String(fd.get("groupSize") || ""),
+                    message: String(fd.get("message") || ""),
+                  };
+                  try {
+                    if (!payload.organizationName || !payload.email) {
+                      alert("יש למלא שם ארגון ואימייל");
+                      return;
+                    }
+                    setSubmitting(true);
+                    const res = await fetch("/api/enterprise/partner", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(payload),
+                    });
+                    if (res.ok) {
+                      alert("תודה! פנייתכם התקבלה.");
+                      form.reset();
+                    } else {
+                      const j = await res.json().catch(() => ({}));
+                      alert(j.error || "שגיאה בשליחת הטופס");
+                    }
+                  } catch {
+                    alert("שגיאה בשליחת הטופס");
+                  } finally {
+                    setSubmitting(false);
                   }
-                  setSubmitting(true);
-                  const res = await fetch('/api/enterprise/partner', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                  if (res.ok) {
-                    alert('תודה! פנייתכם התקבלה.');
-                    form.reset();
-                  } else {
-                    const j = await res.json().catch(() => ({}));
-                    alert(j.error || 'שגיאה בשליחת הטופס');
-                  }
-                } catch {
-                  alert('שגיאה בשליחת הטופס');
-                } finally {
-                  setSubmitting(false);
-                }
-              }}>
+                }}
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -339,7 +346,10 @@ export default function EnterprisePage() {
             <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-amber-50 transition-all duration-300 transform hover:scale-105 shadow-2xl">
               {t("Enterprise.contactUs")}
             </button>
-            <a href="/enterprise/api" className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-amber-600 transition-all duration-300 transform hover:scale-105">
+            <a
+              href="/enterprise/api"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-amber-600 transition-all duration-300 transform hover:scale-105"
+            >
               {t("Enterprise.learnMore")}
             </a>
           </div>
