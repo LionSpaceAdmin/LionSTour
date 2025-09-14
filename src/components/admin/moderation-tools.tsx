@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useI18n } from "@/hooks/useI18n";
+import type { toggleExperienceActive as ToggleExpAction, toggleGuideActive as ToggleGuideAction } from "@/app/dashboard/admin/actions";
 
 type Item = { id: string; title?: string; name?: string; isActive?: boolean };
 
-export function ModerationTools() {
+export function ModerationTools({
+  onToggleExperience,
+  onToggleGuide,
+}: {
+  onToggleExperience: typeof ToggleExpAction;
+  onToggleGuide: typeof ToggleGuideAction;
+}) {
   const { t } = useI18n();
   const [experiences, setExperiences] = useState<Item[]>([]);
   const [guides, setGuides] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     (async () => {
@@ -26,16 +34,20 @@ export function ModerationTools() {
     })();
   }, []);
 
-  const toggle = async (type: "experience" | "guide", id: string, value: boolean) => {
-    const res = await fetch(`/api/admin/moderation/${type}s`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id, isActive: value }),
+  const toggle = (type: "experience" | "guide", id: string, value: boolean) => {
+    startTransition(async () => {
+      try {
+        if (type === "experience") {
+          await onToggleExperience(id, value);
+          setExperiences((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
+        } else {
+          await onToggleGuide(id, value);
+          setGuides((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
+        }
+      } catch (e) {
+        console.error(e);
+      }
     });
-    if (res.ok) {
-      if (type === "experience") setExperiences((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
-      else setGuides((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
-    }
   };
 
   if (loading) return <p>{t("Common.loading")}</p>;
@@ -61,7 +73,8 @@ export function ModerationTools() {
                   <td className="p-2">
                     <button
                       onClick={() => toggle("experience", e.id, !(e.isActive ?? true))}
-                      className="rounded border px-3 py-1 hover:bg-neutral-50"
+                      className="rounded border px-3 py-1 hover:bg-neutral-50 disabled:opacity-50"
+                      disabled={isPending}
                     >
                       Toggle
                     </button>
@@ -92,7 +105,8 @@ export function ModerationTools() {
                   <td className="p-2">
                     <button
                       onClick={() => toggle("guide", g.id, !(g.isActive ?? true))}
-                      className="rounded border px-3 py-1 hover:bg-neutral-50"
+                      className="rounded border px-3 py-1 hover:bg-neutral-50 disabled:opacity-50"
+                      disabled={isPending}
                     >
                       Toggle
                     </button>
