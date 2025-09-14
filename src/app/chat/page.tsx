@@ -52,7 +52,6 @@ export default function ChatIndexPage() {
         </form>
       </div>
       <Suspense fallback={<div>טוען...</div>}>
-        {/* @ts-ignore Async Server Component is supported here */}
         <ChatList />
       </Suspense>
     </main>

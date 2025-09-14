@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { streamText, convertToModelMessages, type UIMessage, tool, embed } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createGateway } from '@ai-sdk/gateway';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod/v4';
+import type { Prisma } from '@prisma/client';
 
 export const runtime = 'nodejs';
 
@@ -32,7 +34,7 @@ export async function POST(req: Request) {
             chatId,
             uiId: m.id,
             role: m.role,
-            parts: m.parts as unknown as any,
+            parts: m.parts as unknown as Prisma.InputJsonValue,
           },
         });
       } catch (_) {
@@ -71,7 +73,7 @@ export async function POST(req: Request) {
           maxPrice: z.number().optional(),
         }),
         execute: async ({ query, category, location, maxPrice }: { query?: string; category?: string; location?: string; maxPrice?: number }) => {
-          const where: any = { isActive: true };
+          const where: Prisma.ExperienceWhereInput = { isActive: true } as Prisma.ExperienceWhereInput;
           if (category) where.category = { contains: category, mode: 'insensitive' };
           if (location) where.location = { contains: location, mode: 'insensitive' };
           if (typeof maxPrice === 'number') where.price = { lte: maxPrice };
@@ -168,7 +170,7 @@ export async function POST(req: Request) {
             chatId,
             uiId: `asst_${Date.now()}`,
             role: 'assistant',
-            parts: [{ type: 'text', text }] as any,
+            parts: [{ type: 'text', text }] as unknown as Prisma.InputJsonValue,
           },
         });
       } catch {}

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import type { UIMessage } from "ai";
 
 export async function GET(
   _req: NextRequest,
@@ -16,6 +17,6 @@ export async function GET(
   });
 
   // Shape as UIMessage[]
-  const uiMessages = messages.map((m: any) => ({ id: m.uiId, role: m.role, parts: m.parts as any }));
+  const uiMessages: UIMessage[] = messages.map((m) => ({ id: m.uiId, role: m.role as any, parts: m.parts as unknown as UIMessage["parts"] }));
   return NextResponse.json({ chat: { id: chat.id, title: chat.title }, messages: uiMessages });
 }

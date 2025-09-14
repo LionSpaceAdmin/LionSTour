@@ -5,6 +5,8 @@ import { createOpenAI } from "@ai-sdk/openai";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
+type Doc = { slug: string; title: string; content: string };
+
 export async function POST() {
   // Gather data from Prisma (experiences + guides)
   const [experiences, guides] = await Promise.all([
@@ -24,15 +26,15 @@ export async function POST() {
     }).catch(() => []),
   ]);
 
-  const docs: { slug: string; title: string; content: string }[] = [];
-  for (const e of experiences as any[]) {
+  const docs: Doc[] = [];
+  for (const e of (experiences as Array<{ id: string; title: string; description: string | null; category: string | null; location: string | null }>)) {
     docs.push({
       slug: `exp-${e.id}`,
       title: e.title,
       content: `${e.description || ""}\nקטגוריה: ${e.category || ""}\nמיקום: ${e.location || ""}`.slice(0, 5000),
     });
   }
-  for (const g of guides as any[]) {
+  for (const g of (guides as Array<{ id: string; name: string; bio: string | null; languages: string[] | null; specialties: string[] | null }>)) {
     docs.push({
       slug: `guide-${g.id}`,
       title: g.name,
@@ -57,4 +59,3 @@ export async function POST() {
 
   return NextResponse.json({ ok: true, count: docs.length });
 }
-

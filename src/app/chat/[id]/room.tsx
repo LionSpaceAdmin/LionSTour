@@ -61,57 +61,58 @@ export default function ChatRoom({ chatId, title }: { chatId: string; title: str
               }
             >
               <div>
-                {m.parts.map((p: any, idx) => {
-                  if (p.type === "text") return <TextPart key={idx} text={p.text} />;
-                  if (p.type === "file" && p.mediaType?.startsWith("image")) {
+                {m.parts.map((p: unknown, idx) => {
+                  const part = p as { type: string; [k: string]: any };
+                  if (part.type === "text") return <TextPart key={idx} text={part.text as string} />;
+                  if (part.type === "file" && typeof part.mediaType === 'string' && part.mediaType.startsWith("image")) {
                     return (
                       <img
                         key={idx}
-                        src={p.url}
-                        alt={p.filename || "image"}
+                        src={String(part.url)}
+                        alt={(part.filename as string) || "image"}
                         className="my-2 max-h-64 rounded-md"
                       />
                     );
                   }
                   // Tool invocations (tool-*) and dynamic-tool
-                  if (typeof p.type === "string" && (p.type.startsWith("tool-") || p.type === "dynamic-tool")) {
-                    const toolName = p.type === "dynamic-tool" ? p.toolName : p.type.replace(/^tool-/, "");
+                  if (typeof part.type === "string" && (part.type.startsWith("tool-") || part.type === "dynamic-tool")) {
+                    const toolName = part.type === "dynamic-tool" ? (part.toolName as string) : part.type.replace(/^tool-/, "");
                     return (
                       <div key={idx} className="my-2 rounded border border-neutral-300 bg-white p-2 text-left">
                         <div className="mb-1 text-xs font-semibold text-neutral-700">כלי: {toolName}</div>
-                        {p.state === "input-available" && (
-                          <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify(p.input, null, 2)}</pre>
+                        {part.state === "input-available" && (
+                          <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify(part.input, null, 2)}</pre>
                         )}
-                        {p.state === "output-available" && (
+                        {part.state === "output-available" && (
                           <div className="space-y-2">
                             {/* Try to render known tool outputs nicely */}
-                            {toolName === "search_experiences" && p.output?.experiences ? (
+                            {toolName === "search_experiences" && (part.output as any)?.experiences ? (
                               <ul className="list-inside list-disc text-xs">
-                                {p.output.experiences.map((e: any) => (
+                                {(part.output as any).experiences.map((e: any) => (
                                   <li key={e.id}>
                                     <span className="font-medium">{e.title}</span> · {e.location} · {e.category} · {e.duration} ד׳ · ₪{Math.round(e.price)}
                                   </li>
                                 ))}
                               </ul>
-                            ) : toolName === "book_experience" && p.output?.ok ? (
+                            ) : toolName === "book_experience" && (part.output as any)?.ok ? (
                               <div className="text-xs">
-                                ההזמנה בוצעה! מזהה: <span className="font-mono">{p.output.booking?.id}</span>
+                                ההזמנה בוצעה! מזהה: <span className="font-mono">{(part.output as any)?.booking?.id}</span>
                               </div>
-                            ) : toolName === "rag_search" && p.output?.results ? (
+                            ) : toolName === "rag_search" && (part.output as any)?.results ? (
                               <ul className="list-inside list-disc text-xs">
-                                {p.output.results.map((r: any) => (
+                                {(part.output as any).results.map((r: any) => (
                                   <li key={r.slug}>
                                     <span className="font-medium">{r.title}</span> — <span className="text-neutral-600">{(r.content || "").slice(0, 120)}…</span>
                                   </li>
                                 ))}
                               </ul>
                             ) : (
-                              <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify(p.output ?? p, null, 2)}</pre>
+                              <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify((part as any).output ?? part, null, 2)}</pre>
                             )}
                           </div>
                         )}
-                        {p.state === "output-error" && (
-                          <div className="text-xs text-red-600">שגיאה בהפעלת כלי: {p.errorText}</div>
+                        {part.state === "output-error" && (
+                          <div className="text-xs text-red-600">שגיאה בהפעלת כלי: {String((part as any).errorText || '')}</div>
                         )}
                       </div>
                     );

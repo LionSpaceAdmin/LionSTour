@@ -15,13 +15,13 @@ const nextConfig = {
 
     return config;
   },
-  // Enable experimental features if needed
-  experimental: {
-    // Add any experimental features here
-  },
-  // Configure images if needed
+  // Configure images
   images: {
-    domains: ["images.unsplash.com", "via.placeholder.com"],
+    domains: ["images.unsplash.com", "via.placeholder.com", "api.mapbox.com"],
+  },
+  // Expose selected public env vars (for clarity; use real env at runtime)
+  env: {
+    NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN: process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
   },
 };
 
