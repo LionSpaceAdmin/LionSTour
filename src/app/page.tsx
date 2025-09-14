@@ -27,7 +27,7 @@ export default function Home() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-2xl font-bold text-warm hover:text-primary-600 transition-colors"
+              className="text-2xl font-bold text-white hover:text-white/90 transition-colors"
             >
               LionSTour
             </Link>
@@ -36,25 +36,25 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-8">
               <Link
                 href="/experiences"
-                className="text-neutral-700 hover:text-primary-600 transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors font-medium"
               >
                 {t("Navigation.experiences")}
               </Link>
               <Link
                 href="/guides"
-                className="text-neutral-700 hover:text-primary-600 transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors font-medium"
               >
                 {t("Navigation.guides")}
               </Link>
               <Link
                 href="/academy"
-                className="text-neutral-700 hover:text-primary-600 transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors font-medium"
               >
                 {t("Navigation.academy")}
               </Link>
               <Link
                 href="/trust/safety"
-                className="text-neutral-700 hover:text-primary-600 transition-colors font-medium"
+                className="text-white/90 hover:text-white transition-colors font-medium"
               >
                 {t("Navigation.safety")}
               </Link>
@@ -65,7 +65,7 @@ export default function Home() {
               <LanguageSwitcher />
               <Link
                 href="/auth/login"
-                className="btn-outline px-6 py-2 text-sm"
+                className="px-6 py-2 text-sm border border-white/60 rounded-md text-white hover:bg-white/10 transition-colors"
               >
                 {t("Navigation.login")}
               </Link>
