@@ -13,6 +13,32 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleOAuth = async (provider: "google" | "facebook") => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: `${window.location.origin}/dashboard` },
+      });
+      if (error) setMessage(error.message);
+      else if (data?.url) window.location.href = data.url;
+    } catch (e: any) {
+      setMessage(e?.message || "OAuth failed");
+    }
+  };
+
+  const handleMagicLink = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/dashboard` },
+      });
+      if (error) setMessage(error.message);
+      else setMessage(t("Auth.emailLinkSent"));
+    } catch (e: any) {
+      setMessage(e?.message || "Failed to send link");
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { error } = await supabase.auth.signInWithPassword({
@@ -139,6 +165,17 @@ export default function LoginPage() {
                 <p className="mt-6 text-center text-sm text-gray-600">{message}</p>
               )}
 
+              {/* Magic link */}
+              <div className="mt-6">
+                <button
+                  type="button"
+                  onClick={handleMagicLink}
+                  className="w-full inline-flex justify-center py-3 px-4 border border-amber-300 rounded-lg shadow-sm bg-white text-sm font-medium text-amber-700 hover:bg-amber-50 transition-all duration-300"
+                >
+                  ✨ {t("Auth.magicLink")}
+                </button>
+              </div>
+
               <div className="mt-8 text-center">
                 <p className="text-gray-600">
                   {t("Auth.noAccount")}{" "}
@@ -167,14 +204,16 @@ export default function LoginPage() {
                 <div className="mt-6 grid grid-cols-2 gap-3">
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-300"
+                    onClick={() => handleOAuth("google")}
+                    className="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-300"
                   >
-                    <span className="text-xl mr-2">📧</span>
+                    <span className="text-xl mr-2">🟢</span>
                     {t("Auth.google")}
                   </button>
                   <button
                     type="button"
-                    className="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 transition-all duration-300"
+                    onClick={() => handleOAuth("facebook")}
+                    className="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-300"
                   >
                     <span className="text-xl mr-2">📘</span>
                     {t("Auth.facebook")}

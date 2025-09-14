@@ -4,15 +4,36 @@ import { useState, useEffect } from "react";
 import { useI18n } from "@/hooks/useI18n";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { ExperienceWindows } from "@/components/experience-windows";
+import ExperienceCarousel from "@/components/ExperienceCarousel";
+import { Skeleton } from "@/components/ui/skeleton";
 import { StoryFilters } from "@/components/story-filters";
 import { MapView } from "@/components/map-view";
 import { GuideSpotlight } from "@/components/guide-spotlight";
-import { Experience } from "@prisma/client"; // Assuming Experience type is available
+import { ExperienceOfWeek } from "@/components/experience-of-week";
+
+// Local lightweight shape compatible with Supabase/Prisma responses
+type Exp = {
+  id: string;
+  title: string;
+  description: string;
+  duration: number;
+  price: number;
+  maxGuests?: number;
+  category: string;
+  location: string;
+  latitude?: number | null;
+  longitude?: number | null;
+  images?: string[];
+  isActive?: boolean;
+  is_active?: boolean;
+  isFeatured?: boolean;
+  is_featured?: boolean;
+};
 
 export default function ExperiencesPage() {
   const { t } = useI18n();
-  const [experiences, setExperiences] = useState<Experience[]>([]);
-  const [filteredExperiences, setFilteredExperiences] = useState<Experience[]>([]);
+  const [experiences, setExperiences] = useState<Exp[]>([]);
+  const [filteredExperiences, setFilteredExperiences] = useState<Exp[]>([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [loading, setLoading] = useState(true);
 
@@ -22,7 +43,7 @@ export default function ExperiencesPage() {
       try {
         const response = await fetch("/api/experiences");
         if (response.ok) {
-          const data = await response.json();
+          const data = (await response.json()) as Exp[];
           setExperiences(data);
           setFilteredExperiences(data);
         } else {
@@ -42,7 +63,7 @@ export default function ExperiencesPage() {
       setFilteredExperiences(experiences);
     } else {
       const filtered = experiences.filter(
-        (exp) => exp.category.toLowerCase() === filter.toLowerCase()
+        (exp) => (exp.category || "").toLowerCase() === filter.toLowerCase()
       );
       setFilteredExperiences(filtered);
     }
@@ -80,15 +101,30 @@ export default function ExperiencesPage() {
         </div>
       </div>
 
-      <div className="py-16">
-        <div className="container mx-auto px-4">
-          {loading ? (
-            <p>{t("Common.loading")}</p>
-          ) : (
-            <ExperienceWindows experiences={filteredExperiences} />
-          )}
-        </div>
+      {/* Narrative carousel replaces static grid */}
+      <div className="py-4">
+        {loading ? (
+          <div className="px-6">
+            <div className="h-[320px] w-full rounded-2xl bg-neutral-200/60 animate-pulse" />
+          </div>
+        ) : (
+          <ExperienceCarousel
+            items={filteredExperiences.map((e) => ({
+              id: e.id,
+              title: e.title,
+              subtitle: `${Math.round((e.duration || 0) / 60) || 2}h • ${e.location || "Israel"}`,
+              image: e.images?.[0] || "/window.svg",
+              href: `/experiences`,
+            }))}
+          />
+        )}
       </div>
+
+      {!loading && (() => {
+        const pool = filteredExperiences.length ? filteredExperiences : experiences;
+        const featured = pool.find((e) => e.is_featured || e.isFeatured) || pool[0];
+        return featured ? <ExperienceOfWeek experiences={[featured]} /> : null;
+      })()}
 
       <GuideSpotlight />
 

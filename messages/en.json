@@ -42,6 +42,18 @@
     "startJourney": "Start Your Journey",
     "startJourneyDesc": "Ready to discover Israel through the people who live it? Your authentic adventure awaits."
   },
+  "AIPlanner": {
+    "badge": "AI Journey Designer",
+    "subtitle": "Describe your dream; we’ll shape the journey",
+    "placeholder": "e.g. Healing nature in the Galilee for a week...",
+    "start": "Start Planning",
+    "suggestions": {
+      "nature": "Healing nature in the Galilee",
+      "history": "Ancient history in Jerusalem",
+      "cultureFood": "Art and food in Tel Aviv",
+      "desert": "Peaceful desert nights in the Negev"
+    }
+  },
   "SignUp": {
     "title": "Create an Account",
     "subtitle": "Join our community and start your journey",
@@ -52,6 +64,29 @@
   "Login": {
     "title": "Login",
     "successMessage": "Login successful! Redirecting..."
+  },
+  "Auth": {
+    "welcomeBack": "Welcome back",
+    "welcomeBackDesc": "Sign in to design your personal, story-driven journey",
+    "signIn": "Sign In",
+    "signInDesc": "Use your email and password, or choose a passwordless option",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create account",
+    "magicLink": "Send magic link",
+    "emailLinkSent": "Check your email for a sign-in link.",
+    "readyToExplore": "Ready to explore?",
+    "readyToExploreDesc": "Start discovering authentic stories across Israel",
+    "exploreExperiences": "Explore Experiences",
+    "planJourney": "Plan Your Journey"
   },
   "Common": {
     "trustSafety": "Trust & Safety",
@@ -81,6 +116,11 @@
     "discoverMore": "Discover More",
     "guideSpotlight": "Meet Our Guides",
     "guideSpotlightDesc": "Real people with real stories who will transform your understanding of Israel",
+    "featured": {
+      "badge": "Featured",
+      "title": "Experience of the Week",
+      "subtitle": "A handpicked gateway into an authentic story this week"
+    },
     "exploreIsrael": "Explore Israel",
     "exploreIsraelDesc": "Discover the diverse landscapes and communities that make Israel unique",
     "categories": {
@@ -157,6 +197,7 @@
     "previous": "Previous",
     "next": "Next",
     "createJourney": "Create My Journey",
+    "regenerate": "Generate a new itinerary",
     "journeyPreview": "Your Journey Preview",
     "journeyPreviewDesc": "Based on your answers, we'll create a personalized itinerary that tells your story",
     "interests": {
@@ -212,6 +253,9 @@
       "personalization": "Emotional Personalization",
       "personalizationDesc": "Every detail will be crafted to create the emotional experience you're seeking"
     }
+  },
+  "AIStatus": {
+    "crafting": "The AI is crafting your story-based itinerary..."
   },
   "Itinerary": {
     "title": "Your Custom Journey",

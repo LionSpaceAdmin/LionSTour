@@ -6,6 +6,8 @@ import { createGateway } from "@ai-sdk/gateway";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { readFile } from "fs/promises";
 import path from "path";
+import type { Prisma as PrismaNS } from "@prisma/client";
+import { errorJson, okJson } from "@/lib/http";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const gateway = process.env.AI_GATEWAY_API_KEY
@@ -18,7 +20,7 @@ export async function POST() {
   try {
     content = await readFile(filepath, "utf8");
   } catch {
-    return NextResponse.json({ error: "Spec file not found" }, { status: 404 });
+    return errorJson("Spec file not found", 404);
   }
 
   // naive chunking by paragraphs
@@ -42,8 +44,8 @@ export async function POST() {
     }))
     // Upsert into Supabase knowledge using service role
     const { error: upsertErr } = await admin.from('knowledge').upsert(payload, { onConflict: 'slug' })
-    if (upsertErr) return NextResponse.json({ error: upsertErr.message }, { status: 500 })
-    return NextResponse.json({ ok: true, count: payload.length, target: 'supabase' })
+    if (upsertErr) return errorJson(upsertErr.message, 500)
+    return okJson({ ok: true, count: payload.length, target: 'supabase' })
   } else {
     // Fallback to Prisma knowledge table
     for (let i = 0; i < chunks.length; i++) {
@@ -51,10 +53,10 @@ export async function POST() {
       const emb = embedResult.embeddings[i] ?? [];
       await prisma.knowledge.upsert({
         where: { slug: c.slug },
-        update: { title: c.title, content: c.content, embedding: emb as any },
-        create: { slug: c.slug, title: c.title, content: c.content, embedding: emb as any },
+        update: { title: c.title, content: c.content, embedding: emb as unknown as PrismaNS.JsonValue },
+        create: { slug: c.slug, title: c.title, content: c.content, embedding: emb as unknown as PrismaNS.JsonValue },
       });
     }
-    return NextResponse.json({ ok: true, count: chunks.length, target: 'prisma' })
+    return okJson({ ok: true, count: chunks.length, target: 'prisma' })
   }
 }

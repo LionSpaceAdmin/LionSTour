@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/hooks/useI18n";
-import dynamic from "next/dynamic";
-
-const ChatWidgetLazy = dynamic(() => import("@/components/chat-widget"), {
-  ssr: false,
-});
+import { ClientChatWidget } from "@/components/ClientChatWidget";
 
 export const metadata: Metadata = {
   title: "גלה את ישראל - חוויות תיירות אותנטיות | LionSTour",
@@ -99,7 +95,7 @@ export default function RootLayout({
         <I18nProvider>
           {children}
           {/* Floating AI chat assistant */}
-          <ChatWidgetLazy />
+          <ClientChatWidget />
         </I18nProvider>
       </body>
     </html>

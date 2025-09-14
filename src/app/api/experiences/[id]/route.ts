@@ -1,26 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
+import { rateLimit } from "@/lib/rateLimit";
+import { errorJson, okJson } from "@/lib/http";
 
 export async function GET(
   req: NextRequest,
   ctx: { params: Promise<{ id: string }> }
 ) {
   const { id } = await ctx.params;
+  const rl = rateLimit(`experiences:get:${id}`, 60, 60_000);
+  if (!rl.allowed) return errorJson("Too Many Requests", 429);
   const { data, error } = await supabase
     .from("experiences")
     .select("*, guides(name)")
     .eq("id", id)
     .single();
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+  if (error) return errorJson(error.message, 500);
 
-  if (!data) {
-    return new Response("Not found", { status: 404 });
-  }
+  if (!data) return errorJson("Not found", 404);
 
-  return NextResponse.json(data);
+  return okJson(data);
 }
 
 export async function PUT(
@@ -36,11 +36,9 @@ export async function PUT(
     .eq("id", id)
     .select();
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+  if (error) return errorJson(error.message, 500);
 
-  return NextResponse.json(data[0]);
+  return okJson(data[0]);
 }
 
 export async function DELETE(
@@ -50,9 +48,7 @@ export async function DELETE(
   const { id } = await ctx.params;
   const { error } = await supabase.from("experiences").delete().eq("id", id);
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+  if (error) return errorJson(error.message, 500);
 
   return new Response(null, { status: 204 });
 }

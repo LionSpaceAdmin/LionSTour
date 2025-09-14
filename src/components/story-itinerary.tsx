@@ -12,6 +12,8 @@ interface Itinerary {
     experienceId: string;
     guideName: string;
     emoji: string;
+    info?: string;
+    tips?: string;
   }[];
 }
 
@@ -50,6 +52,16 @@ export function StoryItinerary({ itinerary }: StoryItineraryProps) {
               <p className="text-gray-600 leading-relaxed">
                 {day.description}
               </p>
+              {day.info && (
+                <div className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+                  {day.info}
+                </div>
+              )}
+              {day.tips && (
+                <div className="mt-2 text-sm text-neutral-600">
+                  <span className="font-semibold">Tips:</span> {day.tips}
+                </div>
+              )}
               <p className="text-sm text-gray-500 mt-2">
                 {t("Dashboard.guide")}: {day.guideName}
               </p>

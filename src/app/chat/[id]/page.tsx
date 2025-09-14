@@ -2,13 +2,22 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import ChatRoom from "./room";
 
-export default async function ChatRoomPage({ params }: { params: { id: string } }) {
-  const chat = await prisma.chat.findUnique({ where: { id: params.id } });
+export const dynamic = "force-dynamic";
+
+export default async function ChatRoomPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const chat = await prisma.chat.findUnique({ where: { id } });
   if (!chat) {
     return (
       <main className="container mx-auto max-w-4xl px-4 py-6 rtl">
         <p>השיחה לא נמצאה.</p>
-        <Link href="/chat" className="text-amber-600 hover:underline">חזרה לצ׳אט</Link>
+        <Link href="/chat" className="text-amber-600 hover:underline">
+          חזרה לצ׳אט
+        </Link>
       </main>
     );
   }

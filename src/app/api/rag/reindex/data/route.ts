@@ -3,6 +3,8 @@ import { prisma } from "@/lib/prisma";
 import { embedMany } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
+import type { Prisma as PrismaNS } from "@prisma/client";
+import { okJson, errorJson } from "@/lib/http";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -43,7 +45,7 @@ export async function POST() {
     });
   }
 
-  if (docs.length === 0) return NextResponse.json({ ok: true, count: 0 });
+  if (docs.length === 0) return okJson({ ok: true, count: 0 });
 
   const model = openai.embedding('openai:text-embedding-3-small');
   const result = await embedMany({ model, values: docs.map((d) => d.content) });
@@ -52,18 +54,18 @@ export async function POST() {
   if (admin) {
     const payload = docs.map((d, i) => ({ slug: d.slug, title: d.title, content: d.content, embedding: result.embeddings[i] ?? [] }))
     const { error: upsertErr } = await admin.from('knowledge').upsert(payload, { onConflict: 'slug' })
-    if (upsertErr) return NextResponse.json({ error: upsertErr.message }, { status: 500 })
-    return NextResponse.json({ ok: true, count: payload.length, target: 'supabase' })
+    if (upsertErr) return errorJson(upsertErr.message, 500)
+    return okJson({ ok: true, count: payload.length, target: 'supabase' })
   } else {
     for (let i = 0; i < docs.length; i++) {
       const d = docs[i];
       const emb = result.embeddings[i] ?? [];
       await prisma.knowledge.upsert({
         where: { slug: d.slug },
-        update: { title: d.title, content: d.content, embedding: emb as any },
-        create: { slug: d.slug, title: d.title, content: d.content, embedding: emb as any },
+        update: { title: d.title, content: d.content, embedding: emb as unknown as PrismaNS.JsonValue },
+        create: { slug: d.slug, title: d.title, content: d.content, embedding: emb as unknown as PrismaNS.JsonValue },
       });
     }
-    return NextResponse.json({ ok: true, count: docs.length, target: 'prisma' })
+    return okJson({ ok: true, count: docs.length, target: 'prisma' })
   }
 }

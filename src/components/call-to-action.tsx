@@ -7,42 +7,61 @@ export function CallToAction() {
   const { t } = useI18n();
 
   return (
-    <div className="py-20 bg-gradient-to-r from-amber-500 to-orange-600">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          {t("HomePage.startJourney")}
-        </h2>
-        <p className="text-xl text-amber-100 mb-8 max-w-3xl mx-auto">
-          {t("HomePage.startJourneyDesc")}
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/academy"
-            className="text-white hover:text-amber-200 font-medium text-lg"
-          >
-            {t("Navigation.academy")}
-          </Link>
-          <span className="text-amber-200">•</span>
-          <Link
-            href="/trust/safety"
-            className="text-white hover:text-amber-200 font-medium text-lg"
-          >
-            {t("Common.trustSafety")}
-          </Link>
-          <span className="text-amber-200">•</span>
-          <Link
-            href="/enterprise"
-            className="text-white hover:text-amber-200 font-medium text-lg"
-          >
-            {t("Common.enterprise")}
-          </Link>
-          <span className="text-amber-200">•</span>
-          <Link
-            href="/auth/login"
-            className="text-white hover:text-amber-200 font-medium text-lg"
-          >
-            {t("Navigation.login")}
-          </Link>
+    <div className="section-spacing gradient-sunset relative overflow-hidden">
+      <div className="absolute inset-0 bg-pattern-dots opacity-20"></div>
+      <div className="container mx-auto container-padding text-center relative z-10">
+        <div className="animate-fade-in-up">
+          <h2 className="text-hero text-responsive-lg text-white mb-6">
+            {t("HomePage.startJourney")}
+          </h2>
+          <p className="text-subtitle text-responsive-md text-primary-100 mb-12 max-w-3xl mx-auto text-personal">
+            {t("HomePage.startJourneyDesc")}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 animate-scale-in">
+            <Link
+              href="/plan"
+              className="btn-primary text-xl px-12 py-5 hover-lift bg-white text-primary-600 hover:bg-primary-50"
+            >
+              {t("HomePage.planJourney")}
+            </Link>
+            <Link
+              href="/experiences"
+              className="btn-outline text-xl px-12 py-5 hover-lift border-white text-white hover:bg-white hover:text-primary-600"
+            >
+              {t("HomePage.exploreExperiences")}
+            </Link>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 animate-fade-in">
+            <Link
+              href="/academy"
+              className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
+            >
+              {t("Navigation.academy")}
+            </Link>
+            <span className="text-primary-200">•</span>
+            <Link
+              href="/trust/safety"
+              className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
+            >
+              {t("Common.trustSafety")}
+            </Link>
+            <span className="text-primary-200">•</span>
+            <Link
+              href="/enterprise"
+              className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
+            >
+              {t("Common.enterprise")}
+            </Link>
+            <span className="text-primary-200">•</span>
+            <Link
+              href="/auth/login"
+              className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
+            >
+              {t("Navigation.login")}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

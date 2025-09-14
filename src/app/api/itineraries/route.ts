@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { JourneyData } from "@/lib/types";
+import { rateLimit } from "@/lib/rateLimit";
+import { createOpenAI } from "@ai-sdk/openai";
+import { generateObject } from "ai";
+import { z } from "zod";
+import { okJson, errorJson } from "@/lib/http";
 
 // Helper function to determine the number of experiences based on duration
 const getExperienceCount = (duration: string): number => {
@@ -19,14 +24,13 @@ const getExperienceCount = (duration: string): number => {
 };
 
 export async function POST(req: NextRequest) {
-  const { interests, duration, emotions } = (await req.json()) as JourneyData;
+  const rl = rateLimit("itineraries:post", 30, 60_000);
+  if (!rl.allowed) return NextResponse.json({ error: "Too Many Requests" }, { status: 429 });
+  const body = (await req.json()) as JourneyData & { seed?: number };
+  const { interests, duration, emotions, prompt } = body;
+  const seed = typeof body.seed === 'number' ? body.seed : Date.now();
 
-  if (!interests || !duration) {
-    return NextResponse.json(
-      { error: "Missing required fields: interests, duration" },
-      { status: 400 }
-    );
-  }
+  if (!interests || !duration) return errorJson("Missing required fields: interests, duration", 400);
 
   const experienceCount = getExperienceCount(duration);
   const categories = [...interests, ...emotions]; // Combine interests and emotions for a broader search
@@ -68,27 +72,71 @@ export async function POST(req: NextRequest) {
       experiences = [...experiences, ...fallbackExperiences];
     }
 
-    // Structure the itinerary by days
+    // If OpenAI is configured, generate an AI-authored itinerary narrative
+    if (process.env.OPENAI_API_KEY) {
+      const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
+      const ItinerarySchema = z.object({
+        title: z.string(),
+        days: z.array(z.object({
+          day: z.number(),
+          title: z.string(),
+          description: z.string(),
+          experienceId: z.string(),
+          guideName: z.string(),
+          emoji: z.string().default("✨"),
+          info: z.string().optional(),
+          tips: z.string().optional(),
+        }))
+      });
+
+      const system = `You are an expert Israeli tourism journey designer.
+Create an emotionally compelling, safe, culturally sensitive, story-driven itinerary.
+Return concise JSON that matches the provided schema. Use the provided candidate experiences and preserve their ids.`;
+      const user = {
+        prompt: prompt ?? "",
+        preferences: { interests, emotions, duration },
+        seed,
+        candidates: experiences.map(e => ({ id: e.id, title: e.title, description: e.description, guide: e.guide?.name || "" }))
+      };
+
+      const { object } = await generateObject({
+        model: openai("gpt-4o-mini"),
+        system,
+        prompt: `User input: ${JSON.stringify(user)}`,
+        schema: ItinerarySchema,
+        mode: "json",
+      });
+
+      const byId = new Map(experiences.map(e => [e.id, e]));
+      const days = object.days.map((d: any, i: number) => {
+        const exp = byId.get(d.experienceId) || experiences[i % experiences.length];
+        return {
+          day: i + 1,
+          title: d.title || exp.title,
+          description: d.description || exp.description,
+          experienceId: exp.id,
+          guideName: d.guideName || exp.guide?.name || "",
+          emoji: d.emoji || "✨",
+          info: d.info,
+          tips: d.tips,
+        };
+      });
+
+      return okJson({ title: object.title, days });
+    }
+
+    // Fallback: non-AI itinerary
     const itineraryDays = experiences.map((exp, index) => ({
       day: index + 1,
       title: exp.title,
       description: exp.description,
       experienceId: exp.id,
       guideName: exp.guide.name,
-      emoji: "✨", // Placeholder emoji
+      emoji: "✨",
     }));
-
-    const itinerary = {
-      title: "Your Personalized Journey to Israel",
-      days: itineraryDays,
-    };
-
-    return NextResponse.json(itinerary);
+    return okJson({ title: "Your Personalized Journey to Israel", days: itineraryDays });
   } catch (error) {
     console.error("Itinerary generation error:", error);
-    return NextResponse.json(
-      { error: "Failed to generate itinerary" },
-      { status: 500 }
-    );
+    return errorJson("Failed to generate itinerary", 500);
   }
 }

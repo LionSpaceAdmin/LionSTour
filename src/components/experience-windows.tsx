@@ -2,13 +2,17 @@
 
 import { useI18n } from "@/hooks/useI18n";
 import { ProgressiveImage } from "@/components/ui/progressive-image";
-import { Experience } from "@prisma/client";
 
-interface ExperienceWindowsProps {
-  experiences: Experience[];
-}
+type Exp = {
+  id: string;
+  title: string;
+  description: string;
+  duration: number;
+  price: number;
+  images?: string[];
+};
 
-export function ExperienceWindows({ experiences }: ExperienceWindowsProps) {
+export function ExperienceWindows({ experiences }: { experiences: Exp[] }) {
   const { t } = useI18n();
 
   if (!experiences || experiences.length === 0) {
@@ -20,8 +24,8 @@ export function ExperienceWindows({ experiences }: ExperienceWindowsProps) {
       {experiences.map((experience) => (
         <div key={experience.id} className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
           <ProgressiveImage
-            src={experience.images[0] || "/placeholder.jpg"}
-            placeholder="/placeholder.jpg"
+            src={experience.images?.[0] || "/window.svg"}
+            placeholder="/window.svg"
             alt={experience.title}
             className="w-full h-64 object-cover"
           />
@@ -30,7 +34,7 @@ export function ExperienceWindows({ experiences }: ExperienceWindowsProps) {
             <p className="text-gray-700 mb-4 h-24 overflow-hidden">{experience.description}</p>
             <div className="flex justify-between items-center text-sm text-gray-600 pt-4 border-t">
               <span>{experience.duration} {t("Common.minutes")}</span>
-              <span>${experience.price / 100}</span>
+              <span>₪{(experience.price / 100).toFixed(0)}</span>
             </div>
           </div>
         </div>

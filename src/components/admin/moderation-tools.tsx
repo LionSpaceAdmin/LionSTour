@@ -2,16 +2,18 @@
 
 import { useEffect, useState, useTransition } from "react";
 import { useI18n } from "@/hooks/useI18n";
-import type { toggleExperienceActive as ToggleExpAction, toggleGuideActive as ToggleGuideAction } from "@/app/dashboard/admin/actions";
+import type { toggleExperienceActive as ToggleExpAction, toggleGuideActive as ToggleGuideAction, toggleExperienceFeatured as ToggleFeaturedAction } from "@/app/dashboard/admin/actions";
 
-type Item = { id: string; title?: string; name?: string; isActive?: boolean };
+type Item = { id: string; title?: string; name?: string; isActive?: boolean; isFeatured?: boolean };
 
 export function ModerationTools({
   onToggleExperience,
   onToggleGuide,
+  onToggleFeatured,
 }: {
   onToggleExperience: typeof ToggleExpAction;
   onToggleGuide: typeof ToggleGuideAction;
+  onToggleFeatured?: typeof ToggleFeaturedAction;
 }) {
   const { t } = useI18n();
   const [experiences, setExperiences] = useState<Item[]>([]);
@@ -26,7 +28,7 @@ export function ModerationTools({
           fetch("/api/experiences").then((r) => r.json()).catch(() => []),
           fetch("/api/guides").then((r) => r.json()).catch(() => []),
         ]);
-        const exps = (Array.isArray(rawExps) ? rawExps : []).map((e: any) => ({ id: e.id, title: e.title, isActive: e.is_active ?? e.isActive ?? true }));
+        const exps = (Array.isArray(rawExps) ? rawExps : []).map((e: any) => ({ id: e.id, title: e.title, isActive: e.is_active ?? e.isActive ?? true, isFeatured: e.is_featured ?? e.isFeatured ?? false }));
         const gids = (Array.isArray(rawGids) ? rawGids : []).map((g: any) => ({ id: g.id, name: g.name, isActive: g.is_active ?? g.isActive ?? true }));
         setExperiences(exps);
         setGuides(gids);
@@ -36,15 +38,18 @@ export function ModerationTools({
     })();
   }, []);
 
-  const toggle = (type: "experience" | "guide", id: string, value: boolean) => {
+  const toggle = (type: "experience" | "guide" | "featured", id: string, value: boolean) => {
     startTransition(async () => {
       try {
         if (type === "experience") {
           await onToggleExperience(id, value);
           setExperiences((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
-        } else {
+        } else if (type === "guide") {
           await onToggleGuide(id, value);
           setGuides((xs) => xs.map((x) => (x.id === id ? { ...x, isActive: value } : x)));
+        } else if (type === "featured" && onToggleFeatured) {
+          await onToggleFeatured(id, value);
+          setExperiences((xs) => xs.map((x) => (x.id === id ? { ...x, isFeatured: value } : x)));
         }
       } catch (e) {
         console.error(e);
@@ -64,6 +69,7 @@ export function ModerationTools({
               <tr className="bg-neutral-50">
                 <th className="p-2 text-left">{t("Common.title")}</th>
                 <th className="p-2 text-left">Active</th>
+                <th className="p-2 text-left">Featured</th>
                 <th className="p-2 text-left">{t("Common.actions")}</th>
               </tr>
             </thead>
@@ -72,6 +78,7 @@ export function ModerationTools({
                 <tr key={e.id} className="border-t">
                   <td className="p-2">{e.title}</td>
                   <td className="p-2">{String(e.isActive ?? true)}</td>
+                  <td className="p-2">{String(e.isFeatured ?? false)}</td>
                   <td className="p-2">
                     <button
                       onClick={() => toggle("experience", e.id, !(e.isActive ?? true))}
@@ -80,6 +87,15 @@ export function ModerationTools({
                     >
                       Toggle
                     </button>
+                    {onToggleFeatured && (
+                      <button
+                        onClick={() => toggle("featured", e.id, !(e.isFeatured ?? false))}
+                        className="ml-2 rounded border px-3 py-1 hover:bg-neutral-50 disabled:opacity-50"
+                        disabled={isPending}
+                      >
+                        Toggle Featured
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}

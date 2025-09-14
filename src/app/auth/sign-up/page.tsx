@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/hooks/useI18n";
@@ -27,13 +29,18 @@ export default function SignUpPage() {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 flex items-center justify-center">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">{t("SignUp.title")}</h1>
+          <h1 className="text-4xl font-bold text-gray-900">
+            {t("SignUp.title")}
+          </h1>
           <p className="text-gray-600 mt-2">{t("SignUp.subtitle")}</p>
         </div>
 
         <form onSubmit={handleSignUp} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               {t("Common.email")}
             </label>
             <div className="mt-1">
@@ -51,7 +58,10 @@ export default function SignUpPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               {t("Common.password")}
             </label>
             <div className="mt-1">
@@ -85,7 +95,10 @@ export default function SignUpPage() {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             {t("SignUp.alreadyHaveAccount")}{" "}
-            <Link href="/auth/login" className="font-medium text-amber-600 hover:text-amber-500">
+            <Link
+              href="/auth/login"
+              className="font-medium text-amber-600 hover:text-amber-500"
+            >
               {t("Login.title")}
             </Link>
           </p>

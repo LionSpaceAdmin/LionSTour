@@ -42,6 +42,18 @@
     "startJourney": "התחילו את המסע",
     "startJourneyDesc": "מוכנים לגלות את ישראל דרך האנשים שחיים אותה? ההרפתקה האותנטית שלכם מחכה."
   },
+  "AIPlanner": {
+    "badge": "מעצב מסע מבוסס AI",
+    "subtitle": "תארו את החלום – אנחנו נעצב את המסע",
+    "placeholder": "לדוגמה: טבע מרפא בגליל לשבוע...",
+    "start": "התחילו לתכנן",
+    "suggestions": {
+      "nature": "טבע מרפא בגליל",
+      "history": "היסטוריה עתיקה בירושלים",
+      "cultureFood": "אמנות ואוכל בתל אביב",
+      "desert": "לילות מדבר שקטים בנגב"
+    }
+  },
   "SignUp": {
     "title": "יצירת חשבון",
     "subtitle": "הצטרפו לקהילה שלנו והתחילו את המסע שלכם",
@@ -52,6 +64,29 @@
   "Login": {
     "title": "התחברות",
     "successMessage": "התחברת בהצלחה! מעביר אותך..."
+  },
+  "Auth": {
+    "welcomeBack": "ברוכים השבים",
+    "welcomeBackDesc": "התחברו כדי לעצב מסע אישי ומבוסס סיפור",
+    "signIn": "התחברות",
+    "signInDesc": "השתמשו באימייל וסיסמה או התחברות ללא סיסמה",
+    "email": "אימייל",
+    "emailPlaceholder": "you@example.com",
+    "password": "סיסמה",
+    "passwordPlaceholder": "הסיסמה שלכם",
+    "rememberMe": "זכרו אותי",
+    "forgotPassword": "שכחתם סיסמה?",
+    "orContinueWith": "או המשיכו עם",
+    "google": "Google",
+    "facebook": "Facebook",
+    "noAccount": "אין לכם חשבון?",
+    "createAccount": "יצירת חשבון",
+    "magicLink": "שלחו קישור קסם",
+    "emailLinkSent": "בדקו את האימייל — נשלח קישור התחברות.",
+    "readyToExplore": "מוכנים לחקור?",
+    "readyToExploreDesc": "התחילו לגלות סיפורים אותנטיים ברחבי ישראל",
+    "exploreExperiences": "גלו חוויות",
+    "planJourney": "תכננו את המסע"
   },
   "Common": {
     "trustSafety": "אמון ובטיחות",
@@ -81,6 +116,11 @@
     "discoverMore": "גלו עוד",
     "guideSpotlight": "פגשו את המדריכים שלנו",
     "guideSpotlightDesc": "אנשים אמיתיים עם סיפורים אמיתיים שישנו את ההבנה שלכם על ישראל",
+    "featured": {
+      "badge": "מומלץ",
+      "title": "חוויה לשבוע",
+      "subtitle": "שער שנבחר בקפידה לסיפור אותנטי לשבוע זה"
+    },
     "exploreIsrael": "גלו את ישראל",
     "exploreIsraelDesc": "גלו את הנופים והקהילות המגוונות שהופכים את ישראל לייחודית",
     "categories": {
@@ -157,6 +197,7 @@
     "previous": "הקודם",
     "next": "הבא",
     "createJourney": "צרו את המסע שלי",
+    "regenerate": "יצירת מסלול חדש",
     "journeyPreview": "תצוגה מקדימה של המסע שלכם",
     "journeyPreviewDesc": "תבסס על התשובות שלכם, נצור מסלול מותאם אישית שמספר את הסיפור שלכם",
     "interests": {
@@ -212,6 +253,9 @@
       "personalization": "התאמה אישית רגשית",
       "personalizationDesc": "כל פרט יהיה מעוצב ליצור את החוויה הרגשית שאתם מחפשים"
     }
+  },
+  "AIStatus": {
+    "crafting": "ה‑AI מרכיב עבורך מסלול מבוסס סיפור..."
   },
   "Itinerary": {
     "title": "המסע המותאם אישית שלך",

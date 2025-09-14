@@ -7,6 +7,7 @@ export interface JourneyData {
   budget: string;
   experience: string;
   emotions: string[];
+  prompt?: string;
   [key: string]: string | string[];
 }
 

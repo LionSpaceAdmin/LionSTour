@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import type { UIMessage } from "ai";
+import { okJson, errorJson } from "@/lib/http";
 
 export async function GET(
   _req: NextRequest,
@@ -8,7 +9,7 @@ export async function GET(
 ) {
   const { id } = await ctx.params;
   const chat = await prisma.chat.findUnique({ where: { id } });
-  if (!chat) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (!chat) return errorJson("Not found", 404);
 
   const messages = await prisma.chatMessage.findMany({
     where: { chatId: id },
@@ -17,6 +18,10 @@ export async function GET(
   });
 
   // Shape as UIMessage[]
-  const uiMessages: UIMessage[] = messages.map((m) => ({ id: m.uiId, role: m.role as any, parts: m.parts as unknown as UIMessage["parts"] }));
-  return NextResponse.json({ chat: { id: chat.id, title: chat.title }, messages: uiMessages });
+  const uiMessages: UIMessage[] = messages.map((m) => ({
+    id: m.uiId,
+    role: m.role === "user" || m.role === "assistant" || m.role === "system" ? (m.role as UIMessage["role"]) : "assistant",
+    parts: m.parts as unknown as UIMessage["parts"],
+  }));
+  return okJson({ chat: { id: chat.id, title: chat.title }, messages: uiMessages });
 }

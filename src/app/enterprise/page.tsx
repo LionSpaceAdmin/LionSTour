@@ -5,6 +5,7 @@ import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export default function EnterprisePage() {
   const { t } = useI18n();
+  const [submitting, setSubmitting] = React.useState(false);
 
   const solutions = [
     {
@@ -188,7 +189,38 @@ export default function EnterprisePage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 md:p-12 shadow-2xl">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget as HTMLFormElement;
+                const fd = new FormData(form);
+                const payload = {
+                  organizationName: String(fd.get('organizationName') || ''),
+                  contactPerson: String(fd.get('contactPerson') || ''),
+                  email: String(fd.get('email') || ''),
+                  phone: String(fd.get('phone') || ''),
+                  groupSize: String(fd.get('groupSize') || ''),
+                  message: String(fd.get('message') || ''),
+                };
+                try {
+                  if (!payload.organizationName || !payload.email) {
+                    alert('יש למלא שם ארגון ואימייל');
+                    return;
+                  }
+                  setSubmitting(true);
+                  const res = await fetch('/api/enterprise/partner', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                  if (res.ok) {
+                    alert('תודה! פנייתכם התקבלה.');
+                    form.reset();
+                  } else {
+                    const j = await res.json().catch(() => ({}));
+                    alert(j.error || 'שגיאה בשליחת הטופס');
+                  }
+                } catch {
+                  alert('שגיאה בשליחת הטופס');
+                } finally {
+                  setSubmitting(false);
+                }
+              }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -196,6 +228,7 @@ export default function EnterprisePage() {
                     </label>
                     <input
                       type="text"
+                      name="organizationName"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       placeholder={t(
                         "Enterprise.form.organizationNamePlaceholder"
@@ -208,6 +241,7 @@ export default function EnterprisePage() {
                     </label>
                     <input
                       type="text"
+                      name="contactPerson"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       placeholder={t(
                         "Enterprise.form.contactPersonPlaceholder"
@@ -223,6 +257,7 @@ export default function EnterprisePage() {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       placeholder={t("Enterprise.form.emailPlaceholder")}
                     />
@@ -233,6 +268,7 @@ export default function EnterprisePage() {
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       placeholder={t("Enterprise.form.phonePlaceholder")}
                     />
@@ -244,6 +280,7 @@ export default function EnterprisePage() {
                     {t("Enterprise.form.groupSize")}
                   </label>
                   <select
+                    name="groupSize"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     aria-label={t("Enterprise.form.groupSize")}
                   >
@@ -267,6 +304,7 @@ export default function EnterprisePage() {
                     {t("Enterprise.form.message")}
                   </label>
                   <textarea
+                    name="message"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                     placeholder={t("Enterprise.form.messagePlaceholder")}
@@ -276,7 +314,8 @@ export default function EnterprisePage() {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-12 py-4 rounded-full font-bold text-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                    disabled={submitting}
+                    className="bg-gradient-to-r from-amber-500 to-orange-600 disabled:opacity-50 text-white px-12 py-4 rounded-full font-bold text-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-2xl"
                   >
                     {t("Enterprise.form.submit")}
                   </button>
@@ -300,9 +339,9 @@ export default function EnterprisePage() {
             <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-amber-50 transition-all duration-300 transform hover:scale-105 shadow-2xl">
               {t("Enterprise.contactUs")}
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-amber-600 transition-all duration-300 transform hover:scale-105">
+            <a href="/enterprise/api" className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-amber-600 transition-all duration-300 transform hover:scale-105">
               {t("Enterprise.learnMore")}
-            </button>
+            </a>
           </div>
         </div>
       </div>

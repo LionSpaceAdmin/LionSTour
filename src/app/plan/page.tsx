@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useI18n } from "@/hooks/useI18n";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { JourneyQuestions } from "@/components/journey-questions";
@@ -26,6 +27,7 @@ interface Itinerary {
 
 export default function PlanPage() {
   const { t } = useI18n();
+  const search = useSearchParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [isJourneyCreated, setIsJourneyCreated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +39,7 @@ export default function PlanPage() {
     budget: "",
     experience: "",
     emotions: [],
+    prompt: "",
   });
 
   const journeyQuestions: JourneyQuestion[] = [
@@ -99,14 +102,14 @@ export default function PlanPage() {
     setJourneyData((prev: JourneyData) => ({ ...prev, [questionId]: answer }));
   };
 
-  const handleCreateJourney = async () => {
+  const handleCreateJourney = async (seed?: number) => {
     setIsLoading(true);
     setIsJourneyCreated(true);
     try {
       const response = await fetch("/api/itineraries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(journeyData),
+        body: JSON.stringify({ ...journeyData, seed: seed ?? Date.now() }),
       });
       const data = await response.json();
       if (response.ok) {
@@ -136,6 +139,41 @@ export default function PlanPage() {
   };
 
   const currentQuestion = journeyQuestions[currentStep - 1];
+
+  // Prefill from ?prompt= using simple keyword mapping (HE/EN)
+  useEffect(() => {
+    const prompt = (search.get("prompt") || "").toLowerCase();
+    if (!prompt) return;
+    const interests: string[] = [];
+    const emotions: string[] = [];
+    const includes = (s: string) => prompt.includes(s);
+    if (["nature", "טבע"].some(includes)) interests.push("nature");
+    if (["history", "היסטור"].some(includes)) interests.push("history");
+    if (["culture", "תרבות"].some(includes)) interests.push("culture");
+    if (["food", "אוכל"].some(includes)) interests.push("food");
+    if (["adventure", "הרפתק"].some(includes)) interests.push("adventure");
+    if (["spiritual", "רוח"].some(includes)) interests.push("spirituality");
+
+    if (["healing", "ריפוי"].some(includes)) emotions.push("healing");
+    if (["peace", "שקט", "שלווה"].some(includes)) emotions.push("peace");
+    if (["connection", "חיבור"].some(includes)) emotions.push("connection");
+    if (["inspiration", "השראה"].some(includes)) emotions.push("inspiration");
+    if (["excitement", "התרגשות"].some(includes)) emotions.push("adventure");
+
+    let duration = "";
+    if (/(1|2|3)\s*days?|סופ/.test(prompt)) duration = "1-3";
+    else if (/week|שבוע/.test(prompt)) duration = "4-7";
+    else if (/two\s*weeks|שבועיים/.test(prompt)) duration = "8-14";
+    else if (/month|חודש/.test(prompt)) duration = "15+";
+
+    setJourneyData((prev) => ({
+      ...prev,
+      interests: interests.length ? Array.from(new Set(interests)) : prev.interests,
+      emotions: emotions.length ? Array.from(new Set(emotions)) : prev.emotions,
+      duration: duration || prev.duration,
+      prompt: search.get("prompt") || prev.prompt,
+    }));
+  }, [search]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
@@ -223,10 +261,21 @@ export default function PlanPage() {
         <div className="py-16">
           <div className="container mx-auto px-4 max-w-4xl">
             {isLoading ? (
-              <p className="text-center text-lg">{t("Common.loading")}</p>
+              <div className="text-center text-lg text-neutral-700">
+                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" />
+                {t("AIStatus.crafting")}
+              </div>
             ) : itinerary ? (
               <>
                 <StoryItinerary itinerary={itinerary} />
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={() => handleCreateJourney(Date.now())}
+                    className="btn-outline px-8 py-3"
+                  >
+                    {t("Plan.regenerate")}
+                  </button>
+                </div>
                 <GuideMatching journeyData={journeyData} />
                 <EmotionalPreview journeyData={journeyData} />
                 <ShareJourney journeyData={journeyData} />

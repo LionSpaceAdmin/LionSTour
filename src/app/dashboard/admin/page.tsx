@@ -2,7 +2,7 @@ import { GuidesManagement } from "@/components/admin/guide-table";
 import { ExperiencesManagement } from "@/components/admin/experience-table";
 import { BookingsManagement } from "@/components/admin/booking-table";
 import { ModerationTools } from "@/components/admin/moderation-tools";
-import { toggleExperienceActive, toggleGuideActive } from "./actions";
+import { toggleExperienceActive, toggleGuideActive, toggleExperienceFeatured } from "./actions";
 import { getSupabaseServer } from "@/lib/supabaseServer";
 import { redirect } from "next/navigation";
 
@@ -34,7 +34,7 @@ export default async function AdminDashboardPage() {
         </div>
         <div className="col-span-1 lg:col-span-3">
           <div className="rounded-2xl bg-white p-8 shadow-lg">
-            <ModerationTools onToggleExperience={toggleExperienceActive} onToggleGuide={toggleGuideActive} />
+            <ModerationTools onToggleExperience={toggleExperienceActive} onToggleGuide={toggleGuideActive} onToggleFeatured={toggleExperienceFeatured} />
           </div>
         </div>
       </div>
