@@ -1,0 +1,20 @@
+{
+  "projectId": "prj_n6SFiKNhA4whUjyXNNw8Nvtu54H8",
+  "orgId": "",
+  "name": "lionstour",
+  "framework": "nextjs",
+  "database": {
+    "type": "postgresql",
+    "provider": "supabase"
+  },
+  "services": {
+    "payments": "stripe",
+    "maps": "mapbox",
+    "ai": "openai",
+    "orm": "prisma"
+  },
+  "deployment": {
+    "platform": "vercel",
+    "environment": "production"
+  }
+}
