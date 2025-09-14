@@ -54,9 +54,11 @@ export function GuideMatching({ journeyData }: GuideMatchingProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {(matchedGuides.length > 0 ? matchedGuides : guides.slice(0, 2)).map((guide) => (
           <div key={guide.id} className="bg-gray-50 rounded-2xl p-6 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg">
-            <img 
-              src={guide.image} 
-              alt={guide.name} 
+            <img
+              src={guide.image}
+              alt={guide.name}
+              loading="lazy"
+              decoding="async"
               className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-amber-200"
             />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">{guide.name}</h3>

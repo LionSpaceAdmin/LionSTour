@@ -48,13 +48,17 @@ export function EmotionalPreview({ journeyData }: EmotionalPreviewProps) {
         </p>
       </div>
 
-      <div className="relative bg-white rounded-3xl shadow-2xl p-8 md:p-12 overflow-hidden">
-        <img 
-          src={preview.image} 
-          alt={preview.title} 
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        />
-        <div className="relative z-10 text-center text-white bg-black bg-opacity-40 p-8 rounded-2xl">
+      <div className="relative bg-white rounded-3xl shadow-2xl p-0 overflow-hidden">
+        <div className="relative h-64 md:h-96">
+          <img
+            src={preview.image}
+            alt={preview.title}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative z-10 -mt-20 md:-mt-24 text-center text-white bg-black/50 p-8 rounded-t-2xl">
           <h3 className="text-5xl font-bold mb-4">{preview.title}</h3>
           <p className="text-2xl italic">"{preview.quote}"</p>
         </div>

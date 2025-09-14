@@ -1,9 +1,7 @@
-import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { embedMany } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
-import type { Prisma as PrismaNS } from "@prisma/client";
 import { okJson, errorJson } from "@/lib/http";
 
 const openai = createOpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -62,8 +60,8 @@ export async function POST() {
       const emb = result.embeddings[i] ?? [];
       await prisma.knowledge.upsert({
         where: { slug: d.slug },
-        update: { title: d.title, content: d.content, embedding: emb as unknown as PrismaNS.JsonValue },
-        create: { slug: d.slug, title: d.title, content: d.content, embedding: emb as unknown as PrismaNS.JsonValue },
+        update: { title: d.title, content: d.content, embedding: JSON.stringify(emb) },
+        create: { slug: d.slug, title: d.title, content: d.content, embedding: JSON.stringify(emb) },
       });
     }
     return okJson({ ok: true, count: docs.length, target: 'prisma' })

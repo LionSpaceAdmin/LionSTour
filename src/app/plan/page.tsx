@@ -171,7 +171,7 @@ export default function PlanPage() {
       interests: interests.length ? Array.from(new Set(interests)) : prev.interests,
       emotions: emotions.length ? Array.from(new Set(emotions)) : prev.emotions,
       duration: duration || prev.duration,
-      prompt: search.get("prompt") || prev.prompt,
+      prompt: search.get("prompt") || prev.prompt || "",
     }));
   }, [search]);
 

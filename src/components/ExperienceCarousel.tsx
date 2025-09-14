@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "@/hooks/useReveal";
+import { useRef } from "react";
 
 type CarouselItem = {
   id: string;
@@ -41,10 +42,37 @@ export default function ExperienceCarousel({ items }: { items?: CarouselItem[] }
           },
         ];
 
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollBy = (dir: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = Math.min(560, el.clientWidth * 0.9) * dir;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
     <section className="relative py-10">
       <div className="px-6">
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [-ms-overflow-style:none] [scrollbar-width:none]" style={{ scrollbarWidth: "none" }}>
+        <div className="flex items-center justify-between mb-2">
+          <span className="sr-only">Use arrow buttons or swipe to browse experiences</span>
+          <div className="flex gap-2">
+            <button onClick={() => scrollBy(-1)} aria-label="Scroll left" className="rounded-full border border-white/20 bg-black/30 px-3 py-2 text-white hover:bg-black/50">◀</button>
+            <button onClick={() => scrollBy(1)} aria-label="Scroll right" className="rounded-full border border-white/20 bg-black/30 px-3 py-2 text-white hover:bg-black/50">▶</button>
+          </div>
+        </div>
+        <div
+          ref={scrollerRef}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowRight') scrollBy(1);
+            if (e.key === 'ArrowLeft') scrollBy(-1);
+          }}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [-ms-overflow-style:none] [scrollbar-width:none] focus:outline-none"
+          style={{ scrollbarWidth: "none" }}
+          role="list"
+          aria-label="Experiences"
+        >
           {/* Edge tension */}
           <div className="shrink-0 w-4" aria-hidden />
           {data.map((item, idx) => {
@@ -59,6 +87,7 @@ export default function ExperienceCarousel({ items }: { items?: CarouselItem[] }
                   (visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3")
                 }
                 style={{ width: "min(85vw, 560px)", height: "320px", transitionDelay: `${idx * 80}ms` }}
+              role="listitem"
               >
                 <Image
                   src={item.image}

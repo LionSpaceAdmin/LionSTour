@@ -10,7 +10,7 @@ export default function TrustSafetyPage() {
   const { t } = useI18n();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-neutral-950 text-white">
       {/* Language Switcher */}
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
@@ -29,19 +29,19 @@ export default function TrustSafetyPage() {
       </div>
 
       <div className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-white">
           <SafetyContent />
         </div>
       </div>
 
-      <div className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <EmergencyContacts />
         </div>
       </div>
 
-      <div className="py-20 bg-gradient-to-br from-gray-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <TrustIndicators />
         </div>
       </div>

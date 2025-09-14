@@ -11,6 +11,7 @@ import { CallToAction } from "@/components/call-to-action";
 import { AIJourneyPlanner } from "@/components/ai-journey-planner";
 import VideoBackground from "@/components/VideoBackground";
 import PlannerOverlay from "@/components/PlannerOverlay";
+import ScrollScene from "@/components/ScrollScene";
 
 export default function Home() {
   const { t } = useI18n();
@@ -80,10 +81,18 @@ export default function Home() {
       <div className="pt-20">
         <Hero />
         <AIJourneyPlanner />
-        <PersonalStories />
-        <CommunityShowcase />
-        <ExperienceWindowsPreview />
-        <CallToAction />
+        <ScrollScene speed={0.18}>
+          <PersonalStories />
+        </ScrollScene>
+        <ScrollScene speed={0.2}>
+          <CommunityShowcase />
+        </ScrollScene>
+        <ScrollScene speed={0.22}>
+          <ExperienceWindowsPreview />
+        </ScrollScene>
+        <ScrollScene speed={0.24}>
+          <CallToAction />
+        </ScrollScene>
       </div>
     </div>
   );
