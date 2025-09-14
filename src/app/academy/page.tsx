@@ -76,33 +76,32 @@ export default function AcademyPage() {
   }, [query]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-neutral-950 text-white">
       {/* Language Switcher */}
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
 
       {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/10 to-red-400/10"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+      <div className="relative py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
             {t("Academy.title")}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
             {t("Academy.subtitle")}
           </p>
         </div>
       </div>
 
       {/* Filters */}
-      <div className="py-8 bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
+      <div className="py-8 bg-black/40 backdrop-blur border-y border-white/10">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               {t("Academy.exploreTopics")}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-white/80">
               {t("Academy.exploreTopicsDesc")}
             </p>
           </div>
@@ -116,16 +115,16 @@ export default function AcademyPage() {
 
       {/* Articles Grid */}
       <div className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-white">
           {loading ? (
-            <div className="text-center text-neutral-500">{t("Common.loading")}</div>
+            <div className="text-center text-white/70">{t("Common.loading")}</div>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((a) => (
                 <ArticleCard key={a.id} article={a} />
               ))}
               {filtered.length === 0 && (
-                <div className="col-span-full text-center text-neutral-500">{t("Academy.noResults")}</div>
+                <div className="col-span-full text-center text-white/70">{t("Academy.noResults")}</div>
               )}
             </div>
           )}
@@ -133,13 +132,13 @@ export default function AcademyPage() {
       </div>
 
       {/* Featured Story */}
-      <div className="py-20 bg-gradient-to-br from-gray-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               {t("Academy.featuredStory")}
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {t("Academy.featuredStoryDesc")}
             </p>
           </div>
@@ -159,7 +158,7 @@ export default function AcademyPage() {
                   <span>{t("Academy.story.author")}</span>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl p-8">
+              <div className="bg-neutral-50 rounded-2xl p-8">
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">
                   {t("Academy.story.keyPoints")}
                 </h4>

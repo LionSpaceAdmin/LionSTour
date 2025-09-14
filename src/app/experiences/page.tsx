@@ -70,30 +70,29 @@ export default function ExperiencesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-neutral-950 text-white">
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
 
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/10 to-red-400/10"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+      <div className="relative py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
             {t("Experiences.title")}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
             {t("Experiences.subtitle")}
           </p>
         </div>
       </div>
 
-      <div className="py-8 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4">
+      <div className="py-6 sticky top-0 z-10 bg-black/40 backdrop-blur border-b border-white/10">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               {t("Experiences.chooseYourJourney")}
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-white/80">
               {t("Experiences.chooseYourJourneyDesc")}
             </p>
           </div>
@@ -128,13 +127,13 @@ export default function ExperiencesPage() {
 
       <GuideSpotlight />
 
-      <div className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               {t("Experiences.exploreIsrael")}
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {t("Experiences.exploreIsraelDesc")}
             </p>
           </div>

@@ -80,6 +80,8 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <head>
+        {/* Preload hero background video for faster start */}
+        <link rel="preload" as="video" href="/site_clip.mp4" type="video/mp4" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -92,8 +94,12 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased font-heebo">
+        {/* Skip link for keyboard users */}
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:rounded focus:bg-black focus:text-white focus:px-4 focus:py-2">
+          דלג לתוכן
+        </a>
         <I18nProvider>
-          {children}
+          <main id="main">{children}</main>
           {/* Floating AI chat assistant */}
           <ClientChatWidget />
         </I18nProvider>

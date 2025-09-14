@@ -176,18 +176,17 @@ export default function PlanPage() {
   }, [search]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-neutral-950 text-white">
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
 
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/10 to-red-400/10"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+      <div className="relative py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
             {isJourneyCreated ? t("Itinerary.title") : t("Plan.title")}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
             {isJourneyCreated ? t("Itinerary.createdSubtitle") : t("Plan.subtitle")}
           </p>
         </div>
@@ -196,8 +195,8 @@ export default function PlanPage() {
       {!isJourneyCreated ? (
         <>
           {/* Progress Indicator */}
-          <div className="py-8 bg-white/80 backdrop-blur-sm">
-            <div className="container mx-auto px-4">
+          <div className="py-8 bg-black/40 backdrop-blur border-y border-white/10">
+            <div className="container mx-auto px-4 text-white">
               <div className="flex items-center justify-center space-x-4">
                 {journeyQuestions.map((_, index) => (
                   <div key={index} className="flex items-center">
@@ -205,7 +204,7 @@ export default function PlanPage() {
                       className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                         index + 1 <= currentStep
                           ? "bg-amber-500 text-white"
-                          : "bg-gray-300 text-gray-600"
+                          : "bg-white/20 text-white/60"
                       }`}
                     >
                       {index + 1}
@@ -213,7 +212,7 @@ export default function PlanPage() {
                     {index < journeyQuestions.length - 1 && (
                       <div
                         className={`w-16 h-1 mx-2 ${
-                          index + 1 < currentStep ? "bg-amber-500" : "bg-gray-300"
+                          index + 1 < currentStep ? "bg-amber-500" : "bg-white/20"
                         }`}
                       ></div>
                     )}
@@ -238,8 +237,8 @@ export default function PlanPage() {
                   disabled={currentStep === 1}
                   className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                     currentStep === 1
-                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      ? "bg-white/10 text-white/40 cursor-not-allowed"
+                      : "bg-white/15 text-white hover:bg-white/20"
                   }`}
                 >
                   {t("Plan.previous")}
@@ -261,8 +260,8 @@ export default function PlanPage() {
         <div className="py-16">
           <div className="container mx-auto px-4 max-w-4xl">
             {isLoading ? (
-              <div className="text-center text-lg text-neutral-700">
-                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" />
+              <div className="text-center text-lg text-white/80" role="status" aria-busy="true">
+                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" aria-hidden="true" />
                 {t("AIStatus.crafting")}
               </div>
             ) : itinerary ? (

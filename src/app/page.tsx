@@ -20,7 +20,7 @@ export default function Home() {
       <VideoBackground />
       <PlannerOverlay />
       {/* Modern Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-lg border-b border-white/20">
+      <nav aria-label="Primary" className="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}

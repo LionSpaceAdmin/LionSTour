@@ -73,20 +73,19 @@ export default function EnterprisePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-neutral-950 text-white">
       {/* Language Switcher */}
       <div className="absolute top-4 right-4 z-10">
         <LanguageSwitcher />
       </div>
 
       {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 via-orange-300/10 to-red-400/10"></div>
-        <div className="relative container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+      <div className="relative py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
             {t("Enterprise.title")}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
             {t("Enterprise.subtitle")}
           </p>
         </div>
@@ -94,12 +93,12 @@ export default function EnterprisePage() {
 
       {/* Solutions Section */}
       <div className="py-16">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               {t("Enterprise.ourSolutions")}
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {t("Enterprise.ourSolutionsDesc")}
             </p>
           </div>
@@ -145,13 +144,13 @@ export default function EnterprisePage() {
       </div>
 
       {/* Benefits Section */}
-      <div className="py-20 bg-gradient-to-br from-gray-50 to-amber-50">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               {t("Enterprise.whyChooseUs")}
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {t("Enterprise.whyChooseUsDesc")}
             </p>
           </div>
@@ -176,19 +175,19 @@ export default function EnterprisePage() {
       </div>
 
       {/* Partnership Form */}
-      <div className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <div className="py-20 bg-neutral-900">
+        <div className="container mx-auto px-4 text-white">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6">
               {t("Enterprise.startPartnership")}
             </h2>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               {t("Enterprise.startPartnershipDesc")}
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div className="rounded-3xl p-8 md:p-12 shadow-2xl bg-white text-gray-900">
               <form className="space-y-6" onSubmit={async (e) => {
                 e.preventDefault();
                 const form = e.currentTarget as HTMLFormElement;
