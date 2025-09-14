@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  bookings  Booking[]
+  reviews   Review[]
+
+  @@map("users")
+}
+
+model Guide {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  bio         String?
+  profileImage String?
+  isVeteran   Boolean  @default(false)
+  languages   String[] // e.g., ["en", "he", "ar"]
+  specialties String[] // e.g., ["history", "culture", "military"]
+  rating      Float?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  experiences Experience[]
+  bookings    Booking[]
+  reviews     Review[]
+
+  @@map("guides")
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  duration    Int      // in minutes
+  price       Float    // in cents
+  maxGuests   Int
+  category    String   // e.g., "historical", "cultural", "adventure"
+  location    String
+  latitude    Float?
+  longitude   Float?
+  images      String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  guideId  String
+  guide    Guide     @relation(fields: [guideId], references: [id])
+  bookings Booking[]
+  reviews  Review[]
+
+  @@map("experiences")
+}
+
+model Booking {
+  id           String        @id @default(cuid())
+  date         DateTime
+  guests       Int
+  totalPrice   Float         // in cents
+  status       BookingStatus @default(PENDING)
+  stripeId     String?       // Stripe payment intent ID
+  notes        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relations
+  userId       String
+  user         User        @relation(fields: [userId], references: [id])
+  experienceId String
+  experience   Experience  @relation(fields: [experienceId], references: [id])
+  guideId      String
+  guide        Guide       @relation(fields: [guideId], references: [id])
+
+  @@map("bookings")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5 stars
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  experienceId String
+  experience   Experience @relation(fields: [experienceId], references: [id])
+  guideId      String
+  guide        Guide      @relation(fields: [guideId], references: [id])
+
+  @@map("reviews")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  GUIDE
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}

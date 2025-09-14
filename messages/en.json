@@ -1,0 +1,27 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "experiences": "Experiences",
+    "plan": "Plan Your Journey",
+    "academy": "Academy",
+    "login": "Login",
+    "dashboard": "Dashboard"
+  },
+  "HomePage": {
+    "title": "LionSTour",
+    "subtitle": "Postwar Israel Tourism Experience Platform – \"Wolt for Tourism\": authentic, story-driven, safe travel with local veterans & diverse communities.",
+    "exploreExperiences": "Explore Experiences",
+    "planJourney": "Plan Your Journey",
+    "veteranGuides": "Veteran Guides",
+    "veteranGuidesDesc": "Connect with local veterans who share their authentic stories and experiences",
+    "safeTravel": "Safe Travel",
+    "safeTravelDesc": "Comprehensive safety measures and support for worry-free exploration",
+    "diverseCommunities": "Diverse Communities",
+    "diverseCommunitiesDesc": "Experience the rich tapestry of Israeli culture and communities",
+    "startJourney": "Start Your Journey"
+  },
+  "Common": {
+    "trustSafety": "Trust & Safety",
+    "enterprise": "Enterprise"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "LionSTour Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [3000, 5555],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js App",
+      "onAutoForward": "notify"
+    },
+    "5555": {
+      "label": "Prisma Studio",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "pnpm install && pnpm run db:generate",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "Prisma.prisma",
+        "ms-typescript.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "remoteUser": "node"
+}
