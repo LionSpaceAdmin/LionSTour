@@ -1,0 +1,19 @@
+mcpServers:
+  filesystem:
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-filesystem"]
+    env:
+      MCP_SERVER_FILESYSTEM_BASE_PATH: ${workspaceFolder}
+
+  git:
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-git"]
+    env:
+      MCP_SERVER_GIT_REPO_PATH: ${workspaceFolder}
+
+  postgres:
+    disabled: false
+    command: uvx
+    args: ["mcp-server-postgres"]
+    env:
+      DATABASE_URL: ${env:DATABASE_URL}

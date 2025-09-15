@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/hooks/useI18n";
 import { JourneyData } from "@/lib/types";
 
@@ -50,12 +51,13 @@ export function EmotionalPreview({ journeyData }: EmotionalPreviewProps) {
 
       <div className="relative bg-white rounded-3xl shadow-2xl p-0 overflow-hidden">
         <div className="relative h-64 md:h-96">
-          <img
+          <Image
             src={preview.image}
             alt={preview.title}
+            fill
+            sizes="100vw"
+            className="object-cover"
             loading="lazy"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
         <div className="relative z-10 -mt-20 md:-mt-24 text-center text-white bg-black/50 p-8 rounded-t-2xl">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useI18n } from "@/hooks/useI18n";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -54,7 +55,16 @@ export default function GuidePage() {
       </div>
 
       <div className="relative py-32 bg-gradient-to-r from-amber-500 to-orange-600 text-center text-white">
-        <img src={guide.profileImage || "/guides/default.jpg"} alt={guide.name} className="w-40 h-40 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"/>
+        <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden relative">
+          <Image
+            src={guide.profileImage || "/guides/default.jpg"}
+            alt={guide.name}
+            fill
+            sizes="160px"
+            className="object-cover"
+            priority
+          />
+        </div>
         <h1 className="text-5xl font-bold">{guide.name}</h1>
         <p className="text-xl mt-2">{guide.specialties.join(", ")}</p>
       </div>

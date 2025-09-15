@@ -44,7 +44,7 @@ export function AIJourneyPlanner() {
             />
             <button
               onClick={() => submit(prompt)}
-              className="btn-primary px-6"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               {t("AIPlanner.start")}
             </button>

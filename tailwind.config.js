@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heebo: ["Heebo", "system-ui", "sans-serif"],
+        heebo: ["var(--font-heebo)", "system-ui", "sans-serif"],
       },
       colors: {
         // Tourism Platform Colors - Israeli Landscape Inspired

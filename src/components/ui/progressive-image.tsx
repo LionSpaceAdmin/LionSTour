@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { useState } from 'react';
 
 interface ProgressiveImageProps {
   src: string;
@@ -8,28 +9,32 @@ interface ProgressiveImageProps {
   alt: string;
   className?: string;
   loading?: 'eager' | 'lazy';
+  sizes?: string;
 }
 
-export function ProgressiveImage({ src, placeholder, alt, className, loading = 'lazy' }: ProgressiveImageProps) {
-  const [currentSrc, setCurrentSrc] = useState(placeholder);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const imageToLoad = new Image();
-    imageToLoad.src = src;
-    imageToLoad.onload = () => {
-      setCurrentSrc(src);
-      setIsLoading(false);
-    };
-  }, [src]);
+export function ProgressiveImage({ src, placeholder, alt, className = '', loading = 'lazy', sizes = '100vw' }: ProgressiveImageProps) {
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <img
-      src={currentSrc}
-      alt={alt}
-      loading={loading}
-      decoding="async"
-      className={`${className} ${isLoading ? 'blur-sm' : 'blur-0'} transition-all duration-500`}
-    />
+    <div
+      className={`${className} relative overflow-hidden`}
+      style={{
+        backgroundImage: `url(${placeholder})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+      aria-label={alt}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        loading={loading}
+        className={`object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        onLoad={() => setLoaded(true)}
+        priority={loading === 'eager'}
+      />
+    </div>
   );
 }

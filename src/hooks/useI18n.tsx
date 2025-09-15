@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import enMessages from '../../messages/en.json';
 import heMessages from '../../messages/he.json';
 
@@ -40,6 +40,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t }}>
+      <LangDirSync locale={locale} />
       <div dir={locale === 'he' ? 'rtl' : 'ltr'}>
         {children}
       </div>
@@ -53,4 +54,13 @@ export function useI18n() {
     throw new Error('useI18n must be used within an I18nProvider');
   }
   return context;
+}
+
+function LangDirSync({ locale }: { locale: 'en' | 'he' }) {
+  useEffect(() => {
+    const el = document.documentElement;
+    el.lang = locale;
+    el.dir = locale === 'he' ? 'rtl' : 'ltr';
+  }, [locale]);
+  return null;
 }

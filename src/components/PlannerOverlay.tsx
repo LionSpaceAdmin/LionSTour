@@ -1,11 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function PlannerOverlay() {
   const router = useRouter();
   const [q, setQ] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const submit = () => {
     const v = q.trim();
@@ -13,27 +17,36 @@ export default function PlannerOverlay() {
     router.push(`/plan?prompt=${encodeURIComponent(v)}`);
   };
 
-  const suggestions = [
-    "Healing nature in the Galilee for a week",
-    "Ancient Jerusalem with archaeology and local stories",
-    "Art and food culture in Tel Aviv for 3 days",
-    "Peaceful desert nights in the Negev",
-  ];
+  const suggestions = useMemo(
+    () => [
+      "Healing nature in the Galilee for a week",
+      "Ancient Jerusalem with archaeology and local stories",
+      "Art and food culture in Tel Aviv for 3 days",
+      "Peaceful desert nights in the Negev",
+    ],
+    []
+  );
 
-  const durations = [
-    { label: "1-3d", text: "for 2 days" },
-    { label: "4-7d", text: "for a week" },
-    { label: "8-14d", text: "for two weeks" },
-  ];
+  const durations = useMemo(
+    () => [
+      { label: "1-3d", text: "for 2 days" },
+      { label: "4-7d", text: "for a week" },
+      { label: "8-14d", text: "for two weeks" },
+    ],
+    []
+  );
 
-  return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-8 z-20 flex justify-center px-4">
-      <div className="pointer-events-auto glass-dark w-full max-w-4xl rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-xl">
+  const overlay = (
+    <div className="pointer-events-none fixed inset-x-0 bottom-8 z-[60] flex justify-center px-4">
+      <div
+        className="pointer-events-auto w-full max-w-4xl rounded-2xl border border-white/10 p-5 backdrop-blur-xl"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+      >
         <div className="flex flex-col gap-3 sm:flex-row">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && submit()}
+            onKeyDown={(e) => e.key === "Enter" && submit()}
             placeholder="Describe your journey — e.g., Healing nature in the Galilee for a week"
             aria-label="Describe your journey"
             className="flex-1 rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-white placeholder:text-white/70 outline-none focus:ring-2 focus:ring-amber-400"
@@ -64,7 +77,9 @@ export default function PlannerOverlay() {
           {durations.map((d) => (
             <button
               key={d.label}
-              onClick={() => setQ((prev) => `${prev.replace(/\s+for\s+.*$/i, '')} ${d.text}`.trim())}
+              onClick={() =>
+                setQ((prev) => `${prev.replace(/\s+for\s+.*$/i, "")} ${d.text}`.trim())
+              }
               className="rounded-full border border-amber-400/40 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-300 hover:bg-amber-500/20 focus-visible:ring-2 focus-visible:ring-amber-400"
               aria-label={`Add duration ${d.text}`}
             >
@@ -75,4 +90,7 @@ export default function PlannerOverlay() {
       </div>
     </div>
   );
+
+  if (!mounted) return null;
+  return createPortal(overlay, document.body);
 }

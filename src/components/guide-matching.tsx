@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/hooks/useI18n";
 import { JourneyData } from "@/lib/types";
 
@@ -54,13 +55,16 @@ export function GuideMatching({ journeyData }: GuideMatchingProps) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {(matchedGuides.length > 0 ? matchedGuides : guides.slice(0, 2)).map((guide) => (
           <div key={guide.id} className="bg-gray-50 rounded-2xl p-6 text-center transform hover:scale-105 transition-transform duration-300 shadow-lg">
-            <img
-              src={guide.image}
-              alt={guide.name}
-              loading="lazy"
-              decoding="async"
-              className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-amber-200"
-            />
+            <div className="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden relative border-4 border-amber-200">
+              <Image
+                src={guide.image}
+                alt={guide.name}
+                fill
+                sizes="128px"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-2">{guide.name}</h3>
             <p className="text-gray-600 mb-4">{guide.story}</p>
             <button className="bg-amber-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-amber-600 transition-colors">

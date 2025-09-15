@@ -6,6 +6,17 @@ export default function ScrollScene({ children, speed = 0.15, className = "" }: 
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Respect reduced motion preferences
+    const prefersReduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      const el = ref.current;
+      if (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
     let raf = 0;
@@ -39,4 +50,3 @@ export default function ScrollScene({ children, speed = 0.15, className = "" }: 
     <div ref={ref} className={`will-change-transform opacity-0 transition-opacity duration-500 ${className}`}>{children}</div>
   );
 }
-

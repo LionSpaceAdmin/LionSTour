@@ -65,6 +65,10 @@
     "title": "Login",
     "successMessage": "Login successful! Redirecting..."
   },
+  "Guide": {
+    "availability": "Availability",
+    "noAvailability": "No availability in the next two weeks."
+  },
   "Auth": {
     "welcomeBack": "Welcome back",
     "welcomeBackDesc": "Sign in to design your personal, story-driven journey",
@@ -107,6 +111,16 @@
     "approve": "Approve",
     "cancel": "Cancel",
     "minutes": "minutes"
+  },
+  "Impact": {
+    "title": "Impact Transparency",
+    "subtitle": "See how bookings support local guides and communities.",
+    "updated": "Data updated",
+    "total": "Total Impact",
+    "regions": "Regions",
+    "bookings": "Bookings",
+    "byRegion": "Impact by Region",
+    "empty": "No bookings yet. Impact will appear after your first bookings."
   },
   "Experiences": {
     "title": "Experience Windows",
@@ -481,6 +495,15 @@
     "readyToExploreDesc": "Join thousands of travelers who have discovered Israel safely with LionSTour",
     "exploreExperiences": "Explore Experiences",
     "planJourney": "Plan Your Journey"
+  },
+  "TrustFAQ": {
+    "title": "Trust & Safety FAQ",
+    "subtitle": "Clear answers about safety, verification, and support.",
+    "q1": { "q": "How do you vet guides?", "a": "All guides complete ID verification, background checks, and peer endorsements before publishing." },
+    "q2": { "q": "Is it safe to travel now?", "a": "We monitor official advisories and provide region-level guidance. Tours adjust in real-time to ensure safety." },
+    "q3": { "q": "What about insurance?", "a": "Operators maintain coverage; guests may add personal travel insurance. Details are provided at checkout." },
+    "q4": { "q": "Accessibility support?", "a": "We label routes for mobility, visual, and hearing needs. Message us for tailored recommendations." },
+    "q5": { "q": "Cancellation policy?", "a": "Flexible: free changes up to 48h; refunds per policy shown at booking time." }
   },
   "Guide": {
     "loading": "Loading guide profile...",

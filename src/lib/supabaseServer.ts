@@ -1,21 +1,21 @@
-import { cookies } from 'next/headers'
-import { createServerClient } from '@supabase/ssr'
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
 
 export async function getSupabaseServer() {
-  const cookieStore = await cookies()
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://localhost:54321'
-  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+  const cookieStore = await cookies();
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "http://localhost:54321";
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder-key";
   return createServerClient(url, anon, {
     cookies: {
       get(name: string) {
-        return cookieStore.get(name)?.value
+        return cookieStore.get(name)?.value;
       },
       set(name: string, value: string, options: any) {
-        cookieStore.set({ name, value, ...options })
+        cookieStore.set({ name, value, ...options });
       },
       remove(name: string, options: any) {
-        cookieStore.set({ name, value: '', ...options })
+        cookieStore.set({ name, value: "", ...options });
       },
     },
-  })
+  });
 }

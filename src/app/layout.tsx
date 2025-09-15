@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
+import { Heebo } from "next/font/google";
 import "@/lib/envFallback";
 import "./globals.css";
 import { I18nProvider } from "@/hooks/useI18n";
 import { ClientChatWidget } from "@/components/ClientChatWidget";
+
+const heebo = Heebo({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-heebo",
+});
 
 export const metadata: Metadata = {
   title: "גלה את ישראל - חוויות תיירות אותנטיות | LionSTour",
@@ -81,26 +89,15 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <head>
-        {/* Preload hero background video for faster start */}
-        <link rel="preload" as="video" href="/site_clip.mp4" type="video/mp4" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preload" as="image" href="/video-poster.jpg" />
       </head>
-      <body className="antialiased font-heebo">
+      <body className={`${heebo.variable} antialiased font-heebo min-h-screen`}>
         {/* Skip link for keyboard users */}
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:rounded focus:bg-black focus:text-white focus:px-4 focus:py-2">
           דלג לתוכן
         </a>
         <I18nProvider>
-          <main id="main">{children}</main>
+          <main id="main" className="min-h-screen w-full">{children}</main>
           {/* Floating AI chat assistant */}
           <ClientChatWidget />
         </I18nProvider>
