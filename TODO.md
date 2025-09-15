@@ -6,7 +6,7 @@
 
 - [x] Landing polish: copy, i18n keys, hero perf
 - [x] Experiences page: filters + map wiring
-- [ ] CI env hardening (no `.env.example` dependency)
+- [x] CI env hardening (no `.env.example` dependency)
 
 ##  Roadmap & Milestones
 
