@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Read env vars from a file and set them in Vercel (Production) non-interactively.
+# Read env vars from a file and set them in Vercel (selected environment) non-interactively.
 # Usage:
 #   ./scripts/vercel-env-from-file.sh \
 #     --project <project-id-or-name> \
 #     --org <org-id> \
 #     --token <vercel-token> \
 #     --env-file <path-to-env-file> \
+#     [--environment production|preview|development] \
 #     [--keys KEY1,KEY2,...]   # optional: limit to specific keys
 #
 # Defaults keys (if --keys not provided):
@@ -17,7 +18,7 @@ usage() {
   cat <<EOF
 Usage: $0 --project <project> --org <org_id> --token <token> --env-file <path> [--keys KEY1,KEY2,...]
 
-Reads variables from the given .env file and configures them in Vercel (Production) non-interactively.
+Reads variables from the given .env file and configures them in Vercel non-interactively for the selected environment.
 EOF
 }
 
@@ -26,6 +27,7 @@ ORG=""
 TOKEN=""
 ENV_FILE=""
 KEYS_ARG=""
+ENVIRONMENT="production"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -33,7 +35,8 @@ while [[ $# -gt 0 ]]; do
     --org) ORG="$2"; shift 2;;
     --token) TOKEN="$2"; shift 2;;
     --env-file) ENV_FILE="$2"; shift 2;;
-    --keys) KEYS_ARG="$2"; shift 2;;
+  --keys) KEYS_ARG="$2"; shift 2;;
+  --environment) ENVIRONMENT="$2"; shift 2;;
     -h|--help) usage; exit 0;;
     *) echo "Unknown arg: $1"; usage; exit 1;;
   esac
@@ -93,15 +96,15 @@ for key in "${KEYS[@]}"; do
     echo "Skipping $key (not found in $ENV_FILE)"
     continue
   fi
-  echo "Configuring $key in Vercel (Production) ..."
+  echo "Configuring $key in Vercel ($ENVIRONMENT) ..."
   # Remove existing value if exists (ignore errors), then add new value non-interactively
-  npx vercel env rm "$key" production \
+  npx vercel env rm "$key" "$ENVIRONMENT" \
     --token "$TOKEN" \
     --scope "$ORG" \
     --project "$PROJECT" \
     --yes >/dev/null 2>&1 || true
 
-  printf "%s" "$val" | npx vercel env add "$key" production \
+  printf "%s" "$val" | npx vercel env add "$key" "$ENVIRONMENT" \
     --token "$TOKEN" \
     --scope "$ORG" \
     --project "$PROJECT" \
@@ -109,4 +112,4 @@ for key in "${KEYS[@]}"; do
   echo "✔ $key set"
 done
 
-echo "All requested keys processed."
+echo "All requested keys processed for $ENVIRONMENT."

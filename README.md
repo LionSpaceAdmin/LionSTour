@@ -35,7 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Architecture
+## ארכיטקטורה
 
-- Documentation: see `archit/README.md` for an overview and a UI/Perf checklist tailored to this repo.
-- Interactive Diagram: run `pnpm dev` and open `http://localhost:3000/archit` to view the end‑to‑end architecture map.
+- תיעוד: ראו `archit/README.md` לסקירה וצ'ק‑ליסט UI/ביצועים מותאם לפרויקט.
+- דיאגרמה אינטראקטיבית: הריצו `pnpm dev` ופתחו `http://localhost:3000/archit` כדי לצפות במפה מקצה לקצה.
