@@ -81,7 +81,6 @@ for kv in "${ENVS[@]}"; do
   echo "Setting $KEY for $ENVIRONMENT ..."
   printf "%s" "$VAL" | npx vercel env add "$KEY" "$ENVIRONMENT" \
     --token "$TOKEN" \
-    --yes \
     --scope "$ORG" \
     --project "$PROJECT" >/dev/null
   echo "✔ $KEY set"

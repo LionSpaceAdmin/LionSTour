@@ -101,14 +101,12 @@ for key in "${KEYS[@]}"; do
   npx vercel env rm "$key" "$ENVIRONMENT" \
     --token "$TOKEN" \
     --scope "$ORG" \
-    --project "$PROJECT" \
-    --yes >/dev/null 2>&1 || true
+    --project "$PROJECT" >/dev/null 2>&1 || true
 
   printf "%s" "$val" | npx vercel env add "$key" "$ENVIRONMENT" \
     --token "$TOKEN" \
     --scope "$ORG" \
-    --project "$PROJECT" \
-    --yes >/dev/null
+    --project "$PROJECT" >/dev/null
   echo "✔ $key set"
 done
 
