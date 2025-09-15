@@ -59,8 +59,14 @@ jobs:
 
       - name: Setup environment
         run: |
-          cp .env.example .env
-          echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/lionstour_test" >> .env
+          echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/lionstour_test" > .env
+          echo "NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_URL=" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=" >> .env
+          echo "SUPABASE_SERVICE_ROLE=" >> .env
+          echo "STRIPE_SECRET_KEY=" >> .env
+          echo "OPENAI_API_KEY=" >> .env
+          echo "ADMIN_API_TOKEN=" >> .env
 
       - name: Run type check
         run: pnpm run type-check
