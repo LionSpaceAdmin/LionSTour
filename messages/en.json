@@ -5,10 +5,35 @@
     "plan": "Plan Your Journey",
     "academy": "Academy",
     "login": "Login",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "guides": "Guides",
+    "safety": "Trust & Safety",
+    "planJourney": "Plan Your Journey"
+  },
+  "Accessibility": {
+    "skipToMainContent": "Skip to main content",
+    "mainNavigation": "Main Navigation - LionSTour",
+    "logo": "LionSTour Logo - Back to Home",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "experiencesLink": "Tourism Experiences - Discover fascinating experiences in Israel",
+    "guidesLink": "Guides - Meet our local guides",
+    "academyLink": "Academy - Learn about Israeli culture and history",
+    "safetyLink": "Trust & Safety - Information about platform safety and reliability",
+    "loginLink": "Login - Sign in to your account",
+    "planJourneyLink": "Plan Journey - Start planning your trip to Israel",
+    "mobileMenu": "Mobile navigation menu",
+    "navLinksGroup": "Navigation links",
+    "userActionsGroup": "User actions",
+    "mobileExperiences": "Tourism experiences in Israel",
+    "mobileGuides": "Experienced local guides",
+    "mobileAcademy": "Academy for learning Israeli culture",
+    "mobileSafety": "Platform safety and reliability",
+    "mobileLogin": "Login to personal account",
+    "mobilePlan": "Start planning your journey now"
   },
   "HomePage": {
-    "title": "גלה את ישראל",
+    "title": "Discover Israel",
     "subtitle": "Discover Israel through the people who live it – authentic, story-driven, safe travel with local veterans & diverse communities",
     "exploreExperiences": "Explore Experiences",
     "planJourney": "Plan Your Journey",
@@ -41,6 +66,10 @@
     "discoverMore": "Discover More",
     "startJourney": "Start Your Journey",
     "startJourneyDesc": "Ready to discover Israel through the people who live it? Your authentic adventure awaits."
+  },
+  "Common": {
+    "linkSeparator": "•",
+    "logo": "LionSTour"
   },
   "AIPlanner": {
     "badge": "AI Journey Designer",

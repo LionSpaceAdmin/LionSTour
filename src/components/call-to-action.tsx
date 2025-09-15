@@ -40,21 +40,21 @@ export function CallToAction() {
             >
               {t("Navigation.academy")}
             </Link>
-            <span className="text-primary-200">•</span>
+            <span className="text-primary-200">{t("Common.linkSeparator")}</span>
             <Link
               href="/trust/safety"
               className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
             >
               {t("Common.trustSafety")}
             </Link>
-            <span className="text-primary-200">•</span>
+            <span className="text-primary-200">{t("Common.linkSeparator")}</span>
             <Link
               href="/enterprise"
               className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
             >
               {t("Common.enterprise")}
             </Link>
-            <span className="text-primary-200">•</span>
+            <span className="text-primary-200">{t("Common.linkSeparator")}</span>
             <Link
               href="/auth/login"
               className="text-white hover:text-primary-100 font-medium text-lg transition-colors hover-glow"
