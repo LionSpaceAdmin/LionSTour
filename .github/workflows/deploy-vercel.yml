@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Option 1: Use official Vercel action (requires secrets)
+      # Deploy with official Vercel action (requires secrets)
       - name: Deploy with Vercel Action
         uses: vercel/action@v3
         with:
@@ -43,22 +43,3 @@ jobs:
           working-directory: .
           vercel-args: "--prod"
         if: ${{ secrets.VERCEL_TOKEN && secrets.VERCEL_ORG_ID && secrets.VERCEL_PROJECT_ID }}
-
-      # Option 2: Fallback to CLI (also requires token and a linked project)
-      - name: Vercel Pull (CLI)
-        run: npx vercel pull --yes --environment=production --token "$VERCEL_TOKEN"
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        if: ${{ ! (secrets.VERCEL_ORG_ID && secrets.VERCEL_PROJECT_ID) && secrets.VERCEL_TOKEN }}
-
-      - name: Vercel Build (CLI)
-        run: npx vercel build --prod --token "$VERCEL_TOKEN"
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        if: ${{ ! (secrets.VERCEL_ORG_ID && secrets.VERCEL_PROJECT_ID) && secrets.VERCEL_TOKEN }}
-
-      - name: Vercel Deploy (CLI)
-        run: npx vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN"
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        if: ${{ ! (secrets.VERCEL_ORG_ID && secrets.VERCEL_PROJECT_ID) && secrets.VERCEL_TOKEN }}

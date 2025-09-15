@@ -70,8 +70,4 @@ jobs:
 
       - name: Build application
         run: pnpm run build
-
-      - name: Run database migrations
-        run: pnpm dlx prisma migrate deploy
-        env:
-          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/lionstour_test
+    
