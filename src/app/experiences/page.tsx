@@ -1,144 +1,116 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useI18n } from "@/hooks/useI18n";
-import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { ExperienceWindows } from "@/components/experience-windows";
-import ExperienceCarousel from "@/components/ExperienceCarousel";
-import { Skeleton } from "@/components/ui/skeleton";
 import { StoryFilters } from "@/components/story-filters";
-import { MapView } from "@/components/map-view";
+import ExperienceCarousel from "@/components/ExperienceCarousel";
 import { GuideSpotlight } from "@/components/guide-spotlight";
-import { ExperienceOfWeek } from "@/components/experience-of-week";
-
-// Local lightweight shape compatible with Supabase/Prisma responses
-type Exp = {
-  id: string;
-  title: string;
-  description: string;
-  duration: number;
-  price: number;
-  maxGuests?: number;
-  category: string;
-  location: string;
-  latitude?: number | null;
-  longitude?: number | null;
-  images?: string[];
-  isActive?: boolean;
-  is_active?: boolean;
-  isFeatured?: boolean;
-  is_featured?: boolean;
-};
+import { CallToAction } from "@/components/call-to-action";
+import { MapView } from "@/components/map-view";
+import { useState } from "react";
+import { List, Map } from "lucide-react";
 
 export default function ExperiencesPage() {
   const { t } = useI18n();
-  const [experiences, setExperiences] = useState<Exp[]>([]);
-  const [filteredExperiences, setFilteredExperiences] = useState<Exp[]>([]);
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [loading, setLoading] = useState(true);
+  const [viewMode, setViewMode] = useState('list'); // 'list' or 'map'
 
-  useEffect(() => {
-    const fetchExperiences = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("/api/experiences");
-        if (response.ok) {
-          const data = (await response.json()) as Exp[];
-          setExperiences(data);
-          setFilteredExperiences(data);
-        } else {
-          console.error("Failed to fetch experiences");
-        }
-      } catch (error) {
-        console.error("Error fetching experiences:", error);
-      }
-      setLoading(false);
-    };
-    fetchExperiences();
-  }, []);
-
-  const handleFilterChange = (filter: string) => {
-    setActiveFilter(filter);
-    if (filter === "all") {
-      setFilteredExperiences(experiences);
-    } else {
-      const filtered = experiences.filter(
-        (exp) => (exp.category || "").toLowerCase() === filter.toLowerCase()
-      );
-      setFilteredExperiences(filtered);
-    }
-  };
+  // Placeholder data - in a real app, this would come from an API
+  const experiences = [
+    {
+      id: "1",
+      title: t("Experiences.jerusalem.title"),
+      description: t("Experiences.jerusalem.description"),
+      image: "/window.svg",
+      guide: { name: t("Experiences.jerusalem.guide") },
+      latitude: 31.7683,
+      longitude: 35.2137,
+    },
+    {
+      id: "2",
+      title: t("Experiences.telAviv.title"),
+      description: t("Experiences.telAviv.description"),
+      image: "/file.svg",
+      guide: { name: t("Experiences.telAviv.guide") },
+      latitude: 32.0853,
+      longitude: 34.7818,
+    },
+    {
+      id: "3",
+      title: t("Experiences.galilee.title"),
+      description: t("Experiences.galilee.description"),
+      image: "/globe.svg",
+      guide: { name: t("Experiences.galilee.guide") },
+      latitude: 32.9206,
+      longitude: 35.2993,
+    },
+    {
+      id: "4",
+      title: t("Experiences.negev.title"),
+      description: t("Experiences.negev.description"),
+      image: "/video-poster.jpg",
+      guide: { name: t("Experiences.negev.guide") },
+      latitude: 30.5329,
+      longitude: 34.8592,
+    },
+  ];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
-      <div className="absolute top-4 right-4 z-10">
-        <LanguageSwitcher />
-      </div>
-
-      <div className="relative py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
+    <div className="bg-black text-white">
+      {/* Header Section */}
+      <header className="relative pt-32 pb-20 text-center bg-gradient-to-b from-black via-gray-900/80 to-black">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="relative z-10">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-shadow-lg">
             {t("Experiences.title")}
           </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
             {t("Experiences.subtitle")}
           </p>
         </div>
-      </div>
+      </header>
 
-      <div className="py-6 sticky top-0 z-10 bg-black/40 backdrop-blur border-b border-white/10">
-        <div className="container mx-auto px-4 text-white">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              {t("Experiences.chooseYourJourney")}
-            </h2>
-            <p className="text-lg text-white/80">
-              {t("Experiences.chooseYourJourneyDesc")}
-            </p>
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Filters and View Toggle Section */}
+        <section aria-labelledby="filter-heading" className="mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex-grow">
+                <StoryFilters />
+            </div>
+            <div className="flex-shrink-0">
+                <div className="flex items-center gap-2 rounded-full bg-white/10 p-1 border border-white/20">
+                    <button onClick={() => setViewMode('list')} className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 ${viewMode === 'list' ? 'bg-purple-600 text-white' : 'text-white/70'}`}>
+                        <List size={16} />
+                        <span>List</span>
+                    </button>
+                    <button onClick={() => setViewMode('map')} className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 ${viewMode === 'map' ? 'bg-purple-600 text-white' : 'text-white/70'}`}>
+                        <Map size={16} />
+                        <span>Map</span>
+                    </button>
+                </div>
+            </div>
           </div>
-          <StoryFilters activeFilter={activeFilter} onFilterChange={handleFilterChange} />
-        </div>
-      </div>
+        </section>
 
-      {/* Narrative carousel replaces static grid */}
-      <div className="py-4">
-        {loading ? (
-          <div className="px-6">
-            <div className="h-[320px] w-full rounded-2xl bg-neutral-200/60 animate-pulse" />
-          </div>
-        ) : (
-          <ExperienceCarousel
-            items={filteredExperiences.map((e) => ({
-              id: e.id,
-              title: e.title,
-              subtitle: `${Math.round((e.duration || 0) / 60) || 2}h • ${e.location || "Israel"}`,
-              image: e.images?.[0] || "/window.svg",
-              href: `/experiences`,
-            }))}
-          />
-        )}
-      </div>
+        {/* Experiences Gallery / Map Section */}
+        <section aria-labelledby="experiences-heading">
+          <h2 id="experiences-heading" className="sr-only">
+            {t("Experiences.categories.all")}
+          </h2>
+          {viewMode === 'list' ? (
+            <ExperienceCarousel items={experiences.map(e => ({ id: e.id, title: e.title, subtitle: e.description, image: e.image, href: `/experiences/${e.id}` }))} />
+          ) : (
+            <MapView experiences={experiences} />
+          )}
+        </section>
 
-      {!loading && (() => {
-        const pool = filteredExperiences.length ? filteredExperiences : experiences;
-        const featured = pool.find((e) => e.is_featured || e.isFeatured) || pool[0];
-        return featured ? <ExperienceOfWeek experiences={[featured]} /> : null;
-      })()}
+        {/* Guide Spotlight Section */}
+        <section className="mt-24">
+          <GuideSpotlight />
+        </section>
+      </main>
 
-      <GuideSpotlight />
-
-      <div className="py-20 bg-neutral-900">
-        <div className="container mx-auto px-4 text-white">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              {t("Experiences.exploreIsrael")}
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              {t("Experiences.exploreIsraelDesc")}
-            </p>
-          </div>
-          <MapView />
-        </div>
+      {/* Call to Action Section */}
+      <div className="mt-24">
+        <CallToAction />
       </div>
     </div>
   );
