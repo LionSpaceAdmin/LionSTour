@@ -1,0 +1,1963 @@
+{
+  "knownSymbols": {
+    "supabase": [
+      {
+        "name": "supabase",
+        "module": "@/lib/supabase",
+        "isDefault": false
+      },
+      {
+        "name": "supabase",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/supabase.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "createClient": [
+      {
+        "name": "createClient",
+        "module": "@supabase/supabase-js",
+        "isDefault": false
+      }
+    ],
+    "getSupabaseAdmin": [
+      {
+        "name": "getSupabaseAdmin",
+        "module": "@/lib/supabaseAdmin",
+        "isDefault": false
+      },
+      {
+        "name": "getSupabaseAdmin",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/supabaseAdmin.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "rateLimit": [
+      {
+        "name": "rateLimit",
+        "module": "@/lib/rateLimit",
+        "isDefault": false
+      },
+      {
+        "name": "rateLimit",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/rateLimit.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "JourneyData": [
+      {
+        "name": "JourneyData",
+        "module": "@/lib/types",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyData",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/types.ts",
+        "type": "interface",
+        "isDefault": false
+      }
+    ],
+    "JourneyQuestionId": [
+      {
+        "name": "JourneyQuestionId",
+        "module": "@/lib/types",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyQuestionId",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/types.ts",
+        "type": "type",
+        "isDefault": false
+      }
+    ],
+    "JourneyQuestion": [
+      {
+        "name": "JourneyQuestion",
+        "module": "@/lib/types",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyQuestion",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/types.ts",
+        "type": "interface",
+        "isDefault": false
+      }
+    ],
+    "cn": [
+      {
+        "name": "cn",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/utils.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "clsx": [
+      {
+        "name": "clsx",
+        "module": "clsx",
+        "isDefault": false
+      }
+    ],
+    "type ClassValue": [
+      {
+        "name": "type ClassValue",
+        "module": "clsx",
+        "isDefault": false
+      }
+    ],
+    "twMerge": [
+      {
+        "name": "twMerge",
+        "module": "tailwind-merge",
+        "isDefault": false
+      }
+    ],
+    "cookies": [
+      {
+        "name": "cookies",
+        "module": "next/headers",
+        "isDefault": false
+      }
+    ],
+    "createServerClient": [
+      {
+        "name": "createServerClient",
+        "module": "@supabase/ssr",
+        "isDefault": false
+      }
+    ],
+    "okJson": [
+      {
+        "name": "okJson",
+        "module": "@/lib/http",
+        "isDefault": false
+      },
+      {
+        "name": "okJson",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/http.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "errorJson": [
+      {
+        "name": "errorJson",
+        "module": "@/lib/http",
+        "isDefault": false
+      },
+      {
+        "name": "errorJson",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/http.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "NextResponse": [
+      {
+        "name": "NextResponse",
+        "module": "next/server",
+        "isDefault": false
+      }
+    ],
+    "ISRAEL_CENTER": [
+      {
+        "name": "ISRAEL_CENTER",
+        "module": "@/lib/mapbox",
+        "isDefault": false
+      },
+      {
+        "name": "ISRAEL_CENTER",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/mapbox.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "MAP_STYLES": [
+      {
+        "name": "MAP_STYLES",
+        "module": "@/lib/mapbox",
+        "isDefault": false
+      },
+      {
+        "name": "MAP_STYLES",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/mapbox.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "mapboxgl": [
+      {
+        "name": "mapboxgl",
+        "module": "@/lib/mapbox",
+        "isDefault": false
+      },
+      {
+        "name": "mapboxgl",
+        "module": "mapbox-gl",
+        "isDefault": true
+      }
+    ],
+    "Stripe": [
+      {
+        "name": "Stripe",
+        "module": "stripe",
+        "isDefault": true
+      }
+    ],
+    "IMPACT_RATE": [
+      {
+        "name": "IMPACT_RATE",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/impact.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "ImpactBreakdownItem": [
+      {
+        "name": "ImpactBreakdownItem",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/impact.ts",
+        "type": "type",
+        "isDefault": false
+      }
+    ],
+    "ImpactReport": [
+      {
+        "name": "ImpactReport",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/impact.ts",
+        "type": "type",
+        "isDefault": false
+      }
+    ],
+    "calculateImpact": [
+      {
+        "name": "calculateImpact",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/impact.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "prisma": [
+      {
+        "name": "prisma",
+        "path": "/Users/danielions/Development/LionSTour/src/lib/prisma.ts",
+        "type": "const",
+        "isDefault": false
+      },
+      {
+        "name": "prisma",
+        "module": "@/lib/prisma",
+        "isDefault": false
+      }
+    ],
+    "PrismaClient": [
+      {
+        "name": "PrismaClient",
+        "module": "@prisma/client/edge",
+        "isDefault": false
+      },
+      {
+        "name": "PrismaClient",
+        "module": "@prisma/client",
+        "isDefault": false
+      }
+    ],
+    "I18nProvider": [
+      {
+        "name": "I18nProvider",
+        "module": "@/hooks/useI18n",
+        "isDefault": false
+      },
+      {
+        "name": "I18nProvider",
+        "path": "/Users/danielions/Development/LionSTour/src/hooks/useI18n.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "useI18n": [
+      {
+        "name": "useI18n",
+        "module": "@/hooks/useI18n",
+        "isDefault": false
+      },
+      {
+        "name": "useI18n",
+        "path": "/Users/danielions/Development/LionSTour/src/hooks/useI18n.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "createContext": [
+      {
+        "name": "createContext",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "useContext": [
+      {
+        "name": "useContext",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "useState": [
+      {
+        "name": "useState",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "ReactNode": [
+      {
+        "name": "ReactNode",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "useReveal": [
+      {
+        "name": "useReveal",
+        "module": "@/hooks/useReveal",
+        "isDefault": false
+      },
+      {
+        "name": "useReveal",
+        "path": "/Users/danielions/Development/LionSTour/src/hooks/useReveal.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "useEffect": [
+      {
+        "name": "useEffect",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "useRef": [
+      {
+        "name": "useRef",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "VideoBackground": [
+      {
+        "name": "VideoBackground",
+        "module": "@/components/VideoBackground",
+        "isDefault": true
+      },
+      {
+        "name": "VideoBackground",
+        "path": "/Users/danielions/Development/LionSTour/src/components/VideoBackground.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "TestimonialGallery": [
+      {
+        "name": "TestimonialGallery",
+        "module": "@/components/testimonial-gallery",
+        "isDefault": false
+      },
+      {
+        "name": "TestimonialGallery",
+        "path": "/Users/danielions/Development/LionSTour/src/components/testimonial-gallery.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Guide": [
+      {
+        "name": "Guide",
+        "module": "@prisma/client",
+        "isDefault": false
+      }
+    ],
+    "Reveal": [
+      {
+        "name": "Reveal",
+        "module": "@/components/Reveal",
+        "isDefault": false
+      },
+      {
+        "name": "Reveal",
+        "path": "/Users/danielions/Development/LionSTour/src/components/Reveal.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "PropsWithChildren": [
+      {
+        "name": "PropsWithChildren",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "CallToAction": [
+      {
+        "name": "CallToAction",
+        "module": "@/components/call-to-action",
+        "isDefault": false
+      },
+      {
+        "name": "CallToAction",
+        "path": "/Users/danielions/Development/LionSTour/src/components/call-to-action.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Link": [
+      {
+        "name": "Link",
+        "module": "next/link",
+        "isDefault": true
+      },
+      {
+        "name": "Link",
+        "module": "react-scroll",
+        "isDefault": false
+      }
+    ],
+    "ChatWidget": [
+      {
+        "name": "ChatWidget",
+        "path": "/Users/danielions/Development/LionSTour/src/components/chat-widget.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "useChat": [
+      {
+        "name": "useChat",
+        "module": "@ai-sdk/react",
+        "isDefault": false
+      }
+    ],
+    "type { UIMessage": [
+      {
+        "name": "type { UIMessage",
+        "module": "ai",
+        "isDefault": true
+      }
+    ],
+    "Send": [
+      {
+        "name": "Send",
+        "module": "lucide-react",
+        "isDefault": false
+      }
+    ],
+    "MessageCircle": [
+      {
+        "name": "MessageCircle",
+        "module": "lucide-react",
+        "isDefault": false
+      }
+    ],
+    "ImpactDashboard": [
+      {
+        "name": "ImpactDashboard",
+        "module": "@/components/impact/ImpactDashboard",
+        "isDefault": false
+      },
+      {
+        "name": "ImpactDashboard",
+        "path": "/Users/danielions/Development/LionSTour/src/components/impact/ImpactDashboard.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "React": [
+      {
+        "name": "React",
+        "module": "react",
+        "isDefault": true
+      }
+    ],
+    "type { ImpactReport": [
+      {
+        "name": "type { ImpactReport",
+        "module": "@/lib/impact",
+        "isDefault": true
+      }
+    ],
+    "GuideSpotlight": [
+      {
+        "name": "GuideSpotlight",
+        "module": "@/components/guide-spotlight",
+        "isDefault": false
+      },
+      {
+        "name": "GuideSpotlight",
+        "path": "/Users/danielions/Development/LionSTour/src/components/guide-spotlight.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Image": [
+      {
+        "name": "Image",
+        "module": "next/image",
+        "isDefault": true
+      }
+    ],
+    "JourneyQuestions": [
+      {
+        "name": "JourneyQuestions",
+        "module": "@/components/journey-questions",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyQuestions",
+        "path": "/Users/danielions/Development/LionSTour/src/components/journey-questions.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "EmergencyContacts": [
+      {
+        "name": "EmergencyContacts",
+        "module": "@/components/trust/emergency-contacts",
+        "isDefault": false
+      },
+      {
+        "name": "EmergencyContacts",
+        "path": "/Users/danielions/Development/LionSTour/src/components/trust/emergency-contacts.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "TrustIndicators": [
+      {
+        "name": "TrustIndicators",
+        "module": "@/components/trust/trust-indicators",
+        "isDefault": false
+      },
+      {
+        "name": "TrustIndicators",
+        "path": "/Users/danielions/Development/LionSTour/src/components/trust/trust-indicators.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "SafetyContent": [
+      {
+        "name": "SafetyContent",
+        "module": "@/components/trust/safety-content",
+        "isDefault": false
+      },
+      {
+        "name": "SafetyContent",
+        "path": "/Users/danielions/Development/LionSTour/src/components/trust/safety-content.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "EmotionalPreview": [
+      {
+        "name": "EmotionalPreview",
+        "module": "@/components/emotional-preview",
+        "isDefault": false
+      },
+      {
+        "name": "EmotionalPreview",
+        "path": "/Users/danielions/Development/LionSTour/src/components/emotional-preview.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ExperienceOfWeek": [
+      {
+        "name": "ExperienceOfWeek",
+        "module": "@/components/experience-of-week",
+        "isDefault": false
+      },
+      {
+        "name": "ExperienceOfWeek",
+        "path": "/Users/danielions/Development/LionSTour/src/components/experience-of-week.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ProgressiveImage": [
+      {
+        "name": "ProgressiveImage",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/progressive-image.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "ProgressiveImage",
+        "module": "@/components/ui/progressive-image",
+        "isDefault": false
+      }
+    ],
+    "PlannerOverlay": [
+      {
+        "name": "PlannerOverlay",
+        "module": "@/components/PlannerOverlay",
+        "isDefault": true
+      },
+      {
+        "name": "PlannerOverlay",
+        "path": "/Users/danielions/Development/LionSTour/src/components/PlannerOverlay.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "useRouter": [
+      {
+        "name": "useRouter",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "GuideMatching": [
+      {
+        "name": "GuideMatching",
+        "module": "@/components/guide-matching",
+        "isDefault": false
+      },
+      {
+        "name": "GuideMatching",
+        "path": "/Users/danielions/Development/LionSTour/src/components/guide-matching.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "PreferencesForm": [
+      {
+        "name": "PreferencesForm",
+        "path": "/Users/danielions/Development/LionSTour/src/components/preferences-form.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ShareJourney": [
+      {
+        "name": "ShareJourney",
+        "module": "@/components/share-journey",
+        "isDefault": false
+      },
+      {
+        "name": "ShareJourney",
+        "path": "/Users/danielions/Development/LionSTour/src/components/share-journey.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "UpcomingExperiences": [
+      {
+        "name": "UpcomingExperiences",
+        "path": "/Users/danielions/Development/LionSTour/src/components/upcoming-experiences.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ExperienceCarousel": [
+      {
+        "name": "ExperienceCarousel",
+        "module": "@/components/ExperienceCarousel",
+        "isDefault": true
+      },
+      {
+        "name": "ExperienceCarousel",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ExperienceCarousel.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "JourneyReflection": [
+      {
+        "name": "JourneyReflection",
+        "module": "@/components/journey-reflection",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyReflection",
+        "path": "/Users/danielions/Development/LionSTour/src/components/journey-reflection.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ArticleCard": [
+      {
+        "name": "ArticleCard",
+        "path": "/Users/danielions/Development/LionSTour/src/components/academy/article-card.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "ArticleCard",
+        "module": "@/components/academy/article-card",
+        "isDefault": false
+      }
+    ],
+    "ArticleFilters": [
+      {
+        "name": "ArticleFilters",
+        "module": "@/components/academy/article-filters",
+        "isDefault": false
+      },
+      {
+        "name": "ArticleFilters",
+        "path": "/Users/danielions/Development/LionSTour/src/components/academy/article-filters.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "SearchBar": [
+      {
+        "name": "SearchBar",
+        "module": "@/components/academy/search-bar",
+        "isDefault": false
+      },
+      {
+        "name": "SearchBar",
+        "path": "/Users/danielions/Development/LionSTour/src/components/academy/search-bar.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "FavoriteGuides": [
+      {
+        "name": "FavoriteGuides",
+        "path": "/Users/danielions/Development/LionSTour/src/components/favorite-guides.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "AvailabilityCalendar": [
+      {
+        "name": "AvailabilityCalendar",
+        "path": "/Users/danielions/Development/LionSTour/src/components/availability-calendar.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "AvailabilityCalendar",
+        "module": "@/components/availability-calendar",
+        "isDefault": false
+      }
+    ],
+    "useMemo": [
+      {
+        "name": "useMemo",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "JourneyHistory": [
+      {
+        "name": "JourneyHistory",
+        "path": "/Users/danielions/Development/LionSTour/src/components/journey-history.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "PersonalStories": [
+      {
+        "name": "PersonalStories",
+        "module": "@/components/personal-stories",
+        "isDefault": false
+      },
+      {
+        "name": "PersonalStories",
+        "path": "/Users/danielions/Development/LionSTour/src/components/personal-stories.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "StoryFilters": [
+      {
+        "name": "StoryFilters",
+        "module": "@/components/story-filters",
+        "isDefault": false
+      },
+      {
+        "name": "StoryFilters",
+        "path": "/Users/danielions/Development/LionSTour/src/components/story-filters.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ScrollScene": [
+      {
+        "name": "ScrollScene",
+        "module": "@/components/ScrollScene",
+        "isDefault": true
+      },
+      {
+        "name": "ScrollScene",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ScrollScene.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "CommunityConnection": [
+      {
+        "name": "CommunityConnection",
+        "module": "@/components/community-connection",
+        "isDefault": false
+      },
+      {
+        "name": "CommunityConnection",
+        "path": "/Users/danielions/Development/LionSTour/src/components/community-connection.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "GuidesManagement": [
+      {
+        "name": "GuidesManagement",
+        "module": "@/components/admin/guide-table",
+        "isDefault": false
+      },
+      {
+        "name": "GuidesManagement",
+        "path": "/Users/danielions/Development/LionSTour/src/components/admin/guide-table.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ModerationTools": [
+      {
+        "name": "ModerationTools",
+        "module": "@/components/admin/moderation-tools",
+        "isDefault": false
+      },
+      {
+        "name": "ModerationTools",
+        "path": "/Users/danielions/Development/LionSTour/src/components/admin/moderation-tools.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "useTransition": [
+      {
+        "name": "useTransition",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "type { toggleExperienceActive as ToggleExpAction": [
+      {
+        "name": "type { toggleExperienceActive as ToggleExpAction",
+        "module": "@/app/dashboard/admin/actions",
+        "isDefault": true
+      }
+    ],
+    "toggleGuideActive as ToggleGuideAction": [
+      {
+        "name": "toggleGuideActive as ToggleGuideAction",
+        "module": "@/app/dashboard/admin/actions",
+        "isDefault": true
+      }
+    ],
+    "toggleExperienceFeatured as ToggleFeaturedAction": [
+      {
+        "name": "toggleExperienceFeatured as ToggleFeaturedAction",
+        "module": "@/app/dashboard/admin/actions",
+        "isDefault": true
+      }
+    ],
+    "BookingsManagement": [
+      {
+        "name": "BookingsManagement",
+        "module": "@/components/admin/booking-table",
+        "isDefault": false
+      },
+      {
+        "name": "BookingsManagement",
+        "path": "/Users/danielions/Development/LionSTour/src/components/admin/booking-table.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ExperiencesManagement": [
+      {
+        "name": "ExperiencesManagement",
+        "module": "@/components/admin/experience-table",
+        "isDefault": false
+      },
+      {
+        "name": "ExperiencesManagement",
+        "path": "/Users/danielions/Development/LionSTour/src/components/admin/experience-table.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "StoryItinerary": [
+      {
+        "name": "StoryItinerary",
+        "module": "@/components/story-itinerary",
+        "isDefault": false
+      },
+      {
+        "name": "StoryItinerary",
+        "path": "/Users/danielions/Development/LionSTour/src/components/story-itinerary.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "PersonalStory": [
+      {
+        "name": "PersonalStory",
+        "module": "@/components/personal-story",
+        "isDefault": false
+      },
+      {
+        "name": "PersonalStory",
+        "path": "/Users/danielions/Development/LionSTour/src/components/personal-story.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "JourneyTimeline": [
+      {
+        "name": "JourneyTimeline",
+        "module": "@/components/journey-timeline",
+        "isDefault": false
+      },
+      {
+        "name": "JourneyTimeline",
+        "path": "/Users/danielions/Development/LionSTour/src/components/journey-timeline.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "AIJourneyPlanner": [
+      {
+        "name": "AIJourneyPlanner",
+        "module": "@/components/ai-journey-planner",
+        "isDefault": false
+      },
+      {
+        "name": "AIJourneyPlanner",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ai-journey-planner.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ExperienceWindows": [
+      {
+        "name": "ExperienceWindows",
+        "module": "@/components/experience-windows",
+        "isDefault": false
+      },
+      {
+        "name": "ExperienceWindows",
+        "path": "/Users/danielions/Development/LionSTour/src/components/experience-windows.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ClientChatWidget": [
+      {
+        "name": "ClientChatWidget",
+        "module": "@/components/ClientChatWidget",
+        "isDefault": false
+      },
+      {
+        "name": "ClientChatWidget",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ClientChatWidget.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "dynamic": [
+      {
+        "name": "dynamic",
+        "module": "next/dynamic",
+        "isDefault": true
+      },
+      {
+        "name": "dynamic",
+        "path": "/Users/danielions/Development/LionSTour/src/app/TEamPlace/page.tsx",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "ExperienceWindowsPreview": [
+      {
+        "name": "ExperienceWindowsPreview",
+        "module": "@/components/experience-windows-preview",
+        "isDefault": false
+      },
+      {
+        "name": "ExperienceWindowsPreview",
+        "path": "/Users/danielions/Development/LionSTour/src/components/experience-windows-preview.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "BookingList": [
+      {
+        "name": "BookingList",
+        "path": "/Users/danielions/Development/LionSTour/src/components/booking-list.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "CommunityShowcase": [
+      {
+        "name": "CommunityShowcase",
+        "module": "@/components/community-showcase",
+        "isDefault": false
+      },
+      {
+        "name": "CommunityShowcase",
+        "path": "/Users/danielions/Development/LionSTour/src/components/community-showcase.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "ProfileSettings": [
+      {
+        "name": "ProfileSettings",
+        "path": "/Users/danielions/Development/LionSTour/src/components/profile-settings.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "MapView": [
+      {
+        "name": "MapView",
+        "module": "@/components/map-view",
+        "isDefault": false
+      },
+      {
+        "name": "MapView",
+        "path": "/Users/danielions/Development/LionSTour/src/components/map-view.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "InteractiveMap": [
+      {
+        "name": "InteractiveMap",
+        "module": "@/components/ui/interactive-map",
+        "isDefault": false
+      },
+      {
+        "name": "InteractiveMap",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/interactive-map.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Skeleton": [
+      {
+        "name": "Skeleton",
+        "module": "@/components/ui/skeleton",
+        "isDefault": false
+      },
+      {
+        "name": "Skeleton",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/skeleton.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Toaster": [
+      {
+        "name": "Toaster",
+        "module": "react-hot-toast",
+        "isDefault": false
+      }
+    ],
+    "toast": [
+      {
+        "name": "toast",
+        "module": "react-hot-toast",
+        "isDefault": false
+      }
+    ],
+    "Modal": [
+      {
+        "name": "Modal",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/modal.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "LanguageSwitcher": [
+      {
+        "name": "LanguageSwitcher",
+        "module": "@/components/ui/language-switcher",
+        "isDefault": false
+      },
+      {
+        "name": "LanguageSwitcher",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/language-switcher.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "FormValidation": [
+      {
+        "name": "FormValidation",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/form-validation.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "useForm": [
+      {
+        "name": "useForm",
+        "module": "react-hook-form",
+        "isDefault": false
+      }
+    ],
+    "SubmitHandler": [
+      {
+        "name": "SubmitHandler",
+        "module": "react-hook-form",
+        "isDefault": false
+      }
+    ],
+    "FieldValues": [
+      {
+        "name": "FieldValues",
+        "module": "react-hook-form",
+        "isDefault": false
+      }
+    ],
+    "Map": [
+      {
+        "name": "Map",
+        "module": "lucide-react",
+        "isDefault": false
+      },
+      {
+        "name": "Map",
+        "module": "react-map-gl",
+        "isDefault": true
+      },
+      {
+        "name": "Map",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/map.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "SmoothScroll": [
+      {
+        "name": "SmoothScroll",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ui/smooth-scroll.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "{ Marker": [
+      {
+        "name": "{ Marker",
+        "module": "react-map-gl",
+        "isDefault": true
+      }
+    ],
+    "loadImpactReport": [
+      {
+        "name": "loadImpactReport",
+        "module": "@/lib/impact",
+        "isDefault": false
+      }
+    ],
+    "EmotionalHero as Hero": [
+      {
+        "name": "EmotionalHero as Hero",
+        "module": "@/components/hero",
+        "isDefault": false
+      }
+    ],
+    "TrustSafetyPage": [
+      {
+        "name": "TrustSafetyPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/trust/safety/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "TrustFAQPage": [
+      {
+        "name": "TrustFAQPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/trust/faq/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "NextRequest": [
+      {
+        "name": "NextRequest",
+        "module": "next/server",
+        "isDefault": false
+      }
+    ],
+    "createOpenAI": [
+      {
+        "name": "createOpenAI",
+        "module": "@ai-sdk/openai",
+        "isDefault": false
+      }
+    ],
+    "generateObject": [
+      {
+        "name": "generateObject",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "z": [
+      {
+        "name": "z",
+        "module": "zod/v4",
+        "isDefault": false
+      },
+      {
+        "name": "z",
+        "module": "zod",
+        "isDefault": false
+      }
+    ],
+    "embedMany": [
+      {
+        "name": "embedMany",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "embed": [
+      {
+        "name": "embed",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "createGateway": [
+      {
+        "name": "createGateway",
+        "module": "@ai-sdk/gateway",
+        "isDefault": false
+      }
+    ],
+    "readFile": [
+      {
+        "name": "readFile",
+        "module": "fs/promises",
+        "isDefault": false
+      }
+    ],
+    "path": [
+      {
+        "name": "path",
+        "module": "node:path",
+        "isDefault": true
+      },
+      {
+        "name": "path",
+        "module": "path",
+        "isDefault": true
+      }
+    ],
+    "streamText": [
+      {
+        "name": "streamText",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "convertToModelMessages": [
+      {
+        "name": "convertToModelMessages",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "type UIMessage": [
+      {
+        "name": "type UIMessage",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "tool": [
+      {
+        "name": "tool",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "type { Prisma": [
+      {
+        "name": "type { Prisma",
+        "module": "@prisma/client",
+        "isDefault": true
+      }
+    ],
+    "type { Metadata": [
+      {
+        "name": "type { Metadata",
+        "module": "next",
+        "isDefault": true
+      }
+    ],
+    "useParams": [
+      {
+        "name": "useParams",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "DashboardPage": [
+      {
+        "name": "DashboardPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/dashboard/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "getSupabaseServer": [
+      {
+        "name": "getSupabaseServer",
+        "module": "@/lib/supabaseServer",
+        "isDefault": false
+      }
+    ],
+    "redirect": [
+      {
+        "name": "redirect",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "notFound": [
+      {
+        "name": "notFound",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "AcademyPage": [
+      {
+        "name": "AcademyPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/academy/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "type Article": [
+      {
+        "name": "type Article",
+        "module": "@/components/academy/article-card",
+        "isDefault": false
+      }
+    ],
+    "Suspense": [
+      {
+        "name": "Suspense",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "useSearchParams": [
+      {
+        "name": "useSearchParams",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "EnterprisePage": [
+      {
+        "name": "EnterprisePage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/enterprise/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "EnterpriseApiDocs": [
+      {
+        "name": "EnterpriseApiDocs",
+        "path": "/Users/danielions/Development/LionSTour/src/app/enterprise/api/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "ChatIndexPage": [
+      {
+        "name": "ChatIndexPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/chat/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "DefaultChatTransport": [
+      {
+        "name": "DefaultChatTransport",
+        "module": "ai",
+        "isDefault": false
+      }
+    ],
+    "type { NextRequest": [
+      {
+        "name": "type { NextRequest",
+        "module": "next/server.js",
+        "isDefault": true
+      },
+      {
+        "name": "type { NextRequest",
+        "module": "next/server",
+        "isDefault": true
+      }
+    ],
+    "nextConfig": [
+      {
+        "name": "nextConfig",
+        "path": "/Users/danielions/Development/LionSTour/next.config.ts",
+        "isDefault": true
+      }
+    ],
+    "type { NextConfig": [
+      {
+        "name": "type { NextConfig",
+        "module": "next",
+        "isDefault": true
+      }
+    ],
+    "register": [
+      {
+        "name": "register",
+        "path": "/Users/danielions/Development/LionSTour/instrumentation.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "registerOTel": [
+      {
+        "name": "registerOTel",
+        "module": "@vercel/otel",
+        "isDefault": false
+      }
+    ],
+    "type { ResolvingMetadata": [
+      {
+        "name": "type { ResolvingMetadata",
+        "module": "next/dist/lib/metadata/types/metadata-interface.js",
+        "isDefault": true
+      },
+      {
+        "name": "type { ResolvingMetadata",
+        "module": "next/types.js",
+        "isDefault": true
+      }
+    ],
+    "ResolvingViewport": [
+      {
+        "name": "ResolvingViewport",
+        "module": "next/dist/lib/metadata/types/metadata-interface.js",
+        "isDefault": true
+      },
+      {
+        "name": "ResolvingViewport",
+        "module": "next/types.js",
+        "isDefault": true
+      }
+    ],
+    "test": [
+      {
+        "name": "test",
+        "module": "@playwright/test",
+        "isDefault": false
+      },
+      {
+        "name": "test",
+        "module": "vitest",
+        "isDefault": false
+      }
+    ],
+    "expect": [
+      {
+        "name": "expect",
+        "module": "@playwright/test",
+        "isDefault": false
+      },
+      {
+        "name": "expect",
+        "module": "vitest",
+        "isDefault": false
+      }
+    ],
+    "defineConfig": [
+      {
+        "name": "defineConfig",
+        "module": "vitest/config",
+        "isDefault": false
+      },
+      {
+        "name": "defineConfig",
+        "path": "/Users/danielions/Development/LionSTour/vitest.config.ts",
+        "isDefault": true
+      },
+      {
+        "name": "defineConfig",
+        "module": "@playwright/test",
+        "isDefault": false
+      }
+    ],
+    "devices": [
+      {
+        "name": "devices",
+        "module": "@playwright/test",
+        "isDefault": false
+      }
+    ],
+    "Head": [
+      {
+        "name": "Head",
+        "module": "next/head",
+        "isDefault": true
+      }
+    ],
+    "EmotionalHero": [
+      {
+        "name": "EmotionalHero",
+        "path": "/Users/danielions/Development/LionSTour/src/components/hero.tsx",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "createPortal": [
+      {
+        "name": "createPortal",
+        "module": "react-dom",
+        "isDefault": false
+      }
+    ],
+    "Heebo": [
+      {
+        "name": "Heebo",
+        "module": "next/font/google",
+        "isDefault": false
+      }
+    ],
+    "Article": [
+      {
+        "name": "Article",
+        "path": "/Users/danielions/Development/LionSTour/src/components/academy/article-card.tsx",
+        "type": "type",
+        "isDefault": false
+      }
+    ],
+    "HeroSectionAI as Hero": [
+      {
+        "name": "HeroSectionAI as Hero",
+        "module": "@/components/HeroSectionAI",
+        "isDefault": false
+      }
+    ],
+    "motion": [
+      {
+        "name": "motion",
+        "module": "framer-motion",
+        "isDefault": false
+      }
+    ],
+    "AnimatePresence": [
+      {
+        "name": "AnimatePresence",
+        "module": "framer-motion",
+        "isDefault": false
+      }
+    ],
+    "Search": [
+      {
+        "name": "Search",
+        "module": "lucide-react",
+        "isDefault": false
+      }
+    ],
+    "GuideProfilePage": [
+      {
+        "name": "GuideProfilePage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/guides/[slug]/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "HeroSectionAI": [
+      {
+        "name": "HeroSectionAI",
+        "path": "/Users/danielions/Development/LionSTour/src/components/HeroSectionAI.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "HeroSectionAI",
+        "module": "@/components/HeroSectionAI",
+        "isDefault": false
+      }
+    ],
+    "react": [
+      {
+        "name": "react",
+        "module": "@vitejs/plugin-react",
+        "isDefault": true
+      }
+    ],
+    "tsconfigPaths": [
+      {
+        "name": "tsconfigPaths",
+        "module": "vite-tsconfig-paths",
+        "isDefault": true
+      }
+    ],
+    "render": [
+      {
+        "name": "render",
+        "module": "@testing-library/react",
+        "isDefault": false
+      }
+    ],
+    "screen": [
+      {
+        "name": "screen",
+        "module": "@testing-library/react",
+        "isDefault": false
+      }
+    ],
+    "vi": [
+      {
+        "name": "vi",
+        "module": "vitest",
+        "isDefault": false
+      }
+    ],
+    "cubicBezier": [
+      {
+        "name": "cubicBezier",
+        "module": "framer-motion",
+        "isDefault": false
+      }
+    ],
+    "GuidePage": [
+      {
+        "name": "GuidePage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/guides/[id]/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "TeamPlacePage": [
+      {
+        "name": "TeamPlacePage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/TEamPlace/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "withAccelerate": [
+      {
+        "name": "withAccelerate",
+        "module": "@prisma/extension-accelerate",
+        "isDefault": false
+      }
+    ],
+    "ToImageOptions": [
+      {
+        "name": "ToImageOptions",
+        "path": "/Users/danielions/Development/LionSTour/src/types/html-to-image.d.ts",
+        "type": "interface",
+        "isDefault": false
+      }
+    ],
+    "toPng": [
+      {
+        "name": "toPng",
+        "path": "/Users/danielions/Development/LionSTour/src/types/html-to-image.d.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "Knowledge": [
+      {
+        "name": "Knowledge",
+        "module": "@prisma/client",
+        "isDefault": true
+      }
+    ],
+    "runtime": [
+      {
+        "name": "runtime",
+        "path": "/Users/danielions/Development/LionSTour/src/app/api/chat/route.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "lazy": [
+      {
+        "name": "lazy",
+        "module": "react",
+        "isDefault": false
+      }
+    ],
+    "ClientChatWidgetGate": [
+      {
+        "name": "ClientChatWidgetGate",
+        "path": "/Users/danielions/Development/LionSTour/src/components/ClientChatWidgetGate.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "ClientChatWidgetGate",
+        "module": "@/components/ClientChatWidgetGate",
+        "isDefault": false
+      }
+    ],
+    "usePathname": [
+      {
+        "name": "usePathname",
+        "module": "next/navigation",
+        "isDefault": false
+      }
+    ],
+    "Popup": [
+      {
+        "name": "Popup",
+        "module": "react-map-gl",
+        "isDefault": true
+      }
+    ],
+    "ExperiencesPage": [
+      {
+        "name": "ExperiencesPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/experiences/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "List": [
+      {
+        "name": "List",
+        "module": "lucide-react",
+        "isDefault": false
+      }
+    ],
+    "AdminTeamPlaceLink": [
+      {
+        "name": "AdminTeamPlaceLink",
+        "path": "/Users/danielions/Development/LionSTour/src/components/AdminTeamPlaceLink.tsx",
+        "type": "function",
+        "isDefault": false
+      },
+      {
+        "name": "AdminTeamPlaceLink",
+        "module": "@/components/AdminTeamPlaceLink",
+        "isDefault": false
+      }
+    ],
+    "Home": [
+      {
+        "name": "Home",
+        "path": "/Users/danielions/Development/LionSTour/src/app/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "getTranslator": [
+      {
+        "name": "getTranslator",
+        "module": "next-intl/server",
+        "isDefault": false
+      }
+    ],
+    "metadata": [
+      {
+        "name": "metadata",
+        "path": "/Users/danielions/Development/LionSTour/src/app/layout.tsx",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "RootLayout": [
+      {
+        "name": "RootLayout",
+        "path": "/Users/danielions/Development/LionSTour/src/app/layout.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "ExperiencesLayout": [
+      {
+        "name": "ExperiencesLayout",
+        "path": "/Users/danielions/Development/LionSTour/src/app/experiences/layout.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "GuideLayout": [
+      {
+        "name": "GuideLayout",
+        "path": "/Users/danielions/Development/LionSTour/src/app/guides/[id]/layout.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "PlanPage": [
+      {
+        "name": "PlanPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/plan/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "ChatRoom": [
+      {
+        "name": "ChatRoom",
+        "path": "/Users/danielions/Development/LionSTour/src/app/chat/[id]/room.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "middleware": [
+      {
+        "name": "middleware",
+        "path": "/Users/danielions/Development/LionSTour/src/middleware.ts",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "config": [
+      {
+        "name": "config",
+        "path": "/Users/danielions/Development/LionSTour/src/middleware.ts",
+        "type": "const",
+        "isDefault": false
+      }
+    ],
+    "createIntlMiddleware": [
+      {
+        "name": "createIntlMiddleware",
+        "module": "next-intl/middleware",
+        "isDefault": true
+      }
+    ],
+    "PlanClient": [
+      {
+        "name": "PlanClient",
+        "path": "/Users/danielions/Development/LionSTour/src/app/plan/PlanClient.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "LoginPage": [
+      {
+        "name": "LoginPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/auth/login/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "SignUpPage": [
+      {
+        "name": "SignUpPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/auth/sign-up/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "type { PrismaClient as PrismaClientNodeType": [
+      {
+        "name": "type { PrismaClient as PrismaClientNodeType",
+        "module": "@prisma/client",
+        "isDefault": true
+      }
+    ],
+    "PageProps": [
+      {
+        "name": "PageProps",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/app/ai-learning-platform/archit/page.ts",
+        "type": "interface",
+        "isDefault": false
+      }
+    ],
+    "LayoutProps": [
+      {
+        "name": "LayoutProps",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/app/ai-learning-platform/archit/page.ts",
+        "type": "interface",
+        "isDefault": false
+      }
+    ],
+    "fs": [
+      {
+        "name": "fs",
+        "module": "node:fs",
+        "isDefault": true
+      }
+    ],
+    "ArchitectureDiagramPage": [
+      {
+        "name": "ArchitectureDiagramPage",
+        "path": "/Users/danielions/Development/LionSTour/src/app/ai-learning-platform/archit/page.tsx",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "unstable_cacheLife": [
+      {
+        "name": "unstable_cacheLife",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/cache-life.d.ts",
+        "type": "function",
+        "isDefault": false
+      }
+    ],
+    "the": [
+      {
+        "name": "the",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/validator.ts",
+        "isDefault": false
+      }
+    ],
+    "ParamsOf": [
+      {
+        "name": "ParamsOf",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/routes.d.ts",
+        "type": "type",
+        "isDefault": false
+      }
+    ],
+    "type": [
+      {
+        "name": "type",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/routes.d.ts",
+        "isDefault": false
+      }
+    ],
+    "Page": [
+      {
+        "name": "Page",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/routes.d.ts",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "Layout": [
+      {
+        "name": "Layout",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/routes.d.ts",
+        "type": "function",
+        "isDefault": true
+      }
+    ],
+    "async": [
+      {
+        "name": "async",
+        "path": "/Users/danielions/Development/LionSTour/.next/types/routes.d.ts",
+        "isDefault": false
+      }
+    ]
+  }
+}

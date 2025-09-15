@@ -21,11 +21,24 @@ const messages: Record<Locale, Messages> = {
 };
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>('en');
+  const [localeState, setLocaleState] = useState<Locale>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = window.localStorage.getItem('app.locale');
+        if (saved === 'he' || saved === 'en') return saved;
+      } catch {}
+    }
+    return 'he';
+  });
+
+  const setLocale = (loc: Locale) => {
+    setLocaleState(loc);
+    try { window.localStorage.setItem('app.locale', loc); } catch {}
+  };
 
   const t = (key: string): string => {
     const keys = key.split('.');
-    let value: unknown = messages[locale];
+    let value: unknown = messages[localeState];
     
     for (const k of keys) {
       if (typeof value === 'object' && value !== null) {
@@ -39,9 +52,9 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
-      <LangDirSync locale={locale} />
-      <div dir={locale === 'he' ? 'rtl' : 'ltr'}>
+    <I18nContext.Provider value={{ locale: localeState, setLocale, t }}>
+      <LangDirSync locale={localeState} />
+      <div dir={localeState === 'he' ? 'rtl' : 'ltr'}>
         {children}
       </div>
     </I18nContext.Provider>

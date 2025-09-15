@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { useI18n } from "@/hooks/useI18n";
 import { supabase } from "@/lib/supabase";
+import { motion } from "framer-motion";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
 
 export default function SignUpPage() {
   const { t } = useI18n();
@@ -26,84 +28,94 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 flex items-center justify-center">
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">
-            {t("SignUp.title")}
-          </h1>
-          <p className="text-gray-600 mt-2">{t("SignUp.subtitle")}</p>
+    <div className="min-h-screen bg-black text-white">
+        <div className="absolute top-4 end-4 z-10">
+            <LanguageSwitcher />
         </div>
-
-        <form onSubmit={handleSignUp} className="space-y-6">
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+        <div className="container mx-auto flex min-h-screen items-center justify-center px-4">
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+                className="w-full max-w-md"
             >
-              {t("Common.email")}
-            </label>
-            <div className="mt-1">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-amber-500 focus:ring-amber-500"
-              />
-            </div>
-          </div>
+                <div className="bg-black/30 border border-white/10 rounded-3xl shadow-2xl p-8 backdrop-blur-lg">
+                    <div className="text-center mb-8">
+                        <Link href="/" className="inline-block mb-6 text-4xl font-bold">🦁</Link>
+                        <h1 className="text-3xl font-bold text-white mb-2">
+                            {t("SignUp.title")}
+                        </h1>
+                        <p className="text-white/60">{t("SignUp.subtitle")}</p>
+                    </div>
 
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              {t("Common.password")}
-            </label>
-            <div className="mt-1">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-amber-500 focus:ring-amber-500"
-              />
-            </div>
-          </div>
+                    <form onSubmit={handleSignUp} className="space-y-6">
+                        <div>
+                            <label
+                                htmlFor="email"
+                                className="block text-sm font-semibold text-white/70 mb-2"
+                            >
+                                {t("Auth.email")}
+                            </label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                autoComplete="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/20 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                placeholder={t("Auth.emailPlaceholder")}
+                            />
+                        </div>
 
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 transform hover:scale-105"
-            >
-              {t("SignUp.createAccount")}
-            </button>
-          </div>
-        </form>
+                        <div>
+                            <label
+                                htmlFor="password"
+                                className="block text-sm font-semibold text-white/70 mb-2"
+                            >
+                                {t("Auth.password")}
+                            </label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="new-password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/20 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+                                placeholder={t("Auth.passwordPlaceholder")}
+                            />
+                        </div>
 
-        {message && (
-          <p className="mt-6 text-center text-sm text-gray-600">{message}</p>
-        )}
+                        <button
+                            type="submit"
+                            className="w-full group relative inline-block px-8 py-3 text-lg font-semibold text-white bg-white/5 border-2 border-transparent rounded-full backdrop-blur-xl shadow-lg transition-all duration-300 overflow-hidden hover:shadow-purple-500/20 hover:scale-105 transform"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <span className="relative">{t("SignUp.createAccount")}</span>
+                        </button>
+                    </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
-            {t("SignUp.alreadyHaveAccount")}{" "}
-            <Link
-              href="/auth/login"
-              className="font-medium text-amber-600 hover:text-amber-500"
-            >
-              {t("Login.title")}
-            </Link>
-          </p>
+                    {message && (
+                        <p className="mt-6 text-center text-sm text-white/60">{message}</p>
+                    )}
+
+                    <div className="mt-8 text-center">
+                        <p className="text-white/60">
+                            {t("SignUp.alreadyHaveAccount")}{" "}
+                            <Link
+                                href="/auth/login"
+                                className="text-purple-400 hover:text-purple-300 font-semibold"
+                            >
+                                {t("Login.title")}
+                            </Link>
+                        </p>
+                    </div>
+                </div>
+            </motion.div>
         </div>
-      </div>
     </div>
   );
 }

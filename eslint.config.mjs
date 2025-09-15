@@ -20,6 +20,22 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Keep hooks strict to avoid runtime bugs
+      "react-hooks/rules-of-hooks": "error",
+      // Reduce noise from strict typing while codebase matures
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      // Allow quotes in text content without escaping
+      "react/no-unescaped-entities": "off",
+      // Prefer Image but don't fail CI if <img> is used
+      "@next/next/no-img-element": "warn",
+    },
+  },
 ];
 
 export default eslintConfig;

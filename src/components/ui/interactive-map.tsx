@@ -1,21 +1,34 @@
 "use client";
 
 import { useState } from 'react';
-import Map, { Marker } from 'react-map-gl';
+import Map, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-interface InteractiveMapProps {
+interface MarkerData {
   latitude: number;
   longitude: number;
-  zoom?: number;
+  title: string;
 }
 
-export function InteractiveMap({ latitude, longitude, zoom = 10 }: InteractiveMapProps) {
+interface InteractiveMapProps {
+  initialLatitude: number;
+  initialLongitude: number;
+  initialZoom?: number;
+  markers?: MarkerData[];
+}
+
+export function InteractiveMap({ 
+  initialLatitude, 
+  initialLongitude, 
+  initialZoom = 7, 
+  markers = [] 
+}: InteractiveMapProps) {
   const [viewport, setViewport] = useState({
-    latitude,
-    longitude,
-    zoom,
+    latitude: initialLatitude,
+    longitude: initialLongitude,
+    zoom: initialZoom,
   });
+  const [selectedMarker, setSelectedMarker] = useState<MarkerData | null>(null);
 
   return (
     <Map
@@ -23,9 +36,30 @@ export function InteractiveMap({ latitude, longitude, zoom = 10 }: InteractiveMa
       mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
       onMove={(evt) => setViewport(evt.viewState)}
       style={{ width: '100%', height: '100%' }}
-      mapStyle="mapbox://styles/mapbox/streets-v11"
+      mapStyle="mapbox://styles/mapbox/dark-v11" // Using a dark theme to match the site
     >
-      <Marker longitude={longitude} latitude={latitude} />
+      {markers.map((marker, index) => (
+        <Marker key={index} longitude={marker.longitude} latitude={marker.latitude}>
+          <button onClick={(e) => {
+            e.preventDefault();
+            setSelectedMarker(marker);
+          }} className="w-6 h-6 bg-purple-500 rounded-full border-2 border-white shadow-lg" />
+        </Marker>
+      ))}
+
+      {selectedMarker && (
+        <Popup
+          longitude={selectedMarker.longitude}
+          latitude={selectedMarker.latitude}
+          onClose={() => setSelectedMarker(null)}
+          closeOnClick={false}
+          anchor="top"
+        >
+          <div className="p-2 bg-gray-800 text-white rounded-lg">
+            <h3 className="font-bold">{selectedMarker.title}</h3>
+          </div>
+        </Popup>
+      )}
     </Map>
   );
 }

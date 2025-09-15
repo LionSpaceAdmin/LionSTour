@@ -65,7 +65,11 @@
     "galileeDesc": "Connect with nature and spirituality in Israel's most beautiful region",
     "discoverMore": "Discover More",
     "startJourney": "Start Your Journey",
-    "startJourneyDesc": "Ready to discover Israel through the people who live it? Your authentic adventure awaits."
+    "startJourneyDesc": "Ready to discover Israel through the people who live it? Your authentic adventure awaits.",
+    "aiSubtitle": "Let local AI guides build your journey — stories, flavors, people, truth.",
+    "aiPrompt": "Where do you want to go, feel, or discover? Type anything.",
+    "aiExplore": "✨ Explore With AI",
+    "aiPlan": "🎯 Plan With Locals"
   },
   "Common": {
     "linkSeparator": "•",
@@ -95,6 +99,10 @@
     "successMessage": "Login successful! Redirecting..."
   },
   "Guide": {
+    "meta": {
+      "title": "Guide Profile",
+      "description": "Learn more about our local guides and their stories."
+    },
     "availability": "Availability",
     "noAvailability": "No availability in the next two weeks."
   },
@@ -295,6 +303,10 @@
       "itineraryDesc": "Your journey will unfold as a narrative, with each experience building on the last",
       "personalization": "Emotional Personalization",
       "personalizationDesc": "Every detail will be crafted to create the emotional experience you're seeking"
+    },
+    "meta": {
+      "title": "Design Your Journey",
+      "description": "Create a personalized, story-driven itinerary for your trip to Israel."
     }
   },
   "AIStatus": {
@@ -643,5 +655,9 @@
     "isVeteran": "Veteran",
     "addExperience": "Add Experience",
     "moderationTools": "Moderation Tools"
+  },
+  "Layout": {
+    "title": "LionSTour: Discover Israel Through Its People",
+    "description": "Authentic, story-driven, and safe travel experiences in Israel with local veteran guides and diverse communities."
   }
 }

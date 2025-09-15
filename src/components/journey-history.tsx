@@ -31,23 +31,21 @@ export function JourneyHistory() {
     fetchJourneys();
   }, []);
 
-  if (loading) {
-    return <p>{t("Common.loading")}</p>;
-  }
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <div className="bg-black/30 border border-white/10 rounded-2xl p-6 backdrop-blur-lg">
+      <h2 className="text-2xl font-bold text-white mb-4">
         {t("Dashboard.journeyHistory")}
       </h2>
-      {journeys.length === 0 ? (
-        <p>{t("Dashboard.noJourneys")}</p>
+      {loading ? (
+        <p className="text-white/70">{t("Common.loading")}</p>
+      ) : journeys.length === 0 ? (
+        <p className="text-white/70">{t("Dashboard.noJourneys")}</p>
       ) : (
         <div className="space-y-4">
           {journeys.map((journey) => (
-            <div key={journey.id} className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">{journey.experiences.title}</h3>
-              <p>{t("Dashboard.journeyDate")}: {new Date(journey.date).toLocaleDateString()}</p>
+            <div key={journey.id} className="bg-white/5 border border-white/10 p-4 rounded-lg">
+              <h3 className="text-xl font-bold text-white">{journey.experiences.title}</h3>
+              <p className="text-sm text-white/60">{t("Dashboard.journeyDate")}: {new Date(journey.date).toLocaleDateString()}</p>
             </div>
           ))}
         </div>

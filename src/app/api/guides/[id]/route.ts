@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rateLimit";
 import { errorJson, okJson } from "@/lib/http";
@@ -28,11 +28,20 @@ export async function PUT(
   context: { params: Promise<{ id: string }> }
 ) {
   const { id } = await context.params;
-  const { name, email, bio, profileImage, isVeteran, languages, specialties } = await req.json();
+  const { name, email, bio, profileImage, isVeteran, languages, specialties } =
+    await req.json();
 
   const { data, error } = await supabase
     .from("guides")
-    .update({ name, email, bio, profileImage, isVeteran, languages, specialties })
+    .update({
+      name,
+      email,
+      bio,
+      profileImage,
+      isVeteran,
+      languages,
+      specialties,
+    })
     .eq("id", id)
     .select();
 

@@ -11,6 +11,7 @@ import { EmotionalPreview } from "@/components/emotional-preview";
 import { ShareJourney } from "@/components/share-journey";
 import { JourneyReflection } from "@/components/journey-reflection";
 import { JourneyData, JourneyQuestion, JourneyQuestionId } from "@/lib/types";
+import { motion } from "framer-motion";
 
 interface Itinerary {
   title: string;
@@ -189,53 +190,57 @@ function PlanPageContent() {
   const currentQuestion = journeyQuestions[currentStep - 1];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div className="min-h-screen bg-black text-white">
       <Suspense fallback={null}>
         <SearchParamsHandler onUpdateJourneyData={handleUpdateJourneyData} />
       </Suspense>
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-4 end-4 z-10">
         <LanguageSwitcher />
       </div>
 
-      <div className="relative py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6">
+      <div className="relative pt-32 pb-16 text-center">
+        <div className="container mx-auto px-4">
+          <motion.h1 initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5}} className="text-5xl md:text-6xl font-bold text-white mb-4">
             {isJourneyCreated ? t("Itinerary.title") : t("Plan.title")}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+          </motion.h1>
+          <motion.p initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.5, delay: 0.2}} className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
             {isJourneyCreated ? t("Itinerary.createdSubtitle") : t("Plan.subtitle")}
-          </p>
+          </motion.p>
         </div>
       </div>
 
       {!isJourneyCreated ? (
         <>
-          <div className="py-8 bg-black/40 backdrop-blur border-y border-white/10">
-            <div className="container mx-auto px-4 text-white">
-              <div className="flex items-center justify-center space-x-4">
-                {journeyQuestions.map((_, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${index + 1 <= currentStep ? "bg-amber-500 text-white" : "bg-white/20 text-white/60"}`}>
-                      {index + 1}
-                    </div>
-                    {index < journeyQuestions.length - 1 && (
-                      <div className={`w-16 h-1 mx-2 ${index + 1 < currentStep ? "bg-amber-500" : "bg-white/20"}`}></div>
-                    )}
-                  </div>
-                ))}
-              </div>
+          <div className="container mx-auto px-4 mb-12">
+            <div className="w-full bg-white/10 rounded-full h-2.5">
+                <motion.div 
+                    className="bg-gradient-to-r from-purple-500 to-blue-500 h-2.5 rounded-full"
+                    initial={{width: 0}}
+                    animate={{width: `${(currentStep / journeyQuestions.length) * 100}%`}}
+                    transition={{duration: 0.5, ease: "easeInOut"}}
+                />
             </div>
           </div>
 
-          <div className="py-16">
+          <div className="py-8">
             <div className="container mx-auto px-4 max-w-4xl">
               <JourneyQuestions question={currentQuestion} journeyData={journeyData} onAnswer={handleAnswer} />
-              <div className="flex justify-between mt-8">
-                <button onClick={prevStep} disabled={currentStep === 1} className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${currentStep === 1 ? "bg-white/10 text-white/40 cursor-not-allowed" : "bg-white/15 text-white hover:bg-white/20"}`}>
+              <div className="flex justify-between mt-12">
+                <button 
+                  onClick={prevStep} 
+                  disabled={currentStep === 1}
+                  className="px-8 py-3 text-lg font-medium text-white/80 bg-transparent border-2 border-white/30 rounded-full backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/50 hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   {t("Plan.previous")}
                 </button>
-                <button onClick={handleNext} className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-amber-500 text-white hover:bg-amber-600`}>
-                  {currentStep === journeyQuestions.length ? t("Plan.createJourney") : t("Plan.next")}
+                <button 
+                  onClick={handleNext} 
+                  className="group relative inline-block px-8 py-3 text-lg font-semibold text-white bg-white/5 border-2 border-transparent rounded-full backdrop-blur-xl shadow-lg transition-all duration-300 overflow-hidden hover:shadow-purple-500/20 hover:scale-105 transform"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <span className="relative">
+                        {currentStep === journeyQuestions.length ? t("Plan.createJourney") : t("Plan.next")}
+                    </span>
                 </button>
               </div>
             </div>
@@ -246,14 +251,14 @@ function PlanPageContent() {
           <div className="container mx-auto px-4 max-w-4xl">
             {isLoading ? (
               <div className="text-center text-lg text-white/80" role="status" aria-busy="true">
-                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-amber-500 border-t-transparent" aria-hidden="true" />
+                <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-2 border-purple-500 border-t-transparent" aria-hidden="true" />
                 {t("AIStatus.crafting")}
               </div>
             ) : itinerary ? (
               <>
                 <StoryItinerary itinerary={itinerary} />
                 <div className="mt-6 text-center">
-                  <button onClick={() => handleCreateJourney(Date.now())} className="btn-outline px-8 py-3">
+                  <button onClick={() => handleCreateJourney(Date.now())} className="px-8 py-3 text-lg font-medium text-white/80 bg-transparent border-2 border-white/30 rounded-full backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/50 hover:scale-105 transform">
                     {t("Plan.regenerate")}
                   </button>
                 </div>

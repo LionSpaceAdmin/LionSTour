@@ -10,17 +10,14 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const {
-    organizationName,
-    contactPerson,
-    email,
-    phone,
-    groupSize,
-    message,
-  } = body ?? {};
+  const { organizationName, contactPerson, email, phone, groupSize, message } =
+    body ?? {};
 
   if (!organizationName || !email) {
-    return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing required fields" },
+      { status: 400 }
+    );
   }
 
   const admin = getSupabaseAdmin();
@@ -37,18 +34,21 @@ export async function POST(req: NextRequest) {
       if (error) throw error;
     } else {
       // Fallback: attempt anon insert if RLS allows; otherwise, accept without persistence
-      const { error: anonErr } = await supabase.from("partner_inquiries").insert({
-        organization_name: organizationName,
-        contact_person: contactPerson ?? null,
-        email,
-        phone: phone ?? null,
-        group_size: groupSize ?? null,
-        message: message ?? null,
-      });
+      const { error: _anonErr } = await supabase
+        .from("partner_inquiries")
+        .insert({
+          organization_name: organizationName,
+          contact_person: contactPerson ?? null,
+          email,
+          phone: phone ?? null,
+          group_size: groupSize ?? null,
+          message: message ?? null,
+        });
       // ignore anonErr intentionally
     }
     return NextResponse.json({ ok: true });
-  } catch (e: any) {
-    return NextResponse.json({ error: e?.message ?? "Failed" }, { status: 500 });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : "Failed";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

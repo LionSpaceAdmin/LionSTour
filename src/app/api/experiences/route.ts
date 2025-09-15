@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rateLimit";
 import { okJson, errorJson } from "@/lib/http";
@@ -80,18 +80,44 @@ export async function GET() {
 
     // If Supabase error or empty, fall back to local sample data
     return okJson(sampleExperiences);
-  } catch (_) {
+  } catch {
     // Network/ENV failure — return sample data to keep dev UX working
     return okJson(sampleExperiences);
   }
 }
 
 export async function POST(req: NextRequest) {
-  const { title, description, duration, price, maxGuests, category, location, latitude, longitude, images, guideId } = await req.json();
+  const {
+    title,
+    description,
+    duration,
+    price,
+    maxGuests,
+    category,
+    location,
+    latitude,
+    longitude,
+    images,
+    guideId,
+  } = await req.json();
 
   const { data, error } = await supabase
     .from("experiences")
-    .insert([{ title, description, duration, price, maxGuests, category, location, latitude, longitude, images, guideId }])
+    .insert([
+      {
+        title,
+        description,
+        duration,
+        price,
+        maxGuests,
+        category,
+        location,
+        latitude,
+        longitude,
+        images,
+        guideId,
+      },
+    ])
     .select();
 
   if (error) {

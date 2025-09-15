@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import type { UIMessage } from "ai";
 import { okJson, errorJson } from "@/lib/http";
@@ -20,8 +20,14 @@ export async function GET(
   // Shape as UIMessage[]
   const uiMessages: UIMessage[] = messages.map((m) => ({
     id: m.uiId,
-    role: m.role === "user" || m.role === "assistant" || m.role === "system" ? (m.role as UIMessage["role"]) : "assistant",
+    role:
+      m.role === "user" || m.role === "assistant" || m.role === "system"
+        ? (m.role as UIMessage["role"])
+        : "assistant",
     parts: m.parts as unknown as UIMessage["parts"],
   }));
-  return okJson({ chat: { id: chat.id, title: chat.title }, messages: uiMessages });
+  return okJson({
+    chat: { id: chat.id, title: chat.title },
+    messages: uiMessages,
+  });
 }

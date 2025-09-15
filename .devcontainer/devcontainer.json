@@ -18,6 +18,7 @@
     }
   },
   "postCreateCommand": "pnpm install && pnpm run db:generate",
+  "postStartCommand": "bash ./scripts/env-boot.sh",
   "customizations": {
     "vscode": {
       "extensions": [

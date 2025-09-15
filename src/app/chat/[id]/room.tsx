@@ -4,6 +4,46 @@ import { useEffect, useMemo, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
+import Image from "next/image";
+
+// Define interfaces for tool outputs for type safety
+interface SearchExperiencesOutput {
+  experiences: {
+    id: string;
+    title: string;
+    location: string;
+    category: string;
+    duration: number;
+    price: number;
+  }[];
+}
+
+interface BookExperienceOutput {
+  ok: boolean;
+  booking?: { id: string };
+}
+
+interface RagSearchOutput {
+  results: {
+    slug: string;
+    title: string;
+    content: string;
+  }[];
+}
+
+// Type guard functions
+function isSearchExperiencesOutput(output: any): output is SearchExperiencesOutput {
+  return output && Array.isArray(output.experiences);
+}
+
+function isBookExperienceOutput(output: any): output is BookExperienceOutput {
+  return output && typeof output.ok === 'boolean';
+}
+
+function isRagSearchOutput(output: any): output is RagSearchOutput {
+  return output && Array.isArray(output.results);
+}
+
 
 export default function ChatRoom({ chatId, title }: { chatId: string; title: string }) {
   const [modelId, setModelId] = useState<string>(() =>
@@ -61,17 +101,19 @@ export default function ChatRoom({ chatId, title }: { chatId: string; title: str
               }
             >
               <div>
-                {m.parts.map((p: unknown, idx) => {
-                  const part = p as { type: string; [k: string]: any };
+                {m.parts.map((part: any, idx) => {
                   if (part.type === "text") return <TextPart key={idx} text={part.text as string} />;
                   if (part.type === "file" && typeof part.mediaType === 'string' && part.mediaType.startsWith("image")) {
                     return (
-                      <img
-                        key={idx}
-                        src={String(part.url)}
-                        alt={(part.filename as string) || "image"}
-                        className="my-2 max-h-64 rounded-md"
-                      />
+                      <div className="relative my-2 h-64 w-full max-w-sm overflow-hidden rounded-md">
+                        <Image
+                          key={idx}
+                          src={String(part.url)}
+                          alt={(part.filename as string) || "image"}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
                     );
                   }
                   // Tool invocations (tool-*) and dynamic-tool
@@ -86,28 +128,28 @@ export default function ChatRoom({ chatId, title }: { chatId: string; title: str
                         {part.state === "output-available" && (
                           <div className="space-y-2">
                             {/* Try to render known tool outputs nicely */}
-                            {toolName === "search_experiences" && (part.output as any)?.experiences ? (
+                            {toolName === "search_experiences" && isSearchExperiencesOutput(part.output) ? (
                               <ul className="list-inside list-disc text-xs">
-                                {(part.output as any).experiences.map((e: any) => (
+                                {part.output.experiences.map((e: any) => (
                                   <li key={e.id}>
                                     <span className="font-medium">{e.title}</span> · {e.location} · {e.category} · {e.duration} ד׳ · ₪{Math.round(e.price)}
                                   </li>
                                 ))}
                               </ul>
-                            ) : toolName === "book_experience" && (part.output as any)?.ok ? (
+                            ) : toolName === "book_experience" && isBookExperienceOutput(part.output) && part.output.ok ? (
                               <div className="text-xs">
-                                ההזמנה בוצעה! מזהה: <span className="font-mono">{(part.output as any)?.booking?.id}</span>
+                                ההזמנה בוצעה! מזהה: <span className="font-mono">{part.output.booking?.id}</span>
                               </div>
-                            ) : toolName === "rag_search" && (part.output as any)?.results ? (
+                            ) : toolName === "rag_search" && isRagSearchOutput(part.output) ? (
                               <ul className="list-inside list-disc text-xs">
-                                {(part.output as any).results.map((r: any) => (
+                                {part.output.results.map((r: any) => (
                                   <li key={r.slug}>
                                     <span className="font-medium">{r.title}</span> — <span className="text-neutral-600">{(r.content || "").slice(0, 120)}…</span>
                                   </li>
                                 ))}
                               </ul>
                             ) : (
-                              <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify((part as any).output ?? part, null, 2)}</pre>
+                              <pre className="overflow-auto rounded bg-neutral-50 p-2 text-xs text-neutral-700">{JSON.stringify(part.output ?? part, null, 2)}</pre>
                             )}
                           </div>
                         )}

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rateLimit";
 import { errorJson, okJson } from "@/lib/http";
@@ -28,11 +28,35 @@ export async function PUT(
   ctx: { params: Promise<{ id: string }> }
 ) {
   const { id } = await ctx.params;
-  const { title, description, duration, price, maxGuests, category, location, latitude, longitude, images, guideId } = await req.json();
+  const {
+    title,
+    description,
+    duration,
+    price,
+    maxGuests,
+    category,
+    location,
+    latitude,
+    longitude,
+    images,
+    guideId,
+  } = await req.json();
 
   const { data, error } = await supabase
     .from("experiences")
-    .update({ title, description, duration, price, maxGuests, category, location, latitude, longitude, images, guideId })
+    .update({
+      title,
+      description,
+      duration,
+      price,
+      maxGuests,
+      category,
+      location,
+      latitude,
+      longitude,
+      images,
+      guideId,
+    })
     .eq("id", id)
     .select();
 

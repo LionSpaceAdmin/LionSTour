@@ -50,47 +50,48 @@ export function ProfileSettings() {
     }
   };
 
-  if (loading) {
-    return <p>{t("Common.loading")}</p>;
-  }
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <div className="bg-black/30 border border-white/10 rounded-2xl p-6 backdrop-blur-lg">
+      <h2 className="text-2xl font-bold text-white mb-4">
         {t("Dashboard.profileSettings")}
       </h2>
-      <form onSubmit={handleUpdateProfile} className="space-y-4">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            {t("Common.email")}
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            disabled
-            className="w-full px-4 py-3 rounded-lg border-gray-300 bg-gray-100"
-          />
-        </div>
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            {t("Common.name")}
-          </label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border-gray-300 focus:border-amber-500 focus:ring-amber-500"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 transform hover:scale-105"
-        >
-          {t("Dashboard.updateProfile")}
-        </button>
-      </form>
+      {loading ? (
+        <p className="text-white/70">{t("Common.loading")}</p>
+      ) : (
+        <form onSubmit={handleUpdateProfile} className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-white/70 mb-2">
+              {t("Common.email")}
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              disabled
+              className="w-full px-4 py-3 rounded-lg bg-black/20 border border-white/10 text-white/50"
+            />
+          </div>
+          <div>
+            <label htmlFor="name" className="block text-sm font-semibold text-white/70 mb-2">
+              {t("Common.name")}
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/20 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full group relative inline-block px-8 py-3 text-lg font-semibold text-white bg-white/5 border-2 border-transparent rounded-full backdrop-blur-xl shadow-lg transition-all duration-300 overflow-hidden hover:shadow-purple-500/20 hover:scale-105 transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <span className="relative">{t("Dashboard.updateProfile")}</span>
+          </button>
+        </form>
+      )}
     </div>
   );
 }

@@ -1,55 +1,48 @@
 "use client";
 
 import { useI18n } from "@/hooks/useI18n";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-interface StoryFiltersProps {
-  activeFilter: string;
-  onFilterChange: (filter: string) => void;
-}
-
-export function StoryFilters({ activeFilter, onFilterChange }: StoryFiltersProps) {
+export function StoryFilters() {
   const { t } = useI18n();
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const filters = [
-    { id: "all", icon: "🌍", gradient: "from-purple-500 to-pink-500" },
-    { id: "cultural", icon: "🏛️", gradient: "from-blue-500 to-indigo-600" },
-    { id: "nature", icon: "🌿", gradient: "from-green-500 to-emerald-600" },
-    { id: "urban", icon: "🏙️", gradient: "from-gray-500 to-slate-600" },
-    { id: "adventure", icon: "🏔️", gradient: "from-orange-500 to-red-600" },
+    { id: "all", label: t("Experiences.categories.all") },
+    { id: "cultural", label: t("Experiences.categories.cultural") },
+    { id: "nature", label: t("Experiences.categories.nature") },
+    { id: "urban", label: t("Experiences.categories.urban") },
+    { id: "adventure", label: t("Experiences.categories.adventure") },
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 mb-8 px-4">
-      {filters.map((filter) => (
-        <button
-          key={filter.id}
-          onClick={() => onFilterChange(filter.id)}
-          aria-pressed={activeFilter === filter.id}
-          className={`group relative overflow-hidden rounded-2xl px-6 py-4 font-semibold text-base transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50 ${
-            activeFilter === filter.id
-              ? `bg-gradient-to-r ${filter.gradient} text-white shadow-2xl scale-105`
-              : "bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50 shadow-lg"
-          }`}
-        >
-          {/* Background glow effect for active filter */}
-          {activeFilter === filter.id && (
-            <div className={`absolute inset-0 bg-gradient-to-r ${filter.gradient} opacity-20 blur-xl animate-pulse`} />
-          )}
-
-          {/* Content */}
-          <div className="relative flex items-center space-x-3">
-            <span className="text-2xl group-hover:scale-110 transition-transform duration-200">
-              {filter.icon}
-            </span>
-            <span className="whitespace-nowrap">
-              {t(`Experiences.categories.${filter.id}`)}
-            </span>
-          </div>
-
-          {/* Hover effect ripple */}
-          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        </button>
-      ))}
+    <div className="flex flex-col items-center gap-6">
+      <h3 className="text-2xl font-semibold text-white/90">
+        {t("Experiences.chooseYourJourney")}
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        {filters.map((filter) => (
+          <button
+            key={filter.id}
+            onClick={() => setActiveFilter(filter.id)}
+            className={`relative px-5 py-2 text-md font-medium rounded-full transition-colors duration-300
+              ${activeFilter === filter.id
+                ? "text-white"
+                : "text-white/60 hover:text-white hover:bg-white/10"
+              }`}
+          >
+            {activeFilter === filter.id && (
+              <motion.div
+                layoutId="activeFilterBubble"
+                className="absolute inset-0 bg-purple-600/80 rounded-full"
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">{filter.label}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

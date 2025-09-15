@@ -1,0 +1,191 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation "ניווט ראשי - LionSTour" [ref=e3]:
+      - generic [ref=e5]:
+        - link "לוגו LionSTour - חזרה לעמוד הבית" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8] [cursor=pointer]: 🦁
+          - generic [ref=e9] [cursor=pointer]: LionSTour
+        - generic [ref=e10]:
+          - link "חוויות" [ref=e11] [cursor=pointer]:
+            - /url: /experiences
+          - link "מדריכים" [ref=e12] [cursor=pointer]:
+            - /url: /guides
+          - link "אקדמיה" [ref=e13] [cursor=pointer]:
+            - /url: /academy
+          - link "אמון ובטיחות" [ref=e14] [cursor=pointer]:
+            - /url: /trust/safety
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - button "Switch to English" [ref=e17]:
+              - img "English Flag" [ref=e18]
+            - button "Switch to Hebrew" [pressed] [ref=e19]:
+              - img "Hebrew Flag" [ref=e20]
+          - button "Admin Login" [ref=e21]: Admin
+          - generic [ref=e22]:
+            - link "התחברות" [ref=e23] [cursor=pointer]:
+              - /url: /auth/login
+              - generic [ref=e24] [cursor=pointer]: 👤
+              - generic [ref=e25] [cursor=pointer]: התחברות
+            - link "תכנון מסע" [ref=e26] [cursor=pointer]:
+              - /url: /plan
+              - generic [ref=e27] [cursor=pointer]: ✨
+              - generic [ref=e28] [cursor=pointer]: תכנון מסע
+    - main [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e33]:
+          - heading "חלונות חוויה" [level=1] [ref=e34]
+          - paragraph [ref=e35]: כל חוויה היא שער לעולם אחר – בחרו את ההרפתקה שלכם
+        - main [ref=e36]:
+          - region [ref=e37]:
+            - generic [ref=e38]:
+              - generic [ref=e40]:
+                - heading "בחרו את המסע שלכם" [level=3] [ref=e41]
+                - generic [ref=e42]:
+                  - button "כל החוויות" [ref=e43]:
+                    - generic [ref=e45]: כל החוויות
+                  - button "גילויים תרבותיים" [ref=e46]:
+                    - generic [ref=e47]: גילויים תרבותיים
+                  - button "הרפתקאות טבע" [ref=e48]:
+                    - generic [ref=e49]: הרפתקאות טבע
+                  - button "חקירות עירוניות" [ref=e50]:
+                    - generic [ref=e51]: חקירות עירוניות
+                  - button "מסעות הרפתקה" [ref=e52]:
+                    - generic [ref=e53]: מסעות הרפתקה
+              - generic [ref=e55]:
+                - button "List" [ref=e56]:
+                  - img [ref=e57]
+                  - generic [ref=e58]: List
+                - button "Map" [ref=e59]:
+                  - img [ref=e60]
+                  - generic [ref=e62]: Map
+          - region "כל החוויות" [ref=e63]:
+            - heading "כל החוויות" [level=2] [ref=e64]
+            - generic [ref=e66]:
+              - generic [ref=e67]:
+                - generic [ref=e68]:
+                  - heading "חוויות מומלצות" [level=2] [ref=e69]
+                  - paragraph [ref=e70]: גלה את החוויות המרגשות ביותר בישראל
+                - generic [ref=e71]:
+                  - button "חזור לחוויה הקודמת" [ref=e72]:
+                    - img [ref=e73]
+                  - button "עבור לחוויה הבאה" [ref=e76]:
+                    - img [ref=e77]
+              - list "Experiences" [ref=e80]:
+                - listitem [ref=e82] [cursor=pointer]:
+                  - 'img "ירושלים: עתיקה וקדושה" [ref=e84] [cursor=pointer]'
+                  - generic [ref=e88] [cursor=pointer]:
+                    - generic [ref=e90] [cursor=pointer]: חוויה מומלצת
+                    - 'heading "ירושלים: עתיקה וקדושה" [level=3] [ref=e91] [cursor=pointer]'
+                    - generic [ref=e92] [cursor=pointer]:
+                      - img [ref=e93] [cursor=pointer]
+                      - paragraph [ref=e95] [cursor=pointer]: התהלכו דרך 3000 שנות היסטוריה עם מדריכים שיודעים כל אבן וסיפור
+                    - generic [ref=e96] [cursor=pointer]:
+                      - generic [ref=e97] [cursor=pointer]:
+                        - img [ref=e98] [cursor=pointer]
+                        - text: ישראל
+                      - generic [ref=e101] [cursor=pointer]:
+                        - text: גלה עוד
+                        - img [ref=e102] [cursor=pointer]
+                  - button "הוסף למועדפים" [ref=e104]:
+                    - img [ref=e105]
+                - listitem [ref=e107] [cursor=pointer]:
+                  - 'img "תל אביב: מודרנית ותוססת" [ref=e109] [cursor=pointer]'
+                  - generic [ref=e113] [cursor=pointer]:
+                    - generic [ref=e115] [cursor=pointer]: חוויה מומלצת
+                    - 'heading "תל אביב: מודרנית ותוססת" [level=3] [ref=e116] [cursor=pointer]'
+                    - generic [ref=e117] [cursor=pointer]:
+                      - img [ref=e118] [cursor=pointer]
+                      - paragraph [ref=e120] [cursor=pointer]: גלו את הדופק של ישראל המודרנית דרך העיר הדינמית ביותר שלה
+                    - generic [ref=e121] [cursor=pointer]:
+                      - generic [ref=e122] [cursor=pointer]:
+                        - img [ref=e123] [cursor=pointer]
+                        - text: ישראל
+                      - generic [ref=e126] [cursor=pointer]:
+                        - text: גלה עוד
+                        - img [ref=e127] [cursor=pointer]
+                  - button "הוסף למועדפים" [ref=e129]:
+                    - img [ref=e130]
+                - listitem [ref=e132] [cursor=pointer]:
+                  - 'img "הגליל: טבע ורוח" [ref=e134] [cursor=pointer]'
+                  - generic [ref=e138] [cursor=pointer]:
+                    - generic [ref=e140] [cursor=pointer]: חוויה מומלצת
+                    - 'heading "הגליל: טבע ורוח" [level=3] [ref=e141] [cursor=pointer]'
+                    - generic [ref=e142] [cursor=pointer]:
+                      - img [ref=e143] [cursor=pointer]
+                      - paragraph [ref=e145] [cursor=pointer]: התחברו לטבע ורוחניות באזור היפה ביותר בישראל
+                    - generic [ref=e146] [cursor=pointer]:
+                      - generic [ref=e147] [cursor=pointer]:
+                        - img [ref=e148] [cursor=pointer]
+                        - text: ישראל
+                      - generic [ref=e151] [cursor=pointer]:
+                        - text: גלה עוד
+                        - img [ref=e152] [cursor=pointer]
+                  - button "הוסף למועדפים" [ref=e154]:
+                    - img [ref=e155]
+                - listitem [ref=e157] [cursor=pointer]:
+                  - 'img "הנגב: מדבר וכוכבים" [ref=e159] [cursor=pointer]'
+                  - generic [ref=e163] [cursor=pointer]:
+                    - generic [ref=e165] [cursor=pointer]: חוויה מומלצת
+                    - 'heading "הנגב: מדבר וכוכבים" [level=3] [ref=e166] [cursor=pointer]'
+                    - generic [ref=e167] [cursor=pointer]:
+                      - img [ref=e168] [cursor=pointer]
+                      - paragraph [ref=e170] [cursor=pointer]: חוו את היופי העצום של המדבר והסודות העתיקים שלו
+                    - generic [ref=e171] [cursor=pointer]:
+                      - generic [ref=e172] [cursor=pointer]:
+                        - img [ref=e173] [cursor=pointer]
+                        - text: ישראל
+                      - generic [ref=e176] [cursor=pointer]:
+                        - text: גלה עוד
+                        - img [ref=e177] [cursor=pointer]
+                  - button "הוסף למועדפים" [ref=e179]:
+                    - img [ref=e180]
+          - generic [ref=e185]:
+            - generic [ref=e186]:
+              - heading "פגשו את המדריכים שלנו" [level=2] [ref=e187]
+              - paragraph [ref=e188]: אנשים אמיתיים עם סיפורים אמיתיים שישנו את ההבנה שלכם על ישראל
+            - generic [ref=e189]:
+              - generic [ref=e190]:
+                - img "שרה מירושלים" [ref=e192]
+                - heading "שרה מירושלים" [level=3] [ref=e193]
+                - paragraph [ref=e194]: ארכיאולוגית ומשוחררת
+                - paragraph [ref=e195]: אחרי שירות בצה"ל, שרה הקדישה את חייה לחשיפת הסיפורים העתיקים של ישראל. היא מביאה את ההיסטוריה לחיים עם חוויות אישיות וגילויים ארכיאולוגיים.
+              - generic [ref=e196]:
+                - img "אחמד מחיפה" [ref=e198]
+                - heading "אחמד מחיפה" [level=3] [ref=e199]
+                - paragraph [ref=e200]: בונה גשרים תרבותיים
+                - paragraph [ref=e201]: אחמד עובד לחבר בין קהילות שונות בחיפה. הסיורים שלו מציגים את היופי המגוון של החברה הישראלית ואת כוחה של הדו-קיום.
+              - generic [ref=e202]:
+                - img "רחל מתל אביב" [ref=e204]
+                - heading "רחל מתל אביב" [level=3] [ref=e205]
+                - paragraph [ref=e206]: אמנית ופעילת שלום
+                - paragraph [ref=e207]: רחל משתמשת באמנות וסיפור סיפורים כדי להציג את הפנינים הנסתרות של תל אביב. הסיורים שלה חושפים את הרוח היצירתית שמגדירה את ישראל המודרנית.
+        - generic [ref=e212]:
+          - heading "התחילו את המסע" [level=2] [ref=e213]
+          - paragraph [ref=e214]: מוכנים לגלות את ישראל דרך האנשים שחיים אותה? ההרפתקה האותנטית שלכם מחכה.
+          - generic [ref=e215]:
+            - link "תכננו את המסע" [ref=e216] [cursor=pointer]:
+              - /url: /plan
+            - link "גלו חוויות" [ref=e217] [cursor=pointer]:
+              - /url: /experiences
+          - generic [ref=e218]:
+            - link "אקדמיה" [ref=e219] [cursor=pointer]:
+              - /url: /academy
+            - generic [ref=e220]: •
+            - link "אמון ובטיחות" [ref=e221] [cursor=pointer]:
+              - /url: /trust/safety
+            - generic [ref=e222]: •
+            - link "ארגוני" [ref=e223] [cursor=pointer]:
+              - /url: /enterprise
+            - generic [ref=e224]: •
+            - link "התחברות" [ref=e225] [cursor=pointer]:
+              - /url: /auth/login
+    - button "Open chat" [ref=e227]:
+      - img [ref=e228]
+  - button "Open Next.js Dev Tools" [ref=e235] [cursor=pointer]:
+    - img [ref=e236] [cursor=pointer]
+  - alert [ref=e239]
+```

@@ -30,25 +30,23 @@ export function BookingList() {
     fetchBookings();
   }, []);
 
-  if (loading) {
-    return <p>{t("Common.loading")}</p>;
-  }
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <div className="bg-black/30 border border-white/10 rounded-2xl p-6 backdrop-blur-lg">
+      <h2 className="text-2xl font-bold text-white mb-4">
         {t("Dashboard.bookingManagement")}
       </h2>
-      {bookings.length === 0 ? (
-        <p>{t("Dashboard.noBookings")}</p>
+      {loading ? (
+        <p className="text-white/70">{t("Common.loading")}</p>
+      ) : bookings.length === 0 ? (
+        <p className="text-white/70">{t("Dashboard.noBookings")}</p>
       ) : (
         <div className="space-y-4">
           {bookings.map((booking) => (
-            <div key={booking.id} className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">{booking.experiences.title}</h3>
-              <p className="text-gray-600">{booking.experiences.guides.name}</p>
-              <p>{t("Dashboard.bookingDate")}: {new Date(booking.date).toLocaleDateString()}</p>
-              <p>{t("Dashboard.bookingStatus")}: {booking.status}</p>
+            <div key={booking.id} className="bg-white/5 border border-white/10 p-4 rounded-lg">
+              <h3 className="text-xl font-bold text-white">{booking.experiences.title}</h3>
+              <p className="text-white/60">{booking.experiences.guides.name}</p>
+              <p className="text-sm text-white/60">{t("Dashboard.bookingDate")}: {new Date(booking.date).toLocaleDateString()}</p>
+              <p className="text-sm text-white/60">{t("Dashboard.bookingStatus")}: {booking.status}</p>
             </div>
           ))}
         </div>

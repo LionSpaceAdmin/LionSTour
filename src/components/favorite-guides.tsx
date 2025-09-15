@@ -40,23 +40,21 @@ export function FavoriteGuides() {
     fetchFavoriteGuides();
   }, []);
 
-  if (loading) {
-    return <p>{t("Common.loading")}</p>;
-  }
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <div className="bg-black/30 border border-white/10 rounded-2xl p-6 backdrop-blur-lg">
+      <h2 className="text-2xl font-bold text-white mb-4">
         {t("Dashboard.favoriteGuides")}
       </h2>
-      {guides.length === 0 ? (
-        <p>{t("Dashboard.noFavoriteGuides")}</p>
+      {loading ? (
+        <p className="text-white/70">{t("Common.loading")}</p>
+      ) : guides.length === 0 ? (
+        <p className="text-white/70">{t("Dashboard.noFavoriteGuides")}</p>
       ) : (
         <div className="space-y-4">
           {guides.map((guide) => (
-            <div key={guide.id} className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold">{guide.name}</h3>
-              <p className="text-gray-600">{guide.specialties.join(", ")}</p>
+            <div key={guide.id} className="bg-white/5 border border-white/10 p-4 rounded-lg">
+              <h3 className="text-xl font-bold text-white">{guide.name}</h3>
+              <p className="text-sm text-white/60">{guide.specialties.join(", ")}</p>
             </div>
           ))}
         </div>

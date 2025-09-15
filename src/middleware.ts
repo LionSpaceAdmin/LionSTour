@@ -1,5 +1,13 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
+
+const locales = ['en', 'he'];
+const defaultLocale = 'he';
+
+const intlMiddleware = createIntlMiddleware({
+  locales,
+  defaultLocale,
+});
 
 // Simple in-memory rate limiting (best-effort; not durable across serverless instances)
 const WINDOW_MS = 60_000; // 1 minute
@@ -20,29 +28,34 @@ function hit(key: string) {
   return { allowed: true, remaining: MAX_REQ - bucket.count, resetAt: bucket.resetAt };
 }
 
-export function middleware(req: NextRequest) {
-  if (process.env.DISABLE_RATE_LIMIT === '1') return NextResponse.next();
-
+export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  // Limit only AI-heavy endpoints
-  const protectedPaths = ['/api/chat', '/api/rag'];
-  const isProtected = protectedPaths.some((p) => pathname.startsWith(p));
-  if (!isProtected) return NextResponse.next();
 
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
-  const key = `${ip}:${protectedPaths.find((p) => pathname.startsWith(p))}`;
-  const res = hit(key);
-  if (!res.allowed) {
-    const resp = NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
-    resp.headers.set('Retry-After', String(Math.ceil((res.resetAt - Date.now()) / 1000)));
+  // First, check for API routes for rate limiting
+  const protectedPaths = ['/api/chat', '/api/rag'];
+  const isApiProtected = protectedPaths.some((p) => pathname.startsWith(p));
+
+  if (isApiProtected) {
+    if (process.env.DISABLE_RATE_LIMIT === '1') return NextResponse.next();
+
+    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    const key = `${ip}:${protectedPaths.find((p) => pathname.startsWith(p))}`;
+    const res = hit(key);
+    if (!res.allowed) {
+      const resp = NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429 });
+      resp.headers.set('Retry-After', String(Math.ceil((res.resetAt - Date.now()) / 1000)));
+      return resp;
+    }
+    const resp = NextResponse.next();
+    resp.headers.set('X-RateLimit-Limit', String(MAX_REQ));
+    resp.headers.set('X-RateLimit-Remaining', String(res.remaining));
     return resp;
   }
-  const resp = NextResponse.next();
-  resp.headers.set('X-RateLimit-Limit', String(MAX_REQ));
-  resp.headers.set('X-RateLimit-Remaining', String(res.remaining));
-  return resp;
+
+  // If not an API route, apply i18n middleware
+  return intlMiddleware(req);
 }
 
 export const config = {
-  matcher: ['/api/chat/:path*', '/api/rag/:path*'],
+  matcher: ['/((?!_next|.*\..*).*)', '/api/chat/:path*', '/api/rag/:path*'],
 };

@@ -3,8 +3,10 @@
 
 type Bucket = { count: number; expiresAt: number };
 
-const windowStore: Map<string, Bucket> = (globalThis as any).__RATE_LIMIT__ || new Map();
-(globalThis as any).__RATE_LIMIT__ = windowStore;
+const g = globalThis as unknown as { __RATE_LIMIT__?: Map<string, Bucket> };
+const windowStore: Map<string, Bucket> =
+  g.__RATE_LIMIT__ || new Map<string, Bucket>();
+g.__RATE_LIMIT__ = windowStore;
 
 export function rateLimit(key: string, limit: number, windowMs: number) {
   const now = Date.now();
@@ -17,6 +19,9 @@ export function rateLimit(key: string, limit: number, windowMs: number) {
     existing.count += 1;
     return { allowed: true, remaining: limit - existing.count };
   }
-  return { allowed: false, remaining: 0, retryAfter: Math.ceil((existing.expiresAt - now) / 1000) };
+  return {
+    allowed: false,
+    remaining: 0,
+    retryAfter: Math.ceil((existing.expiresAt - now) / 1000),
+  };
 }
-

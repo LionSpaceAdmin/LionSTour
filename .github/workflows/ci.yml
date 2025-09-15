@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -54,13 +54,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: Setup environment
         run: |
           cp .env.example .env
           echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/lionstour_test" >> .env
-
-      - name: Generate Prisma client
-        run: pnpm run db:generate
 
       - name: Run type check
         run: pnpm run type-check
@@ -68,6 +68,8 @@ jobs:
       - name: Run ESLint
         run: pnpm run lint
 
+      - name: Run tests
+        run: pnpm run test
+
       - name: Build application
         run: pnpm run build
-    

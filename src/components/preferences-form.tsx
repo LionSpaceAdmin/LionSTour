@@ -57,47 +57,48 @@ export function PreferencesForm() {
     }
   };
 
-  if (loading) {
-    return <p>{t("Common.loading")}</p>;
-  }
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
+    <div className="bg-black/30 border border-white/10 rounded-2xl p-6 backdrop-blur-lg">
+      <h2 className="text-2xl font-bold text-white mb-4">
         {t("Dashboard.preferencesManagement")}
       </h2>
-      <form onSubmit={handleUpdatePreferences} className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          {[
-            "history",
-            "nature",
-            "culture",
-            "food",
-            "adventure",
-            "spirituality",
-          ].map((item) => (
-            <div key={item} className="flex items-center">
-              <input
-                id={item}
-                type="checkbox"
-                value={item}
-                checked={preferences.includes(item)}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded"
-              />
-              <label htmlFor={item} className="ml-2 block text-sm text-gray-700">
-                {t(`Plan.interests.options.${item}`)}
-              </label>
-            </div>
-          ))}
-        </div>
-        <button
-          type="submit"
-          className="w-full flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-all duration-300 transform hover:scale-105"
-        >
-          {t("Dashboard.updatePreferences")}
-        </button>
-      </form>
+      {loading ? (
+        <p className="text-white/70">{t("Common.loading")}</p>
+      ) : (
+        <form onSubmit={handleUpdatePreferences} className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              "history",
+              "nature",
+              "culture",
+              "food",
+              "adventure",
+              "spirituality",
+            ].map((item) => (
+              <div key={item} className="flex items-center">
+                <input
+                  id={item}
+                  type="checkbox"
+                  value={item}
+                  checked={preferences.includes(item)}
+                  onChange={handleCheckboxChange}
+                  className="h-4 w-4 text-purple-600 bg-gray-700 border-gray-600 rounded focus:ring-purple-500"
+                />
+                <label htmlFor={item} className="ms-2 block text-sm text-white/70">
+                  {t(`Plan.interests.options.${item}`)}
+                </label>
+              </div>
+            ))}
+          </div>
+          <button
+            type="submit"
+            className="w-full group relative inline-block px-8 py-3 text-lg font-semibold text-white bg-white/5 border-2 border-transparent rounded-full backdrop-blur-xl shadow-lg transition-all duration-300 overflow-hidden hover:shadow-purple-500/20 hover:scale-105 transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <span className="relative">{t("Dashboard.updatePreferences")}</span>
+          </button>
+        </form>
+      )}
     </div>
   );
 }

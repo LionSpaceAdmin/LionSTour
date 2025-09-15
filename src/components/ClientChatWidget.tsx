@@ -1,12 +1,17 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { lazy, Suspense, useEffect, useState } from "react";
 
-// Lazy-load chat widget on the client only
-const ChatWidgetLazy = dynamic(() => import("@/components/chat-widget"), {
-  ssr: false,
-});
+// Lazy-load without next/dynamic to avoid SSR bailout markers in dev
+const ChatWidget = lazy(() => import("@/components/chat-widget"));
 
 export function ClientChatWidget() {
-  return <ChatWidgetLazy />;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+  return (
+    <Suspense fallback={null}>
+      <ChatWidget />
+    </Suspense>
+  );
 }

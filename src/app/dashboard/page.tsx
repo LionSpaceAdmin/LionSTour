@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { useI18n } from "@/hooks/useI18n";
 
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 
 const BookingList = dynamic(() => import("@/components/booking-list").then(mod => mod.BookingList), { ssr: false });
 const UpcomingExperiences = dynamic(() => import("@/components/upcoming-experiences").then(mod => mod.UpcomingExperiences), { ssr: false });
@@ -36,36 +37,36 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 py-20">
-      <div className="max-w-4xl mx-auto w-full bg-white p-8 rounded-2xl shadow-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+    <div className="min-h-screen bg-black text-white pt-32 pb-20">
+      <div className="container mx-auto px-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-white mb-2">
             {t("Dashboard.title")}
           </h1>
           {user && (
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white/70">
               {t("Dashboard.welcome")} {user.email}
             </p>
           )}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
             <BookingList />
             <UpcomingExperiences />
+            <JourneyHistory />
           </div>
           <div className="space-y-8">
             <ProfileSettings />
             <PreferencesForm />
-            <JourneyHistory />
             <FavoriteGuides />
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-12 text-center">
           <button
             onClick={handleLogout}
-            className="w-1/2 flex justify-center py-3 px-4 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-300 transform hover:scale-105"
+            className="px-8 py-3 text-lg font-medium text-red-400 bg-transparent border-2 border-red-400/50 rounded-full backdrop-blur-sm transition-all duration-300 hover:bg-red-400/10 hover:text-red-300 hover:border-red-400 transform hover:scale-105"
           >
             {t("Dashboard.logout")}
           </button>

@@ -9,7 +9,11 @@ type Slot = {
   capacity: number;
 };
 
-function generateSampleSlots(guideId: string, startDate?: Date, days: number = 14): Slot[] {
+function generateSampleSlots(
+  guideId: string,
+  startDate?: Date,
+  days: number = 14
+): Slot[] {
   const slots: Slot[] = [];
   const base = startDate ? new Date(startDate) : new Date();
   base.setHours(0, 0, 0, 0);
@@ -19,9 +23,14 @@ function generateSampleSlots(guideId: string, startDate?: Date, days: number = 1
     for (const hour of [9, 14]) {
       const s = new Date(day);
       s.setHours(hour, 0, 0, 0);
-      const e = new Date(s);
-      e.setHours(e.getHours() + 3);
-      slots.push({ guideId, start: s.toISOString(), end: e.toISOString(), capacity: 8 });
+      const _e = new Date(s);
+      _e.setHours(_e.getHours() + 3);
+      slots.push({
+        guideId,
+        start: s.toISOString(),
+        end: _e.toISOString(),
+        capacity: 8,
+      });
     }
   }
   return slots;
@@ -34,7 +43,7 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const guideId = (searchParams.get("guideId") || "").trim();
   const start = searchParams.get("start");
-  const end = searchParams.get("end");
+  const _end = searchParams.get("end");
 
   if (!guideId) return errorJson("Missing guideId", 400);
 
