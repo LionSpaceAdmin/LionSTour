@@ -125,14 +125,14 @@ export default function Home() {
                    bg-white text-gray-900 px-6 py-3 rounded-md font-medium shadow-lg
                    transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          דלג לתוכן הראשי / Skip to main content
+          {t("Accessibility.skipToMainContent")}
         </a>
         <VideoBackground />
         <PlannerOverlay />
         {/* Modern Navigation Bar with Enhanced ARIA */}
         <nav
           role="navigation"
-          aria-label="ניווט ראשי - LionSTour"
+          aria-label={t("Accessibility.mainNavigation")}
           className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b border-white/20"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.6)", zIndex: 9999 }}
         >
@@ -142,10 +142,10 @@ export default function Home() {
               <Link
                 href="/"
                 className="text-2xl font-bold text-white hover:text-white/90 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-md px-2 py-1"
-                aria-label="לוגו LionSTour - חזרה לעמוד הבית"
+                aria-label={t("Accessibility.logo")}
               >
                 <span aria-hidden="true">🦁</span>
-                <span className="ml-2">LionSTour</span>
+                <span className="ml-2">{t("Common.logo")}</span>
               </Link>
 
               {/* Enhanced Hamburger Menu for Mobile */}
@@ -153,7 +153,9 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label={
-                    isMobileMenuOpen ? "סגור תפריט ניווט" : "פתח תפריט ניווט"
+                    isMobileMenuOpen
+                      ? t("Accessibility.closeMenu")
+                      : t("Accessibility.openMenu")
                   }
                   aria-expanded={isMobileMenuOpen}
                   aria-controls="mobile-primary-menu"
@@ -193,7 +195,7 @@ export default function Home() {
                   href="/experiences"
                   role="menuitem"
                   className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-md px-3 py-2"
-                  aria-label="חוויות תיירות - גלה חוויות מרתקות בישראל"
+                  aria-label={t("Accessibility.experiencesLink")}
                 >
                   {t("Navigation.experiences")}
                 </Link>
@@ -201,7 +203,7 @@ export default function Home() {
                   href="/guides"
                   role="menuitem"
                   className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-md px-3 py-2"
-                  aria-label="מדריכים - פגש את המדריכים המקומיים שלנו"
+                  aria-label={t("Accessibility.guidesLink")}
                 >
                   {t("Navigation.guides")}
                 </Link>
@@ -209,7 +211,7 @@ export default function Home() {
                   href="/academy"
                   role="menuitem"
                   className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-md px-3 py-2"
-                  aria-label="אקדמיה - למד על תרבות וההיסטוריה הישראלית"
+                  aria-label={t("Accessibility.academyLink")}
                 >
                   {t("Navigation.academy")}
                 </Link>
@@ -217,7 +219,7 @@ export default function Home() {
                   href="/trust/safety"
                   role="menuitem"
                   className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-transparent rounded-md px-3 py-2"
-                  aria-label="בטיחות ואמון - מידע על בטיחות ואמינות הפלטפורמה"
+                  aria-label={t("Accessibility.safetyLink")}
                 >
                   {t("Navigation.safety")}
                 </Link>
@@ -229,7 +231,7 @@ export default function Home() {
                 <Link
                   href="/auth/login"
                   className="px-6 py-2 rounded-full bg-transparent border-2 border-white/30 text-white shadow-md backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-                  aria-label="התחברות - היכנס לחשבון שלך"
+                  aria-label={t("Accessibility.loginLink")}
                 >
                   <span aria-hidden="true">👤</span>
                   <span className="sr-only md:not-sr-only ml-2">
@@ -239,7 +241,7 @@ export default function Home() {
                 <Link
                   href="/plan"
                   className="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300 animate-pulse"
-                  aria-label="תכנון מסע - התחל לתכנן את הטיול שלך בישראל"
+                  aria-label={t("Accessibility.planJourneyLink")}
                 >
                   <span aria-hidden="true">✨</span>
                   <span className="ml-2">{t("Navigation.planJourney")}</span>
@@ -253,7 +255,7 @@ export default function Home() {
               id="mobile-primary-menu"
               className="md:hidden absolute top-full left-0 right-0 glass-dark backdrop-blur-xl py-6 px-6 border-t border-white/10 animate-fade-in"
               role="menu"
-              aria-label="תפריט ניווט נייד"
+              aria-label={t("Accessibility.mobileMenu")}
               onKeyDown={(e) => {
                 if (e.key === "Escape") {
                   setIsMobileMenuOpen(false);
@@ -264,14 +266,14 @@ export default function Home() {
                 <div
                   className="flex flex-col gap-4"
                   role="group"
-                  aria-label="קישורי ניווט"
+                  aria-label={t("Accessibility.navLinksGroup")}
                 >
                   <Link
                     href="/experiences"
                     role="menuitem"
                     className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded-md px-3 py-2 flex items-center gap-3"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    aria-label="חוויות תיירות בישראל"
+                    aria-label={t("Accessibility.mobileExperiences")}
                   >
                     <span aria-hidden="true">🏛️</span>
                     {t("Navigation.experiences")}
@@ -281,7 +283,7 @@ export default function Home() {
                     role="menuitem"
                     className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded-md px-3 py-2 flex items-center gap-3"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    aria-label="מדריכים מקומיים מנוסים"
+                    aria-label={t("Accessibility.mobileGuides")}
                   >
                     <span aria-hidden="true">👨‍🏫</span>
                     {t("Navigation.guides")}
@@ -291,7 +293,7 @@ export default function Home() {
                     role="menuitem"
                     className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded-md px-3 py-2 flex items-center gap-3"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    aria-label="אקדמיה ללימוד תרבות ישראל"
+                    aria-label={t("Accessibility.mobileAcademy")}
                   >
                     <span aria-hidden="true">📚</span>
                     {t("Navigation.academy")}
@@ -301,7 +303,7 @@ export default function Home() {
                     role="menuitem"
                     className="text-white/90 hover:text-white transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black rounded-md px-3 py-2 flex items-center gap-3"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    aria-label="בטיחות ואמינות הפלטפורמה"
+                    aria-label={t("Accessibility.mobileSafety")}
                   >
                     <span aria-hidden="true">🛡️</span>
                     {t("Navigation.safety")}
@@ -311,14 +313,14 @@ export default function Home() {
                 <div
                   className="border-t border-white/20 pt-4"
                   role="group"
-                  aria-label="פעולות משתמש"
+                  aria-label={t("Accessibility.userActionsGroup")}
                 >
                   <div className="flex flex-col gap-3">
                     <Link
                       href="/auth/login"
                       className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-transparent border-2 border-white/30 text-white shadow-md backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      aria-label="התחברות לחשבון אישי"
+                      aria-label={t("Accessibility.mobileLogin")}
                     >
                       <span aria-hidden="true">👤</span>
                       {t("Navigation.login")}
@@ -327,7 +329,7 @@ export default function Home() {
                       href="/plan"
                       className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-md hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:scale-105 transition-all duration-300 animate-pulse"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      aria-label="התחל לתכנן את המסע שלך עכשיו"
+                      aria-label={t("Accessibility.mobilePlan")}
                     >
                       <span aria-hidden="true">✨</span>
                       {t("Navigation.planJourney")}
