@@ -1,0 +1,17 @@
+{
+  "name": "Next.js Dev Container",
+  "dockerFile": "../Dockerfile",
+  "context": "..",
+  "forwardPorts": [3000, 5555],
+  "postCreateCommand": "pnpm i && pnpm exec prisma generate && pnpm exec playwright install --with-deps",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "prisma.prisma",
+        "ms-playwright.playwright",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}

@@ -33,11 +33,3 @@ export function middleware(request: NextRequest) {
   
   return NextResponse.redirect(request.nextUrl);
 }
-
-export const config = {
-  matcher: [
-    // Skip all internal paths (_next) and static files.
-    // We want to run this on all paths that are not static files.
-    '/((?!api|_next/static|_next/image|images|favicon.ico|.*\\..*).*)'
-  ],
-};

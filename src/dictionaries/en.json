@@ -1,10 +1,16 @@
 
 {
   "hero": {
-    "title": "Discover Israel through its people",
-    "subtitle": "Authentic guides. Real stories. Safe, simple booking.",
+    "title": "Discover Israel Through Its People",
+    "subtitle": "Journey beyond the headlines. Connect with the land, the people, and the stories that define Israel today. Authentic, unscripted, and unforgettable.",
+    "big_promise": "Your Journey, Your Truth. Unfiltered.",
     "ctaPrimary": "Explore Experiences",
-    "ctaSecondary": "Plan Your Journey"
+    "ctaSecondary": "Plan Your Journey",
+    "social_proof": {
+      "guides": "Verified Guides",
+      "travelers": "Happy Travelers",
+      "experiences": "Unique Experiences"
+    }
   },
   "actions": {
     "explore": "Explore",

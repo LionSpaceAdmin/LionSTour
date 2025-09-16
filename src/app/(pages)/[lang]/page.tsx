@@ -5,8 +5,7 @@ import { JourneyCarousel } from '@/components/home/journey-carousel';
 import { mockExperiences } from '@/lib/mock-data';
 import { getDictionary } from '@/lib/dictionaries';
 
-export default async function Home({ params }: { params: { lang: string } }) {
-  const { lang } = params;
+export default async function Home({ params: { lang } }: { params: { lang: string } }) {
   const dict = await getDictionary(lang);
   return (
     <>
