@@ -1,27 +1,12 @@
 // src/components/common/ai-image.tsx
-import { generateImage } from '@/ai/flows/image-generator';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
-import { unstable_cache as cache } from 'next/cache';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 
 type AIImageProps = Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'> & {
   imageId: string;
 };
-
-const cachedGenerateImage = cache(
-  async (imageId: string) => {
-    console.log(`[AIImage] Calling generateImage for ${imageId}`);
-    const result = await generateImage({ id: imageId });
-    return result.imageUrl;
-  },
-  ['ai-images'], // Cache key prefix
-  {
-    revalidate: 3600, // Revalidate every hour
-    tags: ['ai-image-generation'], // Cache tag
-  }
-);
 
 async function ImageComponent({ imageId, ...props }: AIImageProps) {
   const imageConfig = PlaceHolderImages.find((p) => p.id === imageId);
@@ -30,7 +15,9 @@ async function ImageComponent({ imageId, ...props }: AIImageProps) {
     return <Skeleton className="w-full h-full" />;
   }
 
-  const imageUrl = await cachedGenerateImage(imageId);
+  // Reverted to using placeholder URLs to avoid cache size limits and improve performance.
+  // The AI generation flow is preserved for future use (e.g., on-demand generation).
+  const imageUrl = `https://picsum.photos/seed/${imageId}/${props.width || 800}/${props.height || 600}`;
 
   return (
     <Image
@@ -43,6 +30,7 @@ async function ImageComponent({ imageId, ...props }: AIImageProps) {
 }
 
 export function AIImage(props: AIImageProps) {
+  // Although generation is disabled, Suspense is kept for good UX when fetching remote images.
   return (
     <Suspense fallback={<Skeleton className="w-full h-full" />}>
       <ImageComponent {...props} />
