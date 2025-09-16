@@ -8,7 +8,7 @@ type AIImageProps = Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'> & {
   imageId: string;
 };
 
-async function ImageComponent({ imageId, ...props }: AIImageProps) {
+function ImageComponent({ imageId, ...props }: AIImageProps) {
   const imageConfig = PlaceHolderImages.find((p) => p.id === imageId);
 
   if (!imageConfig) {
