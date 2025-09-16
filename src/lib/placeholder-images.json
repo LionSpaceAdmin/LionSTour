@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-desktop",
+      "description": "Digital painting of a psychedelic lion with its mane blending into the Jerusalem skyline at dusk.",
+      "imageUrl": "https://picsum.photos/seed/zion-hero-desktop/2560/1440",
+      "imageHint": "psychedelic lion Jerusalem"
+    },
+    {
+      "id": "experience-1",
+      "description": "A calm lion with its mane morphing into Negev dune curves.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-1/1200/900",
+      "imageHint": "lion negev desert"
+    },
+    {
+      "id": "experience-2",
+      "description": "A regal lion with its mane threaded with Jerusalem stone texture.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-2/1200/900",
+      "imageHint": "lion jerusalem stone"
+    },
+    {
+      "id": "experience-3",
+      "description": "A psychedelic lion face with its mane turning into Tel-Aviv music waveforms.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-3/1200/900",
+      "imageHint": "psychedelic lion tel-aviv"
+    },
+    {
+      "id": "experience-4",
+      "description": "Lion micro-portrait with mane blending into beach foam.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-4/1200/900",
+      "imageHint": "lion portrait beach"
+    },
+    {
+      "id": "experience-5",
+      "description": "Lion micro-portrait with mane blending into Galilee vineyards.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-5/1200/900",
+      "imageHint": "lion portrait vineyards"
+    },
+    {
+      "id": "experience-6",
+      "description": "Lion micro-portrait with mane blending into Carmel forest.",
+      "imageUrl": "https://picsum.photos/seed/zion-exp-6/1200/900",
+      "imageHint": "lion portrait forest"
+    }
+  ]
 }
