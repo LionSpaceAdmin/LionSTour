@@ -4,11 +4,12 @@ import type { Experience } from '@/lib/mock-data';
 
 type ExperienceWindowProps = {
   experience: Experience;
+  lang: string;
 };
 
-export function ExperienceWindow({ experience }: ExperienceWindowProps) {
+export function ExperienceWindow({ experience, lang }: ExperienceWindowProps) {
   return (
-    <Link href={`/experiences/${experience.id}`} className="block h-full">
+    <Link href={`/${lang}/experiences/${experience.id}`} className="block h-full">
       <ExperienceCard experience={experience} />
     </Link>
   );

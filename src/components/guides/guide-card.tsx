@@ -8,13 +8,14 @@ import { Button } from '../ui/button';
 
 type GuideCardProps = {
   guide: Guide;
+  lang: string;
 };
 
-export function GuideCard({ guide }: GuideCardProps) {
+export function GuideCard({ guide, lang }: GuideCardProps) {
   return (
     <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/50 group">
        <CardHeader className="p-0 relative">
-            <Link href={`/guides/${guide.id}`} className="block">
+            <Link href={`/${lang}/guides/${guide.id}`} className="block">
                 <div className="aspect-square relative">
                     <Image
                         src={guide.avatar.imageUrl}
@@ -58,7 +59,7 @@ export function GuideCard({ guide }: GuideCardProps) {
             </div>
         </div>
         <Button asChild className="w-full flex-row-reverse">
-            <Link href={`/guides/${guide.id}`}>
+            <Link href={`/${lang}/guides/${guide.id}`}>
                 <UserPlus className="mr-2 h-4 w-4" />
                 View Profile
             </Link>

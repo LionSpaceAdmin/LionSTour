@@ -1,0 +1,43 @@
+
+{
+  "hero": {
+    "title": "Discover Israel through its people",
+    "subtitle": "Authentic guides. Real stories. Safe, simple booking.",
+    "ctaPrimary": "Explore Experiences",
+    "ctaSecondary": "Plan Your Journey"
+  },
+  "actions": {
+    "explore": "Explore",
+    "plan": "Plan",
+    "book": "Book with Verified Guides",
+    "guides": "Guides",
+    "description_explore": "Find your next adventure",
+    "description_plan": "Build your custom trip",
+    "description_book": "Secure your journey",
+    "description_guides": "Meet our veteran guides"
+  },
+  "nav": {
+    "explore": "Explore",
+    "guides": "Guides",
+    "plan": "Plan",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "toggle_menu": "Toggle menu"
+  },
+  "footer": {
+    "tagline": "Light in the dark. Facts over noise.",
+    "explore": "Explore",
+    "experiences": "Experiences",
+    "our_guides": "Our Guides",
+    "about_us": "About Us",
+    "support": "Support",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "privacy_policy": "Privacy Policy",
+    "follow_us": "Follow Us",
+    "copyright": "All rights reserved."
+  },
+  "accessibility": {
+    "skipToContent": "Skip to content"
+  }
+}

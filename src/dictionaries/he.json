@@ -1,0 +1,44 @@
+
+{
+  "_dir": "rtl",
+  "hero": {
+    "title": "גלו את ישראל דרך האנשים שלה",
+    "subtitle": "מדריכים אמיתיים. סיפורים אמיתיים. הזמנה בטוחה ופשוטה.",
+    "ctaPrimary": "גלו חוויות",
+    "ctaSecondary": "תכננו את המסע"
+  },
+  "actions": {
+    "explore": "גלו",
+    "plan": "תכננו",
+    "book": "הזמינו עם מדריכים מאומתים",
+    "guides": "מדריכים",
+    "description_explore": "מצאו את ההרפתקה הבאה",
+    "description_plan": "בנו את הטיול שלכם",
+    "description_book": "הבטיחו את מקומכם",
+    "description_guides": "הכירו את המדריכים שלנו"
+  },
+  "nav": {
+    "explore": "חוויות",
+    "guides": "מדריכים",
+    "plan": "תכנון",
+    "login": "כניסה",
+    "signup": "הרשמה",
+    "toggle_menu": "פתח תפריט"
+  },
+  "footer": {
+    "tagline": "אור בחושך. עובדות מעל לרעש.",
+    "explore": "גלו עוד",
+    "experiences": "חוויות",
+    "our_guides": "המדריכים שלנו",
+    "about_us": "אודותינו",
+    "support": "תמיכה",
+    "faq": "שאלות נפוצות",
+    "contact": "צור קשר",
+    "privacy_policy": "מדיניות פרטיות",
+    "follow_us": "עקבו אחרינו",
+    "copyright": "כל הזכויות שמורות."
+  },
+  "accessibility": {
+    "skipToContent": "דילוג לתוכן"
+  }
+}

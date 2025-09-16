@@ -12,9 +12,10 @@ import type { Experience } from '@/lib/mock-data';
 type JourneyCarouselProps = {
   title: string;
   experiences: Experience[];
+  lang: string;
 };
 
-export function JourneyCarousel({ title, experiences }: JourneyCarouselProps) {
+export function JourneyCarousel({ title, experiences, lang }: JourneyCarouselProps) {
   return (
     <section>
       <h2 className="text-3xl font-headline font-bold mb-8 text-foreground">{title}</h2>
@@ -28,7 +29,7 @@ export function JourneyCarousel({ title, experiences }: JourneyCarouselProps) {
         <CarouselContent>
           {experiences.map((experience) => (
             <CarouselItem key={experience.id} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-              <Link href={`/experiences/${experience.id}`} className="block h-full">
+              <Link href={`/${lang}/experiences/${experience.id}`} className="block h-full">
                 <ExperienceCard experience={experience} />
               </Link>
             </CarouselItem>

@@ -8,16 +8,16 @@ import { Menu, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
-const navLinks = [
-  { href: '/experiences', label: 'Explore' },
-  { href: '/guides', label: 'Guides' },
-  { href: '/plan', label: 'Plan' },
-];
-
-export function Header() {
+export function Header({ lang, dict }: { lang: string, dict: any }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
+  const isHomePage = pathname === `/${lang}`;
+  
+  const navLinks = [
+    { href: `/${lang}/experiences`, label: dict.nav.explore },
+    { href: `/${lang}/guides`, label: dict.nav.guides },
+    { href: `/${lang}/plan`, label: dict.nav.plan },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +35,7 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 font-headline text-2xl font-bold">
+        <Link href={`/${lang}`} className="flex items-center gap-2 font-headline text-2xl font-bold">
           <Shield className="h-8 w-8 text-primary" />
           <span className="text-primary">TheLionsOfJudah</span>
         </Link>
@@ -47,20 +47,20 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" className={cn('text-lg', (isScrolled || !isHomePage) ? '' : 'text-white hover:bg-white/10')}>Log In</Button>
-          <Button className="text-lg">Sign Up</Button>
+          <Button variant="ghost" className={cn('text-lg', (isScrolled || !isHomePage) ? '' : 'text-white hover:bg-white/10')}>{dict.nav.login}</Button>
+          <Button className="text-lg">{dict.nav.signup}</Button>
         </div>
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">{dict.nav.toggle_menu}</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background text-foreground">
               <div className="grid gap-6 p-6">
-                <Link href="/" className="flex items-center gap-2 font-headline text-2xl font-bold text-primary">
+                <Link href={`/${lang}`} className="flex items-center gap-2 font-headline text-2xl font-bold text-primary">
                   <Shield className="h-8 w-8" />
                   <span>TheLionsOfJudah</span>
                 </Link>
@@ -72,8 +72,8 @@ export function Header() {
                   ))}
                 </nav>
                 <div className="flex flex-col gap-4 mt-4 border-t pt-6">
-                    <Button variant="ghost">Log In</Button>
-                    <Button>Sign Up</Button>
+                    <Button variant="ghost">{dict.nav.login}</Button>
+                    <Button>{dict.nav.signup}</Button>
                 </div>
               </div>
             </SheetContent>

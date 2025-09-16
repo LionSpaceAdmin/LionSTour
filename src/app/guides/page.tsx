@@ -1,7 +1,7 @@
 import { GuideCard } from "@/components/guides/guide-card";
 import { mockGuides } from "@/lib/mock-guides";
 
-export default function GuidesPage() {
+export default function GuidesPage({ params: { lang } }: { params: { lang: string } }) {
   return (
     <div className="container mx-auto px-4 md:px-6 py-12">
       <div className="text-center mb-12">
@@ -11,7 +11,7 @@ export default function GuidesPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {mockGuides.map(guide => (
-          <GuideCard key={guide.id} guide={guide} />
+          <GuideCard key={guide.id} guide={guide} lang={lang} />
         ))}
       </div>
     </div>

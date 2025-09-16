@@ -1,0 +1,44 @@
+
+{
+  "_dir": "rtl",
+  "hero": {
+    "title": "اكتشف إسرائيل عبر أهلها",
+    "subtitle": "مرشدون حقيقيون. قصص حقيقية. حجز آمن وسهل.",
+    "ctaPrimary": "استكشف التجارب",
+    "ctaSecondary": "خطط لرحلتك"
+  },
+  "actions": {
+    "explore": "استكشف",
+    "plan": "خطط",
+    "book": "احجز مع مرشدين موثّقين",
+    "guides": "المرشدون",
+    "description_explore": "ابحث عن مغامرتك القادمة",
+    "description_plan": "أنشئ رحلتك المخصصة",
+    "description_book": "أمّن رحلتك",
+    "description_guides": "تعرف على مرشدينا"
+  },
+  "nav": {
+    "explore": "التجارب",
+    "guides": "المرشدون",
+    "plan": "التخطيط",
+    "login": "تسجيل الدخول",
+    "signup": "انضمام",
+    "toggle_menu": "تبديل القائمة"
+  },
+  "footer": {
+    "tagline": "نور في الظلام. الحقائق فوق الضوضاء.",
+    "explore": "استكشف",
+    "experiences": "التجارب",
+    "our_guides": "مرشدونا",
+    "about_us": "من نحن",
+    "support": "الدعم",
+    "faq": "الأسئلة الشائعة",
+    "contact": "اتصل بنا",
+    "privacy_policy": "سياسة الخصوصية",
+    "follow_us": "تابعنا",
+    "copyright": "جميع الحقوق محفوظة."
+  },
+  "accessibility": {
+    "skipToContent": "تجاوز إلى المحتوى"
+  }
+}

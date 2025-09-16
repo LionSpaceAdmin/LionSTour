@@ -8,12 +8,13 @@ import Link from 'next/link';
 
 type GuideProfileProps = {
   guide: Guide;
+  lang: string;
 };
 
-const GuideActions = ({ guide }: { guide: Guide }) => (
+const GuideActions = ({ guide, lang }: { guide: Guide, lang: string }) => (
     <div className="flex items-center gap-2">
         <Button size="lg" asChild>
-            <Link href="/plan">
+            <Link href={`/${lang}/plan`}>
                 <UserPlus className="mr-2 h-5 w-5" />
                 Plan with {guide.name.split(' ')[0]}
             </Link>
@@ -26,7 +27,7 @@ const GuideActions = ({ guide }: { guide: Guide }) => (
 );
 
 
-export function GuideProfile({ guide }: GuideProfileProps) {
+export function GuideProfile({ guide, lang }: GuideProfileProps) {
   return (
     <div>
       <section className="relative h-64 md:h-96 w-full -mt-20">
@@ -85,7 +86,7 @@ export function GuideProfile({ guide }: GuideProfileProps) {
                                 <p className="text-lg text-muted-foreground font-medium">{guide.title}</p>
                             </div>
                              <div className="hidden sm:flex">
-                                <GuideActions guide={guide} />
+                                <GuideActions guide={guide} lang={lang} />
                             </div>
                         </div>
 
@@ -105,7 +106,7 @@ export function GuideProfile({ guide }: GuideProfileProps) {
       
       {/* Sticky Action Bar for Mobile */}
       <div className="sm:hidden fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-sm border-t z-50">
-        <GuideActions guide={guide} />
+        <GuideActions guide={guide} lang={lang} />
       </div>
     </div>
   );

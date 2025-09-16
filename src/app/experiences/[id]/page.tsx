@@ -10,7 +10,7 @@ import { mockGuides } from "@/lib/mock-guides";
 import { AIImage } from "@/components/common/ai-image";
 
 
-export default function ExperiencePage({ params }: { params: { id: string } }) {
+export default function ExperiencePage({ params }: { params: { id: string, lang: string } }) {
   const experience = mockExperiences.find((exp) => exp.id === params.id);
 
   if (!experience) {
@@ -78,14 +78,14 @@ export default function ExperiencePage({ params }: { params: { id: string } }) {
                          {guide && (
                             <div>
                                 <h3 className="text-2xl font-headline font-semibold mb-4">Your Guide</h3>
-                                <GuideCard guide={guide} />
+                                <GuideCard guide={guide} lang={params.lang} />
                             </div>
                          )}
 
                         <div className="p-6 bg-card rounded-xl shadow-lg">
                              <h3 className="text-2xl font-headline font-bold mb-4">Ready to Go?</h3>
                              <Button size="lg" className="w-full" asChild>
-                                <Link href="/plan">Plan Your Journey</Link>
+                                <Link href={`/${params.lang}/plan`}>Plan Your Journey</Link>
                              </Button>
                         </div>
 
@@ -99,7 +99,9 @@ export default function ExperiencePage({ params }: { params: { id: string } }) {
 
 // Optional: Generate static pages for each experience for better performance
 export async function generateStaticParams() {
-  return mockExperiences.map((exp) => ({
-    id: exp.id,
-  }));
+    const locales = ['en', 'he', 'ar']; // Add other locales as needed
+    const paths = mockExperiences.flatMap(exp => 
+        locales.map(lang => ({ id: exp.id, lang }))
+    );
+    return paths;
 }
