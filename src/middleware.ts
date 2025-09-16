@@ -32,8 +32,8 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return;
 
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
+  // Default to English
+  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
   
   return NextResponse.redirect(request.nextUrl);
 }
