@@ -25,7 +25,7 @@ export default function ExperiencePage({ params }: { params: { id: string, lang:
         <section className="relative h-80 md:h-[50vh] w-full -mt-20">
             <AIImage
               imageId={experience.image.id}
-              alt={experience.image.description}
+              alt={experience.title}
               fill
               priority
               className="object-cover"

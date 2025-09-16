@@ -1,23 +1,29 @@
 // src/components/common/ai-image.tsx
+'use client';
+
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Suspense } from 'react';
+import { generateImage } from '@/ai/flows/image-generator';
+import { use, Suspense } from 'react';
 
 type AIImageProps = Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'> & {
   imageId: string;
 };
 
-function ImageComponent({ imageId, ...props }: AIImageProps) {
+function GeneratedImage({ imageId, ...props }: AIImageProps) {
   const imageConfig = PlaceHolderImages.find((p) => p.id === imageId);
-
+  
   if (!imageConfig) {
     return <Skeleton className="w-full h-full" />;
   }
 
-  // Reverted to using placeholder URLs to avoid cache size limits and improve performance.
-  // The AI generation flow is preserved for future use (e.g., on-demand generation).
-  const imageUrl = `https://picsum.photos/seed/${imageId}/${props.width || 800}/${props.height || 600}`;
+  // Generate the image on the server and stream the result.
+  const { imageUrl } = use(generateImage({ id: imageId }));
+
+  if (!imageUrl) {
+    return <Skeleton className="w-full h-full" />;
+  }
 
   return (
     <Image
@@ -30,10 +36,9 @@ function ImageComponent({ imageId, ...props }: AIImageProps) {
 }
 
 export function AIImage(props: AIImageProps) {
-  // Although generation is disabled, Suspense is kept for good UX when fetching remote images.
   return (
     <Suspense fallback={<Skeleton className="w-full h-full" />}>
-      <ImageComponent {...props} />
+      <GeneratedImage {...props} />
     </Suspense>
   );
 }

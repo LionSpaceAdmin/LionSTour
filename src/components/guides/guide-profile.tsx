@@ -5,6 +5,7 @@ import { GuideReviews } from '@/components/guides/guide-reviews';
 import type { Guide } from '@/lib/mock-guides';
 import { ShieldCheck, Languages, Clock, Star, MessageSquare, UserPlus } from 'lucide-react';
 import Link from 'next/link';
+import { AIImage } from '../common/ai-image';
 
 type GuideProfileProps = {
   guide: Guide;
@@ -31,13 +32,12 @@ export function GuideProfile({ guide, lang }: GuideProfileProps) {
   return (
     <div>
       <section className="relative h-64 md:h-96 w-full -mt-20">
-        <Image
-          src={guide.heroImage.imageUrl}
+        <AIImage
+          imageId={guide.heroImage.id}
           alt={`Landscape associated with ${guide.name}`}
           fill
           priority
           className="object-cover"
-          data-ai-hint={guide.heroImage.imageHint}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </section>
@@ -47,12 +47,11 @@ export function GuideProfile({ guide, lang }: GuideProfileProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
                     <div className="relative aspect-square w-48 h-48 md:w-full md:h-auto rounded-full md:rounded-xl overflow-hidden border-4 border-background shadow-2xl mx-auto">
-                        <Image
-                            src={guide.avatar.imageUrl}
+                        <AIImage
+                            imageId={guide.avatar.id}
                             alt={`Portrait of ${guide.name}`}
                             fill
                             className="object-cover"
-                            data-ai-hint={guide.avatar.imageHint}
                         />
                     </div>
                      <div className="p-6 bg-card rounded-xl shadow-lg mt-6 hidden md:block">

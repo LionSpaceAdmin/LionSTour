@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import type { Guide } from '@/lib/mock-guides';
 import { ShieldCheck, Languages, Heart, Clock, UserPlus } from 'lucide-react';
 import { Button } from '../ui/button';
+import { AIImage } from '../common/ai-image';
 
 type GuideCardProps = {
   guide: Guide;
@@ -17,12 +18,11 @@ export function GuideCard({ guide, lang }: GuideCardProps) {
        <CardHeader className="p-0 relative">
             <Link href={`/${lang}/guides/${guide.id}`} className="block">
                 <div className="aspect-square relative">
-                    <Image
-                        src={guide.avatar.imageUrl}
+                    <AIImage
+                        imageId={guide.avatar.id}
                         alt={`Portrait of ${guide.name}`}
                         fill
                         className="object-cover"
-                        data-ai-hint={guide.avatar.imageHint}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 </div>
