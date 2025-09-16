@@ -17,20 +17,20 @@ export function Hero() {
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 p-4 max-w-4xl">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold text-shadow-lg leading-tight animate-fade-in-down">
-          Discover Israel Through The People Who Live It
+          Discover Israel Through Its People
         </h1>
         <p className="mt-4 md:mt-6 text-lg md:text-xl max-w-2xl mx-auto text-shadow animate-fade-in-up">
-          Authentic, story-driven journeys guided by local veterans and communities. Experience Israel with soul.
+          Authentic guides. Real stories. Safe, simple booking.
         </p>
         <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
           <Button asChild size="lg" className="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <Link href="/experiences" className="flex-row-reverse">
-              Journey with a Veteran <ArrowRight className="mr-2 h-5 w-5" />
+            <Link href="/experiences">
+              Explore Experiences <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-white/10 hover:bg-white/20 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <Link href="/plan">
-              Plan with AI <DraftingCompass className="ml-2 h-5 w-5" />
+              Plan Your Journey <DraftingCompass className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>

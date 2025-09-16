@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-desktop",
-      "description": "Digital painting of a psychedelic lion with its mane blending into the Jerusalem skyline at dusk.",
-      "prompt": "Digital painting + photo-realistic psychedelic lion, frontal symmetric, eye-gaze lock (piercing cyan irises with fractal rings), mane = glowing fractal ribbons blending into Jerusalem skyline at dusk (very subtle), dramatic rim lighting, HDR, volumetric depth haze, bold outlines, micro-detail in fur; left 40% clean negative space for headline/CTA; cinematic grading, high micro-contrast, bokeh particles guiding the eye inward. Palette: deep teal, molten gold accents, black. Lions of Zion logo bottom-right (vector-clean, faithful). Specs: landscape, 2560x1440. Avoid: text elements (besides logo), Stars of David, extra animals, blur, gore.",
-      "imageHint": "psychedelic lion Jerusalem"
+      "description": "Hyper-realistic lion head on a dark background with cyan eyes and fractal mane.",
+      "prompt": "Hyper-real lion head on a deep black background, piercing cyan eyes; mane composed of glowing fractal veins; surrounded by a sacred geometry halo; depth particles; sharp details; TheLionsOfJudah logo bottom-right. 8k, ultra-detailed, digital painting, photo-realistic, bold outlines, central focus, dramatic rim lighting, HDR, volumetric fog, cinematic grading, high micro-contrast.",
+      "imageHint": "hyper-real lion"
     },
     {
       "id": "hero-mobile",
