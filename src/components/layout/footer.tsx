@@ -9,7 +9,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2 font-headline text-2xl font-bold text-primary">
               <Shield className="h-8 w-8 text-primary" />
-              <span>Zion Journeys</span>
+              <span>TheLionsOfJudah</span>
             </Link>
             <p className="text-muted-foreground text-sm">Discover Israel through the people who live it.</p>
           </div>
@@ -39,7 +39,7 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t mt-8 pt-6 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Zion Journeys. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} TheLionsOfJudah. All rights reserved.</p>
         </div>
       </div>
     </footer>

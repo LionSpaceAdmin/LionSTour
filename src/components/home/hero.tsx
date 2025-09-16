@@ -23,7 +23,7 @@ export function Hero() {
           Authentic, story-driven journeys guided by local veterans and communities. Experience Israel with soul.
         </p>
         <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+          <Button asChild size="lg" className="text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <Link href="/experiences" className="flex-row-reverse">
               Journey with a Veteran <ArrowRight className="mr-2 h-5 w-5" />
             </Link>
