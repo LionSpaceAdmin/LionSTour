@@ -1,27 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, DraftingCompass } from 'lucide-react';
+import { AIImage } from '@/components/common/ai-image';
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-desktop');
-  
-  if (!heroImage) {
-    return null;
-  }
-
   return (
     <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white -mt-20">
-      <Image
-        src={heroImage.imageUrl}
-        alt={heroImage.description}
+      <AIImage
+        imageId="hero-desktop"
         fill
         priority
         className="object-cover"
-        data-ai-hint={heroImage.imageHint}
       />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 p-4 max-w-4xl">

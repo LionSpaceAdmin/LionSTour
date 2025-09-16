@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Experience } from '@/lib/mock-data';
 import { Clock, TrendingUp } from 'lucide-react';
+import { AIImage } from '../common/ai-image';
 
 type ExperienceCardProps = {
   experience: Experience;
@@ -12,12 +13,10 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <Card className="overflow-hidden h-full flex flex-col group transition-all duration-300 hover:shadow-xl hover:border-primary/50">
       <div className="relative aspect-[4/3] overflow-hidden">
-        <Image
-          src={experience.image.imageUrl}
-          alt={experience.image.description}
+        <AIImage
+          imageId={experience.image.id}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          data-ai-hint={experience.image.imageHint}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         {experience.familyFriendly && (

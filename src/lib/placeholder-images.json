@@ -3,43 +3,49 @@
     {
       "id": "hero-desktop",
       "description": "Digital painting of a psychedelic lion with its mane blending into the Jerusalem skyline at dusk.",
-      "imageUrl": "https://picsum.photos/seed/zion-hero-desktop/2560/1440",
+      "prompt": "Digital painting + photo-realistic psychedelic lion, frontal symmetric, eye-gaze lock (piercing cyan irises with fractal rings), mane = glowing fractal ribbons blending into Jerusalem skyline at dusk (very subtle), dramatic rim lighting, HDR, volumetric depth haze, bold outlines, micro-detail in fur; left 40% clean negative space for headline/CTA; cinematic grading, high micro-contrast, bokeh particles guiding the eye inward. Palette: deep teal, molten gold accents, black. Lions of Zion logo bottom-right (vector-clean, faithful). Specs: landscape, 2560x1440. Avoid: text elements (besides logo), Stars of David, extra animals, blur, gore.",
       "imageHint": "psychedelic lion Jerusalem"
+    },
+    {
+      "id": "hero-mobile",
+      "description": "Ultra-detailed lion face centered for mobile.",
+      "prompt": "Ultra-detailed lion face centered, direct hypnotic gaze (subtle spiral reflections), neon edge-glow on whiskers, soft Tel-Aviv night bokeh behind, dark fantasy vibe, bold outlines, HDR, rim light; safe text zone: upper 30% clear gradient. Palette teal/cyan + gold flecks. Lions of Zion logo bottom-right. Specs: portrait 1080x1920. Avoid: cluttered background, text, symbols.",
+      "imageHint": "lion face tel-aviv"
     },
     {
       "id": "experience-1",
       "description": "A calm lion with its mane morphing into Negev dune curves.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-1/1200/900",
+      "prompt": "Calm yet powerful lion, frontal gaze; mane morphs into Negev dune curves and Dead Sea salt fractals; golden dust motes, light-shafts, central focus. Bold outlines, HDR, volumetric fog, micro-contrast. 4:3 aspect ratio. No logo. Avoid: human figures, signage.",
       "imageHint": "lion negev desert"
     },
     {
       "id": "experience-2",
       "description": "A regal lion with its mane threaded with Jerusalem stone texture.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-2/1200/900",
+      "prompt": "Regal lion staring straight, pupils with subtle kaleidoscopic starburst (no star emblems), mane threaded with Jerusalem stone texture and faint arch motifs; chiaroscuro lighting, glitter micro-highlights, center composition. Palette warm gold + cool cyan. 4:3 aspect ratio. No logo. Avoid: religiously identifying crosses or symbols, text.",
       "imageHint": "lion jerusalem stone"
     },
     {
       "id": "experience-3",
       "description": "A psychedelic lion face with its mane turning into Tel-Aviv music waveforms.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-3/1200/900",
+      "prompt": "Psychedelic neon palette; lion face head-on, crystal eyes; mane turns into music waveforms + Tel-Aviv skyline light-trails; slight chromatic aberration at edges, scanline/glitch on periphery while the eyes stay razor-sharp. Bold outlines, HDR. 4:3 aspect ratio. No logo. Avoid: people, clutter, extra symbols.",
       "imageHint": "psychedelic lion tel-aviv"
     },
     {
       "id": "experience-4",
       "description": "Lion micro-portrait with mane blending into beach foam.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-4/1200/900",
+      "prompt": "Lion micro-portrait, direct gaze; mane subtly blending with Mediterranean beach foam; same lighting grade and palette across all; sharp eyes, bold outlines. 4:3 aspect ratio. No logo.",
       "imageHint": "lion portrait beach"
     },
     {
       "id": "experience-5",
       "description": "Lion micro-portrait with mane blending into Galilee vineyards.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-5/1200/900",
+      "prompt": "Lion micro-portrait, direct gaze; mane subtly blending with Galilee vineyards; same lighting grade and palette across all; sharp eyes, bold outlines. 4:3 aspect ratio. No logo.",
       "imageHint": "lion portrait vineyards"
     },
     {
       "id": "experience-6",
       "description": "Lion micro-portrait with mane blending into Carmel forest.",
-      "imageUrl": "https://picsum.photos/seed/zion-exp-6/1200/900",
+      "prompt": "Lion micro-portrait, direct gaze; mane subtly blending with Carmel forest; same lighting grade and palette across all; sharp eyes, bold outlines. 4:3 aspect ratio. No logo.",
       "imageHint": "lion portrait forest"
     }
   ]

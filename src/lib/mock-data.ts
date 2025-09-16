@@ -18,7 +18,7 @@ const findImage = (id: string): ImagePlaceholder => {
     return {
       id: 'fallback',
       description: 'Fallback image',
-      imageUrl: `https://picsum.photos/seed/${id}/1200/900`,
+      prompt: 'A beautiful landscape.',
       imageHint: 'placeholder',
     };
   }
