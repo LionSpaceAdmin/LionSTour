@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm, FormProvider }ve
+import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -18,7 +18,7 @@ import { StepWhen } from './steps/step-when';
 import { StepWhat } from './steps/step-what';
 import { StepBudget } from './steps/step-budget';
 import { ItineraryDisplay } from './itinerary-display';
-import { Loader2, Send } from 'lucide-react';
+import { Loader2, Send, ArrowRight } from 'lucide-react';
 
 const whoSchema = z.object({
   travelerCount: z.number().min(1),
