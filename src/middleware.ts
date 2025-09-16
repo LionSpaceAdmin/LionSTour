@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 
-let locales = ['en', 'he', 'ar', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'sv', 'no', 'da', 'fi', 'pl', 'cs', 'sk', 'hu', 'ro', 'bg', 'el', 'tr', 'ru', 'uk', 'sr', 'hr', 'bs', 'sl', 'lt', 'lv', 'et', 'is'];
-const defaultLocale = 'en';
+export const locales = ['en', 'he', 'ar', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'sv', 'no', 'da', 'fi', 'pl', 'cs', 'sk', 'hu', 'ro', 'bg', 'el', 'tr', 'ru', 'uk', 'sr', 'hr', 'bs', 'sl', 'lt', 'lv', 'et', 'is'];
+export const defaultLocale = 'en';
 
 function getLocale(request: NextRequest): string {
   const headers = { 'accept-language': request.headers.get('accept-language') || '' };
@@ -21,7 +21,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Check if the pathname is for a static file.
-  const isStaticFile = /\.(.*)$/.test(pathname) || pathname.startsWith('/_next/') || pathname.startsWith('/api/');
+  const isStaticFile = /\.(.*)$/.test(pathname) || pathname.startsWith('/_next/') || pathname.startsWith('/api/') || pathname.startsWith('/images/');
   if (isStaticFile) {
     return;
   }
@@ -32,8 +32,9 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return;
 
-  // Default to English
-  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
+  // If no locale is present, redirect to the default locale
+  const locale = getLocale(request);
+  request.nextUrl.pathname = `/${locale}${pathname}`;
   
   return NextResponse.redirect(request.nextUrl);
 }
@@ -42,6 +43,6 @@ export const config = {
   matcher: [
     // Skip all internal paths (_next) and static files.
     // We want to run this on all paths that are not static files.
-    '/((?!_next/static|images|api|.*\\..*).*)'
+    '/((?!_next/static|_next/image|images|api|favicon.ico|.*\\..*).*)'
   ],
 };

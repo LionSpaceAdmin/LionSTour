@@ -17,10 +17,10 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }>) {
-  const dict = await getDictionary(params.lang);
+  const dict = await getDictionary(params.lang || 'en');
   
   return (
-    <html lang={params.lang} dir={dict._dir || 'ltr'} className="dark">
+    <html lang={params.lang || 'en'} dir={dict._dir || 'ltr'} className="dark">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -30,9 +30,9 @@ export default async function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-primary focus:text-primary-foreground">
           {dict.accessibility?.skipToContent || 'Skip to content'}
         </a>
-        <Header lang={params.lang} dict={dict} />
+        <Header lang={params.lang || 'en'} dict={dict} />
         <main id="main-content">{children}</main>
-        <Footer lang={params.lang} dict={dict} />
+        <Footer lang={params.lang || 'en'} dict={dict} />
         <Toaster />
       </body>
     </html>

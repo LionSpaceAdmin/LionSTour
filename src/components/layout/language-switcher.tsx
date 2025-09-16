@@ -10,12 +10,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Languages } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { locales } from '@/middleware';
 
 export function LanguageSwitcher({ lang, className }: { lang: string, className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const locales = ['en', 'he', 'ar', 'es', 'fr', 'de', 'it', 'pt', 'nl', 'sv', 'no', 'da', 'fi', 'pl', 'cs', 'sk', 'hu', 'ro', 'bg', 'el', 'tr', 'ru', 'uk', 'sr', 'hr', 'bs', 'sl', 'lt', 'lv', 'et', 'is'];
   const localeNames: { [key: string]: string } = {
     en: 'English', he: 'עברית', ar: 'العربية', es: 'Español', fr: 'Français', de: 'Deutsch', it: 'Italiano', pt: 'Português',
     nl: 'Nederlands', sv: 'Svenska', no: 'Norsk', da: 'Dansk', fi: 'Suomi', pl: 'Polski', cs: 'Čeština', sk: 'Slovenčina',
