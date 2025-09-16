@@ -3,13 +3,13 @@
     {
       "id": "hero-desktop",
       "description": "Hyper-realistic lion head on a dark background with cyan eyes and fractal mane.",
-      "prompt": "Hyper-real lion head on a deep black background, piercing cyan eyes; mane composed of glowing fractal veins; surrounded by a sacred geometry halo; depth particles; sharp details; TheLionsOfJudah logo bottom-right. 8k, ultra-detailed, digital painting, photo-realistic, bold outlines, central focus, dramatic rim lighting, HDR, volumetric fog, cinematic grading, high micro-contrast.",
+      "prompt": "Hyper-real lion head on a deep black background, piercing cyan eyes; mane composed of glowing fractal veins; surrounded by a sacred geometry halo; depth particles; sharp details; 8k, ultra-detailed, digital painting, photo-realistic, bold outlines, central focus, dramatic rim lighting, HDR, volumetric fog, cinematic grading, high micro-contrast.",
       "imageHint": "hyper-real lion"
     },
     {
       "id": "hero-mobile",
       "description": "Ultra-detailed lion face centered for mobile.",
-      "prompt": "Ultra-detailed lion face centered, direct hypnotic gaze (subtle spiral reflections), neon edge-glow on whiskers, soft Tel-Aviv night bokeh behind, dark fantasy vibe, bold outlines, HDR, rim light; safe text zone: upper 30% clear gradient. Palette teal/cyan + gold flecks. Lions of Zion logo bottom-right. Specs: portrait 1080x1920. Avoid: cluttered background, text, symbols.",
+      "prompt": "Ultra-detailed lion face centered, direct hypnotic gaze (subtle spiral reflections), neon edge-glow on whiskers, soft Tel-Aviv night bokeh behind, dark fantasy vibe, bold outlines, HDR, rim light; safe text zone: upper 30% clear gradient. Palette teal/cyan + gold flecks. Specs: portrait 1080x1920. Avoid: cluttered background, text, symbols.",
       "imageHint": "lion face tel-aviv"
     },
     {
@@ -47,6 +47,18 @@
       "description": "Lion micro-portrait with mane blending into Carmel forest.",
       "prompt": "Lion micro-portrait, direct gaze; mane subtly blending with Carmel forest; same lighting grade and palette across all; sharp eyes, bold outlines. 4:3 aspect ratio. No logo.",
       "imageHint": "lion portrait forest"
-    }
+    },
+    { "id": "guide-amir", "description": "Portrait of Amir", "prompt": "Candid portrait of a friendly, weathered Israeli man in his 40s with a kind smile and a thoughtful gaze. He is wearing a simple linen shirt. Background is a softly blurred desert landscape at sunrise. Photography style: shallow depth of field, warm morning light, natural and authentic feel.", "imageHint": "man portrait desert" },
+    { "id": "guide-tamar", "description": "Portrait of Tamar", "prompt": "Candid portrait of a vibrant Israeli woman in her late 30s with intelligent eyes and a warm, engaging expression. She has curly dark hair. She stands in a Jerusalem alleyway, with ancient stone walls and a splash of colorful bougainvillea in the background. Photography style: natural light, sense of place, authentic.", "imageHint": "woman portrait jerusalem" },
+    { "id": "guide-yoni", "description": "Portrait of Yoni", "prompt": "Candid portrait of a passionate Israeli man in his 30s with a friendly beard and a joyful smile. He is holding a basket of freshly picked herbs. The background is a lush, green field in the Galilee. Photography style: bright, sunny day, vibrant colors, shallow depth of field.", "imageHint": "man portrait galilee" },
+    { "id": "guide-maya", "description": "Portrait of Maya", "prompt": "Candid portrait of a sharp, modern Israeli woman in her early 30s with a confident and curious look. She is standing against a wall of colorful, artistic graffiti in Tel Aviv's Florentin neighborhood. Photography style: urban, edgy, dynamic, with a mix of shadow and light.", "imageHint": "woman portrait tel aviv" },
+    { "id": "guide-david", "description": "Portrait of David", "prompt": "Candid portrait of a strong and friendly Israeli man in his 50s, with a warm, commanding presence. He is wearing a casual outdoor shirt and stands next to a jeep, with the rolling hills of the Golan Heights behind him at sunset. Photography style: golden hour, dramatic landscape, sense of adventure.", "imageHint": "man portrait golan" },
+    { "id": "guide-noa", "description": "Portrait of Noa", "prompt": "Candid portrait of a thoughtful, academic Israeli woman in her 40s with glasses and a friendly, knowledgeable smile. She is standing in the Roman ruins of Caesarea, with ancient arches and the sea in the background. Photography style: clean, bright light, historical context, professional feel.", "imageHint": "woman portrait caesarea" },
+    { "id": "guide-hero-amir", "description": "Hero image for Amir", "prompt": "Expansive, cinematic photograph of the Negev desert at dawn. Rolling sand dunes catch the first golden light, creating a stark contrast of light and shadow. The sky is a gradient of deep orange, pink, and soft blue. The scene evokes a feeling of immense peace, silence, and ancient beauty. No people or animals.", "imageHint": "negev desert sunrise" },
+    { "id": "guide-hero-tamar", "description": "Hero image for Tamar", "prompt": "Cinematic photograph from a rooftop overlooking the Old City of Jerusalem at the golden hour. The Dome of the Rock and ancient church towers are silhouetted against a warm, glowing sky. The texture of the ancient stone is visible. The image conveys a deep sense of history, spirituality, and timelessness.", "imageHint": "jerusalem old city" },
+    { "id": "guide-hero-yoni", "description": "Hero image for Yoni", "prompt": "Cinematic, lush photograph of the Galilee region in spring. Rolling green hills are covered in a carpet of colorful wildflowers. An ancient olive grove is visible in the mid-ground. The image feels vibrant, fertile, and full of life.", "imageHint": "galilee spring" },
+    { "id": "guide-hero-maya", "description": "Hero image for Maya", "prompt": "Cinematic, high-energy photograph of a Tel Aviv street at dusk. The Bauhaus buildings are bathed in the warm glow of streetlights, and the street is alive with the motion blur of people and traffic. The image captures the vibrant, modern, and sleepless energy of the city. Focus on architecture and light, not individual people.", "imageHint": "tel aviv street" },
+    { "id": "guide-hero-david", "description": "Hero image for David", "prompt": "Dramatic, cinematic photograph of the Golan Heights. A rugged, volcanic landscape with green and brown patches unfolds under a vast, dramatic sky with scattered clouds. In the distance, the Sea of Galilee is visible. The scene conveys a sense of raw nature, strategic importance, and rugged beauty.", "imageHint": "golan heights landscape" },
+    { "id": "guide-hero-noa", "description": "Hero image for Noa", "prompt": "Cinematic photograph of the ancient Roman aqueduct at Caesarea beach during sunset. The warm light of the setting sun illuminates the arches as gentle waves from the Mediterranean Sea wash ashore. The image blends history and nature beautifully.", "imageHint": "caesarea aqueduct sunset" }
   ]
 }

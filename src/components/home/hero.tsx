@@ -10,6 +10,7 @@ export function Hero({ dict, lang }: { dict: any, lang: string }) {
     <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white -mt-20">
       <AIImage
         imageId="hero-desktop"
+        alt="The Lions of Judah"
         fill
         priority
         className="object-cover"
