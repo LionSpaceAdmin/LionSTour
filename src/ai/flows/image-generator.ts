@@ -40,8 +40,11 @@ const generateImageFlow = ai.defineFlow(
     console.log(`[generateImageFlow] Generating image for: ${id}`);
 
     const { media } = await ai.generate({
-      model: 'googleai/imagen-4.0-fast-generate-001',
+      model: 'googleai/gemini-2.5-flash-image-preview',
       prompt: imageConfig.prompt,
+      config: {
+        responseModalities: ['IMAGE'],
+      },
     });
 
     if (!media.url) {
