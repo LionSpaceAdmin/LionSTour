@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
@@ -20,12 +21,6 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Check if the pathname is for a static file.
-  const isStaticFile = /\.(.*)$/.test(pathname) || pathname.startsWith('/_next/') || pathname.startsWith('/api/') || pathname.startsWith('/images/');
-  if (isStaticFile) {
-    return;
-  }
-
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
@@ -43,6 +38,6 @@ export const config = {
   matcher: [
     // Skip all internal paths (_next) and static files.
     // We want to run this on all paths that are not static files.
-    '/((?!_next/static|_next/image|images|api|favicon.ico|.*\\..*).*)'
+    '/((?!api|_next/static|_next/image|images|favicon.ico|.*\\..*).*)'
   ],
 };
