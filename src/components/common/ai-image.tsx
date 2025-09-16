@@ -5,23 +5,51 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { generateImage } from '@/ai/flows/image-generator';
-import { use, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 
 type AIImageProps = Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'> & {
   imageId: string;
 };
 
-function GeneratedImage({ imageId, ...props }: AIImageProps) {
+export function AIImage({ imageId, ...props }: AIImageProps) {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false);
+
   const imageConfig = PlaceHolderImages.find((p) => p.id === imageId);
-  
-  if (!imageConfig) {
+
+  useEffect(() => {
+    let isMounted = true;
+    
+    async function loadImage() {
+      try {
+        const result = await generateImage({ id: imageId });
+        if (isMounted && result.imageUrl) {
+          setImageUrl(result.imageUrl);
+        }
+      } catch (err) {
+        console.error(`Failed to generate image for id: ${imageId}`, err);
+        if (isMounted) {
+          setError(true);
+        }
+      }
+    }
+
+    if (imageId) {
+      loadImage();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [imageId]);
+
+  if (error || !imageConfig) {
+    // Show a fallback or skeleton on error or if config is missing
     return <Skeleton className="w-full h-full" />;
   }
 
-  // Generate the image on the server and stream the result.
-  const { imageUrl } = use(generateImage({ id: imageId }));
-
   if (!imageUrl) {
+    // Show skeleton while loading
     return <Skeleton className="w-full h-full" />;
   }
 
@@ -32,13 +60,5 @@ function GeneratedImage({ imageId, ...props }: AIImageProps) {
       data-ai-hint={imageConfig.imageHint}
       {...props}
     />
-  );
-}
-
-export function AIImage(props: AIImageProps) {
-  return (
-    <Suspense fallback={<Skeleton className="w-full h-full" />}>
-      <GeneratedImage {...props} />
-    </Suspense>
   );
 }
