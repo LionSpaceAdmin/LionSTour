@@ -14,6 +14,7 @@ export type Experience = {
 const findImage = (id: string): ImagePlaceholder => {
   const img = PlaceHolderImages.find((p) => p.id === id);
   if (!img) {
+    // Fallback in case image is not found
     return {
       id: 'fallback',
       description: 'Fallback image',

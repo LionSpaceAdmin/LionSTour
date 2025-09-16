@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Experience } from '@/lib/mock-data';
-import { Clock, TrendingUp, UserCheck } from 'lucide-react';
+import { Clock, TrendingUp } from 'lucide-react';
 
 type ExperienceCardProps = {
   experience: Experience;
