@@ -58,7 +58,7 @@ export function GuideCard({ guide }: GuideCardProps) {
         <Button asChild className="w-full">
             <Link href={`/guides/${guide.id}`}>
                 <UserPlus className="mr-2 h-4 w-4" />
-                Plan with {guide.name.split(' ')[0]}
+                View Profile
             </Link>
         </Button>
       </CardFooter>
