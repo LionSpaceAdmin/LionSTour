@@ -22,7 +22,7 @@
     --destructive-foreground: 220 14% 96%; /* #F2F5F9 */
     --border: 240 2% 14%; /* #232323 */
     --input: 240 2% 14%; /* #232323 */
-    --ring: 51 100% 50%; /* #FFD700 */
+    --ring: 51 100% 50%; /* #FFD700 - Changed for focus ring */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -50,7 +50,7 @@
     --destructive-foreground: 220 14% 96%;
     --border: 240 2% 14%;
     --input: 240 2% 14%;
-    --ring: 51 100% 50%;
+    --ring: 51 100% 50%; /* #FFD700 - Changed for focus ring */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
