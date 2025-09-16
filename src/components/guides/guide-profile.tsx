@@ -10,6 +10,22 @@ type GuideProfileProps = {
   guide: Guide;
 };
 
+const GuideActions = ({ guide }: { guide: Guide }) => (
+    <div className="flex items-center gap-2">
+        <Button size="lg" asChild>
+            <Link href="/plan">
+                <UserPlus className="mr-2 h-5 w-5" />
+                Plan with {guide.name.split(' ')[0]}
+            </Link>
+        </Button>
+        <Button size="lg" variant="outline">
+            <MessageSquare className="mr-2 h-5 w-5" />
+            Message
+        </Button>
+    </div>
+);
+
+
 export function GuideProfile({ guide }: GuideProfileProps) {
   return (
     <div>
@@ -25,7 +41,7 @@ export function GuideProfile({ guide }: GuideProfileProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </section>
 
-      <div className="container mx-auto px-4 md:px-6 -mt-24 md:-mt-32">
+      <div className="container mx-auto px-4 md:px-6 -mt-24 md:-mt-32 pb-24 md:pb-0">
         <div className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="md:col-span-1">
@@ -68,17 +84,8 @@ export function GuideProfile({ guide }: GuideProfileProps) {
                                 <h1 className="text-4xl font-headline font-bold text-primary">{guide.name}</h1>
                                 <p className="text-lg text-muted-foreground font-medium">{guide.title}</p>
                             </div>
-                             <div className="flex items-center gap-2 mt-4 sm:mt-0">
-                                <Button size="lg" asChild>
-                                    <Link href="/plan">
-                                        <UserPlus className="mr-2 h-5 w-5" />
-                                        Plan with {guide.name.split(' ')[0]}
-                                    </Link>
-                                </Button>
-                                <Button size="lg" variant="outline">
-                                    <MessageSquare className="mr-2 h-5 w-5" />
-                                    Message
-                                </Button>
+                             <div className="hidden sm:flex">
+                                <GuideActions guide={guide} />
                             </div>
                         </div>
 
@@ -94,6 +101,11 @@ export function GuideProfile({ guide }: GuideProfileProps) {
                 </div>
             </div>
         </div>
+      </div>
+      
+      {/* Sticky Action Bar for Mobile */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-sm border-t z-50">
+        <GuideActions guide={guide} />
       </div>
     </div>
   );
