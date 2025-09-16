@@ -37,6 +37,9 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   };
 
   const t = (key: string): string => {
+    if (typeof key !== 'string') {
+      return '';
+    }
     const keys = key.split('.');
     let value: unknown = messages[localeState];
     
