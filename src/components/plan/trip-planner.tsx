@@ -1,61 +1,93 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import { Slider } from '@/components/ui/slider';
-import { planTripAction } from '@/app/plan/actions';
 import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import type { PlanTripOutput } from '@/ai/flows/concierge-service';
+import { useForm, FormProvider } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const formSchema = z.object({
-  travelerCount: z.number().min(1, 'At least one traveler is required.'),
-  interests: z.string().min(3, 'Please list at least one interest.'),
-  duration: z.number().min(1, 'Trip must be at least 1 day long.'),
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
+import { planTripAction } from '@/app/plan/actions';
+import type { Itinerary } from '@/ai/flows/concierge-service';
+
+import { StepWho } from './steps/step-who';
+import { StepWhen } from './steps/step-when';
+import { StepWhat } from './steps/step-what';
+import { StepBudget } from './steps/step-budget';
+import { ItineraryDisplay } from './itinerary-display';
+import { Loader2 } from 'lucide-react';
+
+const whoSchema = z.object({
+  travelerCount: z.number().min(1),
+  interests: z.array(z.string()).min(1, 'Please select at least one interest.'),
+});
+
+const whenSchema = z.object({
+  duration: z.number().min(1).max(30),
+  season: z.string().optional(),
+  flexibility: z.enum(['strict', 'flexible']),
+});
+
+const whatSchema = z.object({
+  themes: z.array(z.string()).min(1, 'Please select at least one theme.'),
   pace: z.enum(['relaxed', 'moderate', 'intensive']),
+});
+
+const budgetSchema = z.object({
   budget: z.array(z.number()).length(2),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+const tripPlannerSchema = whoSchema.merge(whenSchema).merge(whatSchema).merge(budgetSchema);
+export type TripPlannerValues = z.infer<typeof tripPlannerSchema>;
+
+const steps = [
+  { id: 'who', title: 'Who is traveling?', schema: whoSchema, component: StepWho },
+  { id: 'when', title: 'When are you going?', schema: whenSchema, component: StepWhen },
+  { id: 'what', title: 'What is your style?', schema: whatSchema, component: StepWhat },
+  { id: 'budget', title: 'What is your budget?', schema: budgetSchema, component: StepBudget },
+];
 
 export function TripPlanner() {
+  const [currentStep, setCurrentStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [itinerary, setItinerary] = useState<PlanTripOutput | null>(null);
+  const [itinerary, setItinerary] = useState<Itinerary | null>(null);
   const { toast } = useToast();
 
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+  const methods = useForm<TripPlannerValues>({
+    resolver: zodResolver(steps[currentStep].schema),
+    mode: 'onChange',
     defaultValues: {
       travelerCount: 1,
-      interests: '',
-      duration: 3,
+      interests: [],
+      duration: 7,
+      flexibility: 'flexible',
+      themes: [],
       pace: 'moderate',
-      budget: [500, 2000],
+      budget: [1000, 3000],
     },
   });
+  const { trigger, getValues, formState } = methods;
 
-  async function onSubmit(values: FormValues) {
+  const handleNext = async () => {
+    const isValid = await trigger();
+    if (isValid) {
+      if (currentStep < steps.length - 1) {
+        setCurrentStep(currentStep + 1);
+      } else {
+        await onSubmit(getValues());
+      }
+    }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  async function onSubmit(values: TripPlannerValues) {
     setIsLoading(true);
     setItinerary(null);
     try {
@@ -64,14 +96,15 @@ export function TripPlanner() {
           travelers: {
             count: values.travelerCount,
             ages: [30], // Mock age for now
-            interests: values.interests.split(',').map((i) => i.trim()),
+            interests: values.interests,
           },
           temporal: {
             duration: values.duration,
-            flexibility: 'flexible',
+            season: values.season,
+            flexibility: values.flexibility,
           },
           experiential: {
-            themes: ['discovery'], // Mock theme
+            themes: values.themes,
             pace: values.pace,
           },
           practical: {
@@ -83,148 +116,94 @@ export function TripPlanner() {
         },
       });
 
-      if (result) {
-        setItinerary(result);
+      if (result?.itinerary) {
+        setItinerary(result.itinerary);
         toast({
           title: "Itinerary Generated!",
           description: "Your personalized trip plan is ready below.",
         });
       } else {
-        throw new Error('The AI service returned an empty response.');
+        throw new Error('The AI service returned an empty or invalid response.');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       toast({
         variant: 'destructive',
         title: 'Error Generating Itinerary',
-        description: 'There was a problem creating your trip plan. Please try again.',
+        description: error.message || 'There was a problem creating your trip plan. Please try again.',
       });
     } finally {
       setIsLoading(false);
     }
   }
 
+  const CurrentStepComponent = steps[currentStep].component;
+
+  if (isLoading) {
+    return (
+      <div className="text-center p-12">
+        <Loader2 className="mx-auto h-12 w-12 animate-spin text-primary" />
+        <h2 className="mt-4 text-2xl font-headline font-semibold">Building Your Journey...</h2>
+        <p className="mt-2 text-muted-foreground">Our AI is crafting the perfect trip for you.</p>
+      </div>
+    );
+  }
+
+  if (itinerary) {
+    return (
+      <div>
+        <ItineraryDisplay itinerary={itinerary} />
+        <div className="mt-8 text-center">
+          <Button
+            onClick={() => {
+              setItinerary(null);
+              setCurrentStep(0);
+              methods.reset();
+            }}
+          >
+            Start Over
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <Card className="bg-card/80 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle>Trip Details</CardTitle>
-        <CardDescription>Fill in your preferences and let our AI craft your journey.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <FormField
-                control={form.control}
-                name="travelerCount"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Number of Travelers</FormLabel>
-                    <FormControl>
-                      <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value, 10))}/>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="duration"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Trip Duration (days)</FormLabel>
-                    <FormControl>
-                       <Input type="number" {...field} onChange={e => field.onChange(parseInt(e.target.value, 10))}/>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+    <FormProvider {...methods}>
+      <div className="space-y-8">
+        <Progress value={((currentStep + 1) / steps.length) * 100} className="w-full" />
+        <h2 className="text-2xl font-headline font-semibold text-center">{steps[currentStep].title}</h2>
 
-            <FormField
-              control={form.control}
-              name="interests"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Interests</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="e.g., History, Nature, Food, Adventure, Art"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Separate interests with a comma.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3 }}
+          >
+            <CurrentStepComponent />
+          </motion.div>
+        </AnimatePresence>
 
-            <FormField
-              control={form.control}
-              name="pace"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Trip Pace</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a pace" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="relaxed">Relaxed</SelectItem>
-                      <SelectItem value="moderate">Moderate</SelectItem>
-                      <SelectItem value="intensive">Intensive</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="budget"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Budget Range (USD)</FormLabel>
-                    <div className="flex items-center gap-4">
-                      <span>${field.value[0]}</span>
-                      <Slider
-                        min={100}
-                        max={10000}
-                        step={100}
-                        value={field.value}
-                        onValueChange={field.onChange}
-                      />
-                      <span>${field.value[1]}</span>
-                    </div>
-                  <FormDescription>
-                    Estimate your budget per person for the entire trip.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button type="submit" size="lg" disabled={isLoading} className="w-full">
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Building Your Journey...
-                </>
-              ) : (
-                'Generate Itinerary'
-              )}
+        <div className="flex justify-between items-center pt-4">
+          <div>
+            {currentStep > 0 && (
+              <Button variant="ghost" onClick={handleBack}>
+                Back
+              </Button>
+            )}
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Step {currentStep + 1} of {steps.length}
+          </div>
+          <div>
+            <Button onClick={handleNext} disabled={!formState.isValid}>
+              {currentStep === steps.length - 1 ? 'Generate Itinerary' : 'Next'}
             </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+          </div>
+        </div>
+      </div>
+    </FormProvider>
   );
 }
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
