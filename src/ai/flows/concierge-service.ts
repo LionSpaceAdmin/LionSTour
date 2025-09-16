@@ -9,6 +9,7 @@
  */
 
 import {ai} from '@/ai/genkit';
+import {findRelevantGuides} from '@/ai/tools/guide-finder';
 import {z} from 'genkit';
 
 const PlanningIntentSchema = z.object({
@@ -86,6 +87,7 @@ const prompt = ai.definePrompt({
   output: {
     schema: PlanTripOutputSchema,
   },
+  tools: [findRelevantGuides],
   prompt: `You are a trip planning expert specializing in Israel tourism. Generate a trip itinerary based on the following intent:
 
 Traveler Information: Number of travelers: {{{intent.travelers.count}}}, Ages: {{{intent.travelers.ages}}}, Interests: {{{intent.travelers.interests}}}
@@ -93,7 +95,9 @@ Temporal Information: Duration: {{{intent.temporal.duration}}} days, Season: {{{
 Experiential Information: Themes: {{{intent.experiential.themes}}}, Pace: {{{intent.experiential.pace}}}
 Practical Information: Budget Range: {{{intent.practical.budget.range}}}, Currency: {{{intent.practical.budget.currency}}}
 
-Create a detailed itinerary with daily stops, descriptions, explainability tags, and location data.  Provide a summary of the trip and its total cost. Use your knowledge of Israel to make the itinerary wonderful and accurate. Try to choose highly-rated locations with strong reviews and a history of positive feedback.
+If the user's interests mention a specific type of guide (e.g., 'desert expert', 'storyteller'), use the findRelevantGuides tool to get information about available guides that match those criteria. If you use the tool and find a good match, assign that guide to the itinerary.
+
+Create a detailed itinerary with daily stops, descriptions, explainability tags, and location data. Provide a summary of the trip and its total cost. Use your knowledge of Israel to make the itinerary wonderful and accurate. Try to choose highly-rated locations with strong reviews and a history of positive feedback.
 
 Format your response as a JSON object matching the PlanTripOutputSchema.`,
 });
