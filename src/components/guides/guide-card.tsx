@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Guide } from '@/lib/mock-guides';
-import { ShieldCheck, Languages, Heart, Clock } from 'lucide-react';
+import { ShieldCheck, Languages, Heart, Clock, UserPlus } from 'lucide-react';
 import { Button } from '../ui/button';
 
 type GuideCardProps = {
@@ -56,7 +56,10 @@ export function GuideCard({ guide }: GuideCardProps) {
             </div>
         </div>
         <Button asChild className="w-full">
-            <Link href={`/guides/${guide.id}`}>View Profile</Link>
+            <Link href={`/guides/${guide.id}`}>
+                <UserPlus className="mr-2 h-4 w-4" />
+                Plan with {guide.name.split(' ')[0]}
+            </Link>
         </Button>
       </CardFooter>
     </Card>
