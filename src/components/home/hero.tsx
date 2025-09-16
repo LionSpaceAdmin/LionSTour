@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, DraftingCompass } from 'lucide-react';
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find(p => p.id === 'hero-desktop');
@@ -31,10 +31,15 @@ export function Hero() {
         <p className="mt-4 md:mt-6 text-lg md:text-xl max-w-2xl mx-auto text-shadow animate-fade-in-up">
           Authentic, story-driven journeys guided by local veterans and communities. Experience Israel with soul.
         </p>
-        <div className="mt-8 md:mt-10 animate-fade-in-up animation-delay-300">
+        <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
             <Link href="/experiences">
               Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-white/10 hover:bg-white/20 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Link href="/plan">
+              Plan with AI <DraftingCompass className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
