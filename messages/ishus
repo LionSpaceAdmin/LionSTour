@@ -1,0 +1,1875 @@
+Attached HTML and CSS Context
+
+<a class="px-6 py-3 rounded-full bg-transparent border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300" href="/plan">Plan Your Journey</a>
+
+
+/* Matched Rule from user-agent */
+a:-webkit-any-link {
+  color: -webkit-link;
+  text-decoration-line: underline;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  cursor: pointer;
+}
+
+/* Matched Rule from regular */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Matched Rule from regular */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Matched Rule from regular */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Matched Rule from regular */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Matched Rule from regular */
+a {
+  color: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  text-decoration-line: inherit;
+  text-decoration-thickness: inherit;
+  text-decoration-style: inherit;
+  text-decoration-color: inherit;
+}
+
+/* Matched Rule from regular */
+a {
+  color: inherit;
+  -webkit-text-decoration: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  text-decoration-line: inherit;
+  text-decoration-thickness: inherit;
+  text-decoration-style: inherit;
+  text-decoration-color: inherit;
+}
+
+/* Matched Rule from regular */
+.transform {
+  transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+}
+
+/* Matched Rule from regular */
+.rounded-full {
+  border-radius: calc(infinity * 1px);
+  border-top-left-radius: calc(infinity * 1px);
+  border-top-right-radius: calc(infinity * 1px);
+  border-bottom-right-radius: calc(infinity * 1px);
+  border-bottom-left-radius: calc(infinity * 1px);
+}
+
+/* Matched Rule from regular */
+.border-2 {
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+/* Matched Rule from regular */
+.bg-transparent {
+  background-color: transparent;
+  background-color: transparent;
+}
+
+/* Matched Rule from regular */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+
+/* Matched Rule from regular */
+.duration-300 {
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+/* Matched Rule from regular */
+.hover\:scale-105 {
+}
+
+/* Matched Rule from regular */
+.transform {
+  transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+}
+
+/* Matched Rule from regular */
+.rounded-full {
+  border-radius: calc(infinity * 1px);
+  border-top-left-radius: calc(infinity * 1px);
+  border-top-right-radius: calc(infinity * 1px);
+  border-bottom-right-radius: calc(infinity * 1px);
+  border-bottom-left-radius: calc(infinity * 1px);
+}
+
+/* Matched Rule from regular */
+.border-2 {
+  border-style: var(--tw-border-style);
+  border-width: 2px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+/* Matched Rule from regular */
+.bg-transparent {
+  background-color: transparent;
+  background-color: transparent;
+}
+
+/* Matched Rule from regular */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+
+/* Matched Rule from regular */
+.duration-300 {
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+/* Matched Rule from regular */
+.hover\:scale-105 {
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.flex {
+  display: flex;
+  display: flex;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.flex-wrap {
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.justify-center {
+  justify-content: center;
+  justify-content: center;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.flex {
+  display: flex;
+  display: flex;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.flex-wrap {
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.justify-center {
+  justify-content: center;
+  justify-content: center;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.opacity-100 {
+  opacity: 100%;
+  opacity: 1;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.duration-700 {
+  --tw-duration: 700ms;
+  transition-duration: 700ms;
+  --tw-duration: 700ms;
+  transition-duration: 700ms;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.will-change-transform {
+  will-change: transform;
+  will-change: transform;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.opacity-100 {
+  opacity: 100%;
+  opacity: 1;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+  transition-property: all;
+  transition-timing-function: var(--tw-ease, ease);
+  transition-duration: var(--tw-duration, 0s);
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.duration-700 {
+  --tw-duration: 700ms;
+  transition-duration: 700ms;
+  --tw-duration: 700ms;
+  transition-duration: 700ms;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.will-change-transform {
+  will-change: transform;
+  will-change: transform;
+}
+
+/* Inherited from ancestor level 3 (user-agent) */
+article, aside, footer, header, hgroup, main, nav, search, section {
+  display: block;
+}
+
+/* Inherited from ancestor level 3 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.z-30 {
+  z-index: 30;
+  z-index: 30;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.flex {
+  display: flex;
+  display: flex;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.flex-col {
+  flex-direction: column;
+  flex-direction: column;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.items-center {
+  align-items: center;
+  align-items: center;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.justify-center {
+  justify-content: center;
+  justify-content: center;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.text-center {
+  text-align: center;
+  text-align: center;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.z-30 {
+  z-index: 30;
+  z-index: 30;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.flex {
+  display: flex;
+  display: flex;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.flex-col {
+  flex-direction: column;
+  flex-direction: column;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.items-center {
+  align-items: center;
+  align-items: center;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.justify-center {
+  justify-content: center;
+  justify-content: center;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.text-center {
+  text-align: center;
+  text-align: center;
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+article, aside, footer, header, hgroup, main, nav, search, section {
+  display: block;
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+.z-20 {
+  z-index: 20;
+  z-index: 20;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+.z-20 {
+  z-index: 20;
+  z-index: 20;
+}
+
+/* Inherited from ancestor level 5 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 5 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.w-full {
+  width: 100%;
+  width: 100%;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.relative {
+  position: relative;
+  position: relative;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.w-full {
+  width: 100%;
+  width: 100%;
+}
+
+/* Inherited from ancestor level 6 (user-agent) */
+article, aside, footer, header, hgroup, main, nav, search, section {
+  display: block;
+}
+
+/* Inherited from ancestor level 6 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+.w-full {
+  width: 100%;
+  width: 100%;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+.w-full {
+  width: 100%;
+  width: 100%;
+}
+
+/* Inherited from ancestor level 7 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 7 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 7 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 8 (user-agent) */
+body {
+  display: block;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+body {
+  font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: Heebo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+body {
+  font-family: "Heebo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: Heebo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100vh;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Inherited from ancestor level 9 (user-agent) */
+html {
+  display: block;
+}
+
+/* Inherited from ancestor level 9 (user-agent) */
+:root {
+  view-transition-name: root;
+}
+
+/* Inherited from ancestor level 9 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+*, ::after, ::before, ::backdrop, ::file-selector-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+html, :host {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+html, :host {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Inherited from ancestor level 9 (regular) */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-50: #fef7ed;
+  --primary-100: #fef3c7;
+  --primary-200: #fde68a;
+  --primary-300: #fcd34d;
+  --primary-400: #fbbf24;
+  --primary-500: #f59e0b;
+  --primary-600: #d97706;
+  --primary-700: #b45309;
+  --primary-800: #92400e;
+  --primary-900: #78350f;
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #bbf7d0;
+  --secondary-300: #86efac;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #14532d;
+  --accent-50: #fefce8;
+  --accent-100: #fef9c3;
+  --accent-200: #fef08a;
+  --accent-300: #fde047;
+  --accent-400: #facc15;
+  --accent-500: #eab308;
+  --accent-600: #ca8a04;
+  --accent-700: #a16207;
+  --accent-800: #854d0e;
+  --accent-900: #713f12;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-dark-bg: rgba(15, 23, 42, 0.8);
+  --glass-dark-border: rgba(148, 163, 184, 0.2);
+  --glass-intense-bg: rgba(255, 255, 255, 0.4);
+  --glass-subtle-bg: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.4);
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-50: #fef7ed;
+  --primary-100: #fef3c7;
+  --primary-200: #fde68a;
+  --primary-300: #fcd34d;
+  --primary-400: #fbbf24;
+  --primary-500: #f59e0b;
+  --primary-600: #d97706;
+  --primary-700: #b45309;
+  --primary-800: #92400e;
+  --primary-900: #78350f;
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #bbf7d0;
+  --secondary-300: #86efac;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #14532d;
+  --accent-50: #fefce8;
+  --accent-100: #fef9c3;
+  --accent-200: #fef08a;
+  --accent-300: #fde047;
+  --accent-400: #facc15;
+  --accent-500: #eab308;
+  --accent-600: #ca8a04;
+  --accent-700: #a16207;
+  --accent-800: #854d0e;
+  --accent-900: #713f12;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-dark-bg: rgba(15, 23, 42, 0.8);
+  --glass-dark-border: rgba(148, 163, 184, 0.2);
+  --glass-intense-bg: rgba(255, 255, 255, 0.4);
+  --glass-subtle-bg: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+/* Inherited from ancestor level 9 (regular) */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-50: #fef7ed;
+  --primary-100: #fef3c7;
+  --primary-200: #fde68a;
+  --primary-300: #fcd34d;
+  --primary-400: #fbbf24;
+  --primary-500: #f59e0b;
+  --primary-600: #d97706;
+  --primary-700: #b45309;
+  --primary-800: #92400e;
+  --primary-900: #78350f;
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #bbf7d0;
+  --secondary-300: #86efac;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #14532d;
+  --accent-50: #fefce8;
+  --accent-100: #fef9c3;
+  --accent-200: #fef08a;
+  --accent-300: #fde047;
+  --accent-400: #facc15;
+  --accent-500: #eab308;
+  --accent-600: #ca8a04;
+  --accent-700: #a16207;
+  --accent-800: #854d0e;
+  --accent-900: #713f12;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-dark-bg: rgba(15, 23, 42, 0.8);
+  --glass-dark-border: rgba(148, 163, 184, 0.2);
+  --glass-intense-bg: rgba(255, 255, 255, 0.4);
+  --glass-subtle-bg: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.4);
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-50: #fef7ed;
+  --primary-100: #fef3c7;
+  --primary-200: #fde68a;
+  --primary-300: #fcd34d;
+  --primary-400: #fbbf24;
+  --primary-500: #f59e0b;
+  --primary-600: #d97706;
+  --primary-700: #b45309;
+  --primary-800: #92400e;
+  --primary-900: #78350f;
+  --secondary-50: #f0fdf4;
+  --secondary-100: #dcfce7;
+  --secondary-200: #bbf7d0;
+  --secondary-300: #86efac;
+  --secondary-400: #4ade80;
+  --secondary-500: #22c55e;
+  --secondary-600: #16a34a;
+  --secondary-700: #15803d;
+  --secondary-800: #166534;
+  --secondary-900: #14532d;
+  --accent-50: #fefce8;
+  --accent-100: #fef9c3;
+  --accent-200: #fef08a;
+  --accent-300: #fde047;
+  --accent-400: #facc15;
+  --accent-500: #eab308;
+  --accent-600: #ca8a04;
+  --accent-700: #a16207;
+  --accent-800: #854d0e;
+  --accent-900: #713f12;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-dark-bg: rgba(15, 23, 42, 0.8);
+  --glass-dark-border: rgba(148, 163, 184, 0.2);
+  --glass-intense-bg: rgba(255, 255, 255, 0.4);
+  --glass-subtle-bg: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.4);
+}

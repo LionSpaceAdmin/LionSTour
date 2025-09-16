@@ -1,0 +1,6 @@
+/* Self-host Heebo via @fontsource (bundled at build time) */
+@import '@fontsource/heebo/300.css';
+@import '@fontsource/heebo/400.css';
+@import '@fontsource/heebo/500.css';
+@import '@fontsource/heebo/700.css';
+@import '@fontsource/heebo/900.css';

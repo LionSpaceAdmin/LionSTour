@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "MCP_SERVER_FILESYSTEM_BASE_PATH": "/Users/danielions/Development/LionSTour"
+      }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"],
+      "env": {
+        "MCP_SERVER_GIT_REPO_PATH": "/Users/danielions/Development/LionSTour"
+      }
+    },
+    "postgres": {
+      "command": "uvx",
+      "args": ["mcp-server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://postgres:postgres@localhost:5432/lionstour"
+      }
+    }
+  }
+}

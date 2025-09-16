@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install deps (pnpm)",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		},
+		{
+			"label": "pnpm install (upgrade next)",
+			"type": "shell",
+			"command": "pnpm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}
