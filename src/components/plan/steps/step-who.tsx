@@ -11,12 +11,12 @@ import { cn } from '@/lib/utils';
 import { HandHeart, Utensils, FerrisWheel, Trees, Landmark, Palette } from 'lucide-react';
 
 const interestIcons = {
-    'Connection': HandHeart,
-    'Food': Utensils,
-    'Adventure': FerrisWheel,
-    'Nature': Trees,
     'History': Landmark,
-    'Art': Palette
+    'Nature': Trees,
+    'Food': Utensils,
+    'Art': Palette,
+    'Adventure': FerrisWheel,
+    'Connection': HandHeart,
 } as const;
 
 
