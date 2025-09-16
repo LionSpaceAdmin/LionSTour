@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { GuideCard } from "@/components/guides/guide-card";
 import { mockGuides } from "@/lib/mock-guides";
+import { AIImage } from "@/components/common/ai-image";
 
 
 export default function ExperiencePage({ params }: { params: { id: string } }) {
@@ -22,13 +23,12 @@ export default function ExperiencePage({ params }: { params: { id: string } }) {
   return (
     <div>
         <section className="relative h-80 md:h-[50vh] w-full -mt-20">
-            <Image
-            src={experience.image.imageUrl}
-            alt={experience.image.description}
-            fill
-            priority
-            className="object-cover"
-            data-ai-hint={experience.image.imageHint}
+            <AIImage
+              imageId={experience.image.id}
+              alt={experience.image.description}
+              fill
+              priority
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
              <div className="absolute bottom-0 left-0 w-full p-4 md:p-12 text-white">
