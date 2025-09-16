@@ -1,23 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider }ve
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
-import { planTripAction } from '@/app/plan/actions';
-import type { Itinerary } from '@/ai/flows/concierge-service';
+import { planTrip } from '@/ai/flows/concierge-service';
+import type { PlanTripInput, Itinerary } from '@/ai/flows/concierge-service';
 
 import { StepWho } from './steps/step-who';
 import { StepWhen } from './steps/step-when';
 import { StepWhat } from './steps/step-what';
 import { StepBudget } from './steps/step-budget';
 import { ItineraryDisplay } from './itinerary-display';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
 
 const whoSchema = z.object({
   travelerCount: z.number().min(1),
@@ -54,6 +55,7 @@ export function TripPlanner() {
   const [isLoading, setIsLoading] = useState(false);
   const [itinerary, setItinerary] = useState<Itinerary | null>(null);
   const { toast } = useToast();
+  const router = useRouter();
 
   const methods = useForm<TripPlannerValues>({
     resolver: zodResolver(steps[currentStep].schema),
@@ -91,7 +93,7 @@ export function TripPlanner() {
     setIsLoading(true);
     setItinerary(null);
     try {
-      const result = await planTripAction({
+      const input: PlanTripInput = {
         intent: {
           travelers: {
             count: values.travelerCount,
@@ -114,10 +116,14 @@ export function TripPlanner() {
             },
           },
         },
-      });
+      };
+
+      const result = await planTrip(input);
 
       if (result?.itinerary) {
         setItinerary(result.itinerary);
+        // Save to localStorage to pass to booking page
+        localStorage.setItem('tripItinerary', JSON.stringify({ ...result.itinerary, travelerCount: values.travelerCount }));
         toast({
           title: "Itinerary Generated!",
           description: "Your personalized trip plan is ready below.",
@@ -137,32 +143,45 @@ export function TripPlanner() {
     }
   }
 
+  const handleProceedToBooking = () => {
+    router.push('/book');
+  };
+
   const CurrentStepComponent = steps[currentStep].component;
 
   if (isLoading) {
     return (
-      <div className="text-center p-12">
-        <Loader2 className="mx-auto h-12 w-12 animate-spin text-primary" />
+      <div className="text-center p-12 space-y-4">
+        <div className="relative w-24 h-24 mx-auto">
+          <Loader2 className="absolute inset-0 m-auto h-full w-full animate-spin text-primary opacity-20" />
+          <Send className="absolute inset-0 m-auto h-12 w-12 text-primary animate-pulse" />
+        </div>
         <h2 className="mt-4 text-2xl font-headline font-semibold">Building Your Journey...</h2>
-        <p className="mt-2 text-muted-foreground">Our AI is crafting the perfect trip for you.</p>
+        <p className="mt-2 text-muted-foreground">Our AI Concierge is crafting the perfect trip for you.</p>
       </div>
     );
   }
 
   if (itinerary) {
     return (
-      <div>
+      <div className="space-y-8">
         <ItineraryDisplay itinerary={itinerary} />
-        <div className="mt-8 text-center">
-          <Button
-            onClick={() => {
-              setItinerary(null);
-              setCurrentStep(0);
-              methods.reset();
-            }}
-          >
-            Start Over
-          </Button>
+        <div className="flex justify-between items-center">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setItinerary(null);
+                setCurrentStep(0);
+                methods.reset();
+                localStorage.removeItem('tripItinerary');
+              }}
+            >
+              Start Over
+            </Button>
+            <Button size="lg" onClick={handleProceedToBooking}>
+              Proceed to Booking
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
         </div>
       </div>
     );
