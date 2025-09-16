@@ -57,7 +57,7 @@ export function GuideCard({ guide }: GuideCardProps) {
                 <span>Responds in ~{guide.responseTime}</span>
             </div>
         </div>
-        <Button asChild className="w-full">
+        <Button asChild className="w-full flex-row-reverse">
             <Link href={`/guides/${guide.id}`}>
                 <UserPlus className="mr-2 h-4 w-4" />
                 View Profile

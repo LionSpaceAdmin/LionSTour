@@ -33,8 +33,8 @@ export function Hero() {
         </p>
         <div className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <Link href="/experiences">
-              Journey with a Veteran <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/experiences" className="flex-row-reverse">
+              Journey with a Veteran <ArrowRight className="mr-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="text-white border-white/50 bg-white/10 hover:bg-white/20 text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
